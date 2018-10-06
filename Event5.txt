@@ -1,0 +1,4 @@
+Event Handing
+OnClick(): This method is called when the user touches or focus on the item using navigation-keys
+onFocusChanged(): This method is called when the view gains or loses focus.
+onCreateContextMenu(): This method is called when a Context Menu is being built.
