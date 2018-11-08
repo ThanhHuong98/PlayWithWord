@@ -66,17 +66,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMode4"
         android:layout_alignLeft="@id/btnMode1"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/my_button"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:paddingTop="10dp"
+        android:paddingRight="15dp"
         android:paddingBottom="10dp"
         android:text="Click Here To Mode 5"
         android:textColor="@color/Black"
-        android:textSize="30sp">
-    </Button>
+        android:textSize="30sp"></Button>
 
     <Button
         android:id="@+id/btnMode6"
@@ -84,12 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMode4"
         android:layout_alignLeft="@id/btnMode1"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="103dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="94dp"
         android:background="@drawable/my_button"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:paddingTop="10dp"
+        android:paddingRight="15dp"
         android:paddingBottom="10dp"
         android:text="Click Here To Mode 6"
         android:textColor="@color/Black"
