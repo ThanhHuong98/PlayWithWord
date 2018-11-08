@@ -1,0 +1,255 @@
+package com.hfda.playwithwords;
+
+
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFrag, View.OnClickListener
+{
+    Button btnCheck;
+    ImageButton btnHint;
+    TextView textPoint;
+    TextView numberRound;
+    TextView textViewQuestion;
+    TextView hint;
+    TextView textHint;
+    EditText editText_Answer3;
+    ProgressBar myProgressBar;
+    LinearLayout layout;
+    Round _container; //Activity chứa Fragment
+
+    Context context;
+    int numberHint=5; //số hint tối đa cho người dùng
+    int point=0; //điểm người dùng có được
+    int indexOfHint=0;
+    int accum;
+    int question;
+    int progressStep=1;
+    Handler myHandler;
+    Runnable runnable;
+    //String resultToHint=new String();
+    String realAnswer;
+    Character[] res;
+    public Fragment_Round_Mode3()
+    {
+
+        // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState)
+    {
+        // Inflate the layout for this fragment
+         layout = (LinearLayout)inflater.inflate(R.layout.fragment__round__mode3, container, false);
+        //LinearLayout setBackg=(layout).findViewById(R.id.background_3);
+        super.onCreate(savedInstanceState);
+        _container = (Round)getActivity();
+        btnHint=(layout).findViewById(R.id.btnHint);
+        textPoint= (layout).findViewById(R.id.textViewPoint);
+        numberRound = (layout).findViewById(R.id.textViewRound);
+        textViewQuestion = layout.findViewById(R.id.textViewQuestion);
+        textHint=layout.findViewById(R.id.textHint);
+        hint = layout.findViewById(R.id.textViewNumberHint);
+        myProgressBar = layout.findViewById(R.id.progressbar);
+        btnCheck=(layout).findViewById(R.id.btnCheck);
+        editText_Answer3=(layout).findViewById(R.id.editText_Answer3);
+        btnHint.setOnClickListener(this);
+        btnCheck.setOnClickListener(this);
+        context=getActivity().getApplicationContext();
+
+        //Khi mới vào vòng đầu tiên thì phải gửi thông điệp lên Activity Round ở trên để nó gửi
+        //thông điệp + database xuống cho mình set dữ liệu trên màn hình chơi
+        _container.Action("REFRESH");
+
+        return layout;
+    }
+
+
+    public void StartProgressBar()
+    {
+        myHandler = new Handler();
+        accum=0;
+        myProgressBar.setMax(1000);
+        myProgressBar.setProgress(1);
+
+        myHandler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run()
+            {
+                if(accum<=myProgressBar.getMax())
+                {
+                    myProgressBar.incrementProgressBy(progressStep);
+                    accum++;
+                    myHandler.postDelayed(runnable, 10);
+                }
+                else
+                    _container.Action("REFRESH");
+            }
+        };
+        myHandler.post(runnable);
+    }
+
+
+    @Override
+    public void onClick(View v)
+    {
+        if(v.getId()==btnHint.getId()) //người dùng bấm chọn hint
+        {
+            layout.setBackground(ContextCompat.getDrawable(_container,R.drawable.mode3_hint));
+
+            res =  splitrealAnswer(realAnswer);
+            editText_Answer3.setText("");
+            String notification="";
+            numberHint--;
+            String strHint=numberHint+"";
+            if(numberHint>=0) //nếu còn trợ giúp
+            {
+                hint.setText("Hint: "+strHint+""+"/5");
+                notification="Decrease the number of Hint...";
+                editText_Answer3.setVisibility(v.VISIBLE);
+                String resultToHint="";
+
+                   for (int i = 0; i < indexOfHint; i++) {
+                        resultToHint=resultToHint+"_ ";
+                   }
+
+                resultToHint=resultToHint+res[indexOfHint].toString();
+                textHint.setHint(resultToHint);
+                int color=getResources().getColor(R.color.BlueViolet);
+                textHint.setHintTextColor(color);
+                indexOfHint++;
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        // Hide your View after 3 seconds
+                        textHint.setHint("");
+                        layout.setBackground(ContextCompat.getDrawable(_container,R.drawable.background_mode3));
+
+                    }
+                }, 1500);
+
+                if(indexOfHint==realAnswer.length()){
+
+                    indexOfHint=0;
+                }
+
+                String text = "Hint: " + numberHint + "/5";
+                hint.setText(text);
+            }
+            else{
+                notification="You must use Pont to buy Hint..... ";
+            }
+            Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
+        }
+       // String result=editText_Answer3.getText().toString();
+
+        if(v.getId()==btnCheck.getId()) {
+            String result = editText_Answer3.getText().toString();
+            if (!result.equals("")) {
+                if (result.equalsIgnoreCase(realAnswer)) //đáp án người dùng chọn trùng với đáp án chính
+                {
+                    //set background cho cái nút mà người dùng chọn thành màu xanh
+                    btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_right));
+                    //tăng điểm lên
+                    point += 20;
+
+                    String text = point + "";
+                    //setText cho cái TextView Point(s)
+                    textPoint.setText(text);
+                    _container.Action("RIGHT");
+                } else //đáp án người dùng chọn khác với đáp án chính
+                {
+                    btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_wrong));
+                    _container.Action("WRONG");
+                }
+
+                btnCheck.setEnabled(false);
+
+                btnHint.setEnabled(false);
+
+                //cho progressbar dừng lại không chạy nữa
+                myHandler.removeCallbacks(runnable);
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //sau 1s nó sẽ gửi thông điệp REFRESH lên trên Activity để lấy dữ liệu câu hỏi + đáp án mới
+                        //về set lại trên màn hình
+                        _container.Action("REFRESH");
+                    }
+                }, 600);
+
+            } else {
+                Toast.makeText(context, "You must enter at least one character", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    /*
+    phương thức message trong Interface fromContainerToFrag sẽ được kích hoạt khi mà Activity gửi dữ liệu xuống Fragment*/
+    @Override
+    public void InfoToHandle(String mess, String round, Object question, String answer, String transcription, String[] answerInBtn)
+    {
+
+        if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
+        {
+            editText_Answer3.setHint("Your Answer");
+            editText_Answer3.setText("");
+            editText_Answer3.setEnabled(true);
+            String text= round + "/20";
+            if(numberRound!=null)
+                numberRound.setText(text);
+            //set lai cau hoi
+            textViewQuestion.setText((String)question); //phai ep kieu question tuy theo mode (String, Drawable, ...)
+            //set cái background button đáp án người dùng chọn lúc nãy về bình thường, không còn xanh đỏ nữa
+            if(btnCheck!=null)
+            {
+                btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn3));
+
+            }
+
+            if(! btnCheck.isEnabled()){
+                btnCheck.setEnabled(true);
+            }
+            if(!btnHint.isEnabled())
+            {
+                btnHint.setEnabled(true);
+            }
+
+            this.realAnswer = answer;
+            StartProgressBar();
+        }
+    }
+    public Character[] splitrealAnswer(String _realAnswer){
+        String str = _realAnswer;
+        //Cắt String: answer thành các ký tự lưu vào mảng các ký tự res
+        res = new Character[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            res[i] = str.charAt(i);
+        }
+        return res;
+    }
+}

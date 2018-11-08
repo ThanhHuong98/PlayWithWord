@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Play With Words</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Round">1/20</string>
+    <string name="Round0">0/20</string>
+    <string name="QuestionMode1">Satellite</string>
+    <string name="QuestionMode3">A fossil fuel in the gaseous state; used for cooking and heating homes</string>
+ 
+   <string name="Check">Check</string>
+
+
+    <string name="Transcription">/ˈsætəlaɪt/</string>
+    <string name="Answer1">hành tinh</string>
+    <string name="Answer2">vệ tinh</string>
+    <string name="Answer3">vì sao</string>
+    <string name="Answer4">sao băng</string>
+    <string name="Score">0</string>
+    <string name="Hint">Hint: 5/5</string>
+    <string name="Intro_mode1">Choose one of\nthe four options that\ndesribes the giving word\nin VietNamese</string>
+    <string name="Intro_mode3">Fill in the blank\n with a suitable word\n that matches\n the giving definition</string>
+ 
+    <string name="Intro_mode3L">Fill in the blank with a suitable word that matches the giving definition</string>
+  
+    <string name="textNote">Note: The number of letters is shown in the beginning</string>
+  
+    <string name="textHint">Your answer</string>
+    <string name="Intro_mode4">Listen carefully and\nwrite down the word.\nPress DONE button\nto finish the task.</string>
+    <string name="Intro_mode5">By putting words in the right order, form a suitable sentence that has the giving Vietnamese meaning</string>
+    <string name="Result">17/20</string>\
+    <string name="title_mode5">Viết Mục Này Bằng Tiếng Việt</string>
+    <string name="title_mode6">Speak this sentence</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

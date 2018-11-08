@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_mode1">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ProgressBar
+        android:id="@+id/myProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/PinkLight"/>
+
+    <TextView
+        android:id="@+id/textViewRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="@font/font_opensan_regular"
+        android:text="@string/Round0"
+        android:textColor="@color/Black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/entry"
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:fontFamily="@font/font_opensan_regular"
+        android:text="@string/title_mode5"
+        android:textColor="@color/Black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:fontFamily="@font/font_opensan_regular"
+        android:text="I read a newspaper"
+        android:textColor="@color/Black"
+        android:textSize="20sp" />
+
+    <GridView
+        android:id="@+id/addGridView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginStart="46dp"
+        android:numColumns="5" />
+
+    <GridView
+        android:id="@+id/initGridView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginStart="46dp"
+        android:numColumns="5" >
+
+    </GridView>
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_width="200dp"
+        android:layout_height="54dp"
+
+        android:layout_gravity="fill"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/my_button"
+        android:fontFamily="@font/font_opensan_light"
+        android:gravity="center"
+        android:text="@string/Check"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="12dp"
+            android:text="Point(s):"
+            android:textSize="30sp"
+            android:background="#F9BAA8"
+            android:textColor="@color/White"
+            android:fontFamily="@font/font_opensan_regular"/>
+
+        <TextView
+            android:id="@+id/textViewPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_alignTop="@+id/textView"
+            android:paddingLeft="5dp"
+            android:text="@string/Score"
+            android:textSize="30sp"
+            android:textColor="@color/White"
+            android:background="#F9BAA8"
+            android:fontFamily="@font/font_opensan_regular"/>
+
+        <TextView
+            android:id="@+id/textViewNumberHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="12dp"
+            android:text="@string/Hint"
+            android:textSize="30sp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/White"
+            android:fontFamily="@font/font_opensan_regular"/>
+
+        <ImageButton
+            android:id="@+id/btnHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/textViewNumberHint"
+            android:layout_alignBottom="@+id/textViewPoint"
+            android:layout_marginRight="5dp"
+            android:layout_alignTop="@+id/textViewPoint"
+            android:src="@drawable/ic_action_hint"
+            android:background="@android:color/transparent"/>
+    </RelativeLayout>
+</LinearLayout>
