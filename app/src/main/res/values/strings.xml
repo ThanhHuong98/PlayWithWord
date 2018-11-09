@@ -32,5 +32,14 @@
     <string name="title_mode5">Viết Mục Này Bằng Tiếng Việt</string>
     <string name="title_mode6">Speak this sentence</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <!--Menu-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="openDrawer"></string>
+    <string name="closeDrawer"></string>
+    <string name="userName">Thanh Huong</string>
+    <string name="point">Point: 250</string>
+    <string name="ranking">2nd</string>
+    <string name="aboutUs">About Us</string>
+    <string name="rankingMenu">Rankings</string>
+    <string name="logOut">Rankings</string>
 </resources>

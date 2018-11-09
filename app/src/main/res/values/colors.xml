@@ -145,4 +145,8 @@
     <color name="Black">#000000</color>
     <color name="PinkLight">#FF7675</color>
     <color name="Gray11">#1C1C1C</color>
+<!--Menu-->
+    <color name="transparent">#00fffffe</color>
+    <color name="pinkHeader">#71ff7576</color>
+    <color name="colorView">#6b020202</color>
 </resources>

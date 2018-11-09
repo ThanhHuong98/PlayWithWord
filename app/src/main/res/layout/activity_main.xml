@@ -1,98 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/introduction_background_mode1"
+    android:background="@drawable/welcome"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnMode1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnIntentMenu"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-
-        android:layout_marginTop="150dp"
-        android:background="@drawable/my_button"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
-        android:text="Click Here To Mode 1"
-        android:textColor="@color/Black"
+        android:layout_marginTop="350dp"
+        android:background="@color/transparent"
         android:textSize="30sp">
     </Button>
-
-    <Button
-        android:id="@+id/btnMode3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click Here To Mode 3"
-        android:layout_below="@id/btnMode1"
-        android:layout_alignLeft="@id/btnMode1"
-        android:layout_marginTop="20dp"
-        android:textSize="30sp"
-        android:textColor="@color/Black"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@drawable/my_button">
-    </Button>
-
-    <Button
-        android:id="@+id/btnMode4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click Here To Mode 4"
-        android:layout_below="@id/btnMode3"
-        android:layout_alignLeft="@id/btnMode1"
-        android:layout_marginTop="20dp"
-        android:textSize="30sp"
-        android:textColor="@color/Black"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@drawable/my_button">
-    </Button>
-
-    <Button
-        android:id="@+id/btnMode5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnMode4"
-        android:layout_alignLeft="@id/btnMode1"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/my_button"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
-        android:text="Click Here To Mode 5"
-        android:textColor="@color/Black"
-        android:textSize="30sp"></Button>
-
-    <Button
-        android:id="@+id/btnMode6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnMode4"
-        android:layout_alignLeft="@id/btnMode1"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="94dp"
-        android:background="@drawable/my_button"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
-        android:text="Click Here To Mode 6"
-        android:textColor="@color/Black"
-        android:textSize="30sp"></Button>
 
 
 </RelativeLayout>

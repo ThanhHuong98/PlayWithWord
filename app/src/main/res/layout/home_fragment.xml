@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff"
+    tools:context=".FragmentHome">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLEASE CHOOSE A MODE"
+            android:layout_marginTop="35dp"
+            android:layout_gravity="center"/>
+        <ImageButton
+            android:id="@+id/btnMode1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mode1"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            />
+        <ImageButton
+            android:id="@+id/btnMode2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mode2"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            />
+
+        <ImageButton
+            android:id="@+id/btnMode3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/mode3" />
+        <ImageButton
+            android:id="@+id/btnMode4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mode4"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+        <ImageButton
+            android:id="@+id/btnMode5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mode5"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+        <ImageButton
+            android:id="@+id/btnMode6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mode6"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+    </LinearLayout>
+
+
+</ScrollView>
