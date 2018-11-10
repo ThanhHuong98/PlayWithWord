@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_back"
         android:layout_toEndOf="@id/btn_back"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:text="Mode 1"
         android:textSize="35sp"
         android:textColor="#6C5CE7"
@@ -46,7 +46,7 @@
         android:layout_marginTop="15dp"
         android:layout_alignStart="@+id/howToPlay"
         android:text="@string/Intro_mode1"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button
@@ -56,9 +56,9 @@
         android:layout_below="@id/textViewIntro"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text=" Click here to play "
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"/>

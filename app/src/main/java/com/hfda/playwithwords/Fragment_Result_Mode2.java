@@ -14,7 +14,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Fragment_Result_Mode3 extends Fragment implements fromContainerToFrag,View.OnClickListener {
+public class Fragment_Result_Mode2 extends Fragment implements fromContainerToFrag,View.OnClickListener {
 
     Button btn_share;
     ImageButton btn_finish;
@@ -23,7 +23,7 @@ public class Fragment_Result_Mode3 extends Fragment implements fromContainerToFr
     TextView textViewRound;
 
     Result _container;
-    public Fragment_Result_Mode3() {
+    public Fragment_Result_Mode2() {
         // Required empty public constructor
     }
 
@@ -37,7 +37,7 @@ public class Fragment_Result_Mode3 extends Fragment implements fromContainerToFr
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RelativeLayout layout = (RelativeLayout)inflater.inflate(R.layout.fragment__result__mode3, container, false);
+        RelativeLayout layout = (RelativeLayout)inflater.inflate(R.layout.fragment_result_mode2, container, false);
 
 
 

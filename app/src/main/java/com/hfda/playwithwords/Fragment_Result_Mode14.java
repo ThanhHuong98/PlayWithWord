@@ -67,7 +67,7 @@ public class Fragment_Result_Mode14 extends Fragment implements fromContainerToF
         }
     }
     @Override
-    public void InfoToHandle(String mess, String round, Object question, String answer, String transcription, String[] answerInBtn)
+    public void InfoToHandle(String mess, String round, Object question, Object answer, String transcription, String[] answerInBtn)
     {
         textViewPoint.setText(mess);
         textViewRound.setText(round + "/20");

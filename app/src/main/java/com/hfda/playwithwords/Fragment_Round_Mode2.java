@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,15 +18,14 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFrag, View.OnClickListener
+public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFrag, View.OnClickListener
 {
     Button[] btnAnswer = new Button[4]; //mảng chứa 4 button đáp án
     Button userChosen;
     ImageButton btnHint;
     TextView textPoint;
     TextView numberRound;
-    TextView textViewQuestion;
-    TextView textViewTranscript;
+    ImageView imgRound;
     TextView hint;
     ProgressBar myProgressBar;
 
@@ -40,7 +40,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
     Runnable runnable;
 
     String realAnswer;
-    public Fragment_Round_Mode1()
+    public Fragment_Round_Mode2()
     {
         // Required empty public constructor
     }
@@ -50,21 +50,26 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_round_mode1, container, false);
+        LinearLayout layout = (LinearLayout) inflater.inflate
+                (R.layout.fragment_round_mode2, container, false);
 
         _container = (Round)getActivity();
 
+        myProgressBar = layout.findViewById(R.id.progressbar);
+        numberRound = (layout).findViewById(R.id.textViewRound);
+        imgRound=(layout).findViewById(R.id.imgView);
         btnAnswer[0]=(layout).findViewById(R.id.btnAnswer1);
         btnAnswer[1]=(layout).findViewById(R.id.btnAnswer2);
         btnAnswer[2]=(layout).findViewById(R.id.btnAnswer3);
         btnAnswer[3]=(layout).findViewById(R.id.btnAnswer4);
-        btnHint=(layout).findViewById(R.id.btnHint);
         textPoint= (layout).findViewById(R.id.textViewPoint);
-        numberRound = (layout).findViewById(R.id.textViewRound);
-        textViewQuestion = layout.findViewById(R.id.textViewQuestion);
-        textViewTranscript = layout.findViewById(R.id.textViewTranscription);
+        btnHint=(layout).findViewById(R.id.btnHint);
+
+
+
         hint = layout.findViewById(R.id.textViewNumberHint);
-        myProgressBar = layout.findViewById(R.id.myBarHor);
+
+
 
         btnAnswer[0].setOnClickListener(this);
         btnAnswer[1].setOnClickListener(this);
@@ -202,12 +207,13 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
 
             //set lai cau hoi
 
-            textViewQuestion.setText((String)question); //phai ep kieu question tuy theo mode (String, Drawable, ...)
+           // textViewQuestion.setText((String)question); //phai ep kieu question tuy theo mode (String, Drawable, ...)
 
             //set lai phien am
 
-            textViewTranscript.setText(transcription);
-
+          //  textViewTranscript.setText(transcription);
+             imgRound.setImageResource((Integer) question);
+             realAnswer = (String)answer;
             //set lại dữ liệu cho 4 button đáp án, nếu nó có bị unenable hoặc bị ẩn thì cho nó bình thường trở lại
             for(int i=0; i<4; i++)
             {
@@ -218,7 +224,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
             //set cái background button đáp án người dùng chọ lúc nãy về bình thường, không còn xanh đỏ nữa
             if(userChosen!=null)
             {
-                userChosen.setBackground(this.getResources().getDrawable(R.drawable.my_button));
+                userChosen.setBackground(this.getResources().getDrawable(R.drawable.button_mode2));
             }
 
             if(!btnHint.isEnabled())
@@ -226,7 +232,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                 btnHint.setEnabled(true);
             }
 
-            this.realAnswer = (String)answer; //luư đáp án mà Activity ở trên gửi về
+            this.realAnswer =(String)answer; //luư đáp án mà Activity ở trên gửi về
             StartProgressBar();
         }
     }

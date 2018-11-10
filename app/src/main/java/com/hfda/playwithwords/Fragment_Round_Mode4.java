@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +22,17 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
     TextView textViewNumberHint;
     TextView textViewPoint;
     TextView textViewRound;
+    ProgressBar myProgressBar;
 
     int question;
     int resID;
     Context context;
+    Round _container;
+
+    int accum;
+    int progressStep=1;
+    Handler myHandler;
+    Runnable runnable;
 
     int hint = 5;
     Round mainRoundMode4;
@@ -34,6 +42,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
     Character[] res;
     int i=0;
     String str;
+
 
 
     public Fragment_Round_Mode4()
@@ -55,7 +64,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_round_mode4, container, false);
-
+        _container = (Round)getActivity();
         btnVolume=(ImageButton) view.findViewById(R.id.btn_volume);
         editTextAnswer=(EditText)view.findViewById(R.id.editText_Answer);
         btnDone=(Button)view.findViewById(R.id.btn_done);
@@ -64,7 +73,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
         textViewPoint=(TextView)view.findViewById(R.id.textViewPoint);
         textViewRound=(TextView)view.findViewById(R.id.textViewRound);
 
-
+        myProgressBar = (ProgressBar)view.findViewById(R.id.progressbar);
         context=getActivity().getApplicationContext();
 
 
@@ -76,13 +85,37 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
         return view;
     }
+    public void StartProgressBar()
+    {
+        myHandler = new Handler();
+        accum=0;
+        myProgressBar.setMax(1000);
+        myProgressBar.setProgress(1);
 
+        myHandler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run()
+            {
+                if(accum<=myProgressBar.getMax())
+                {
+                    myProgressBar.incrementProgressBy(progressStep);
+                    accum++;
+                    myHandler.postDelayed(runnable, 10);
+                }
+                else
+                    _container.Action("REFRESH");
+            }
+        };
+        myHandler.post(runnable);
+    }
     @Override
-    public void InfoToHandle(String mess, String roundOfMode, Object newQuestion, String answer, String transcription, String[] answerInBtn) {
+    public void InfoToHandle(String mess, String roundOfMode, Object newQuestion, Object answer, String transcription, String[] answerInBtn) {
         if(mess.equals("NEW"))
         {
             editTextAnswer.setHint("Your Answer");
             editTextAnswer.setEnabled(true);
+            editTextAnswer.setTextColor(getResources().getColor(R.color.Black));
             btnHint.setEnabled(true);
             btnDone.setEnabled(true);
             textViewRound.setText(roundOfMode+ "/20");
@@ -90,7 +123,8 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             editTextAnswer.setText("");
             question = (int)newQuestion;
             soundManager.loadSound(context,question);
-            realAnswer=answer;
+            realAnswer = (String)answer;
+            StartProgressBar();
         }
         /*if(mess.equals("RIGHTSOUND"))
         {
@@ -143,7 +177,9 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                         //Trong khi thời gian chuyển màn hình(Round), cũng chính là thời gian show GifImage => không cho nhập
                         //editTextAnswer.setEnabled(false);
                     }
-                }, 3000);
+                }, 1000);
+
+                myHandler.removeCallbacks(runnable);
             }
             else
             {

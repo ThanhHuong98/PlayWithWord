@@ -33,7 +33,7 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
                 fragment = new Fragment_Introduction_Mode1();
                 break;
             case 2:
-                //fragment = new Fragment_Introduction_Mode2();
+                fragment = new Fragment_Introduction_Mode2();
                 break;
             case 3:
                 fragment = new Fragment_Introduction_Mode3();

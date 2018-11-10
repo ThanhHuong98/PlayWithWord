@@ -58,7 +58,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="40dp"
         android:text=" Click here to play "
-        android:textSize="55sp"
+        android:textColor="@color/Black"
+        android:textSize="45sp"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"/>
 

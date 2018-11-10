@@ -5,14 +5,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnIntentMenu;
+public class MainActivity extends AppCompatActivity
+{
+    private Button btnIntentMenu;
+    private Handler myHandler;
+    private Runnable runnable;
+    private boolean canAccess = false;
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     //mảng lưu các quyền cần truy cập
@@ -24,19 +29,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        btnIntentMenu=(Button)findViewById(R.id.btnIntentMenu);
-        btnIntentMenu.setOnClickListener(this);
         //đòi quyển truy cập
-        boolean canAccess = false;
+
         canAccess = verifyStoragePermissions(this);
         while (!canAccess) {
             Toast.makeText(this, "You must allow app access your storage to share your score!", Toast.LENGTH_LONG).show();
             canAccess = verifyStoragePermissions(this);
         }
+            //Sau 3s thì sẽ tự động chuyển qua menu
+            myHandler = new Handler();
+            myHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    while(!canAccess){}
+                    Intent intent = new Intent(getApplicationContext(), Menu.class);
+                    startActivity(intent);
+                }
+            }, 3000);
+
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
 
       if(v.getId()==btnIntentMenu.getId())
@@ -46,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           startActivity(intent);
       }
 
-    }
+    }*/
 
     /**
      * Checks if the app has permission to write to device storage

@@ -45,7 +45,7 @@
             android:layout_marginLeft="20dp"
             android:text="Thanh Huong"
             android:textColor="#FF000000"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:fontFamily="@font/font_roboto"/>
 
@@ -59,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_prize"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp" />
             <!--Point-->
             <TextView
@@ -69,7 +70,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="Point(s): 250"
                 android:textColor="#FF000000"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/font_roboto"
                 />

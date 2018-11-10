@@ -149,7 +149,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                         layout.setBackground(ContextCompat.getDrawable(_container,R.drawable.background_mode3));
 
                     }
-                }, 1500);
+                }, 1000);
 
                 if(indexOfHint==realAnswer.length()){
 
@@ -211,7 +211,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
     /*
     phương thức message trong Interface fromContainerToFrag sẽ được kích hoạt khi mà Activity gửi dữ liệu xuống Fragment*/
     @Override
-    public void InfoToHandle(String mess, String round, Object question, String answer, String transcription, String[] answerInBtn)
+    public void InfoToHandle(String mess, String round, Object question, Object answer, String transcription, String[] answerInBtn)
     {
 
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
@@ -239,7 +239,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 btnHint.setEnabled(true);
             }
 
-            this.realAnswer = answer;
+            this.realAnswer = (String)answer;
             StartProgressBar();
         }
     }

@@ -47,7 +47,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
 
     Fragment_Result_Mode14 fragmentResultMode14;
     Fragment_Result_Mode3 fragmentResultMode3;
-
+    Fragment_Result_Mode2 fragmentResultMode2;
     String finalResult;
     String totalScore;
     int mode;
@@ -74,6 +74,10 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                 fragmentResultMode14 = new Fragment_Result_Mode14();
                 ft.replace(R.id.fragment_result, fragmentResultMode14);
                 break;
+            case 2:
+                fragmentResultMode2 = new Fragment_Result_Mode2();
+                ft.replace(R.id.fragment_result,fragmentResultMode2);
+                break;
             case 3:
                 fragmentResultMode3 = new Fragment_Result_Mode3();
                 ft.replace(R.id.fragment_result, fragmentResultMode3);
@@ -96,7 +100,8 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                     fragmentResultMode14.InfoToHandle(totalScore, finalResult, "", "", "", null);
                     break;
                 case 2:
-                    // fragmentRound2.InfoToHandle("NEW", ...);
+                    fragmentResultMode2.InfoToHandle(totalScore, finalResult,"","","",null);
+
                     break;
                 case 3:
                     fragmentResultMode3.InfoToHandle(totalScore, finalResult,"","","",null);
@@ -121,7 +126,13 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         }
     }
 
-
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(this, Menu.class));
+        finish();
+    }
 
     public Bitmap takeScreenshot(View view)
     {

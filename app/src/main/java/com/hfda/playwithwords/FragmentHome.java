@@ -55,22 +55,25 @@ ImageButton btnMode1, btnMode2,btnMode3,btnMode4,btnMode5,btnMode6;
             mode = "1";
 
         }
-        /*if (v.getId() == btnMode2.getId())
+        if (v.getId() == btnMode2.getId())
         {
             mode = "2";
-
-        }*/
-        if (v.getId() == btnMode3.getId()) {
+        }
+        if (v.getId() == btnMode3.getId())
+        {
             mode = "3";
         }
-        if (v.getId() == btnMode4.getId()) {
+        if (v.getId() == btnMode4.getId())
+        {
             mode = "4";
         }
 
-        if (v.getId() == btnMode5.getId()) {
+        if (v.getId() == btnMode5.getId())
+        {
             mode = "5";
         }
-        if (v.getId() == btnMode6.getId()) {
+        if (v.getId() == btnMode6.getId())
+        {
             mode = "6";
         }
         Intent intent = new Intent(getActivity(), Introduction.class);

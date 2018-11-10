@@ -63,7 +63,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     }
 
     @Override
-    public void InfoToHandle(String mess, String roundOfMode, Object question, String answer, String transcription, String[] answerInBtn) {
+    public void InfoToHandle(String mess, String roundOfMode, Object question, Object answer, String transcription, String[] answerInBtn) {
 
     }
 
