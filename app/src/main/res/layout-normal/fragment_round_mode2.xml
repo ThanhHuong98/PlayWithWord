@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9f7f7"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#f9f7f7">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -17,7 +18,8 @@
         android:layout_marginLeft="47dp"
         android:layout_marginRight="47dp"
         android:layout_marginTop="58dp"
-        android:background="#00E9BB" />
+        android:progressBackgroundTint="@color/DimGray"
+        android:progressTint="#01D2A9"/>
 
     <TextView
         android:id="@+id/textViewRound"
@@ -37,16 +39,15 @@
         android:id="@+id/imgView"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/imgview_custom_mode2"
-        android:src="@mipmap/elephant1" />
+        android:layout_marginLeft="75dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="75dp"/>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="40dp">
 
         <Button
             android:id="@+id/btnAnswer1"
@@ -55,6 +56,8 @@
             android:layout_marginLeft="30dp"
             android:background="@drawable/button_mode2"
             android:text="Con Voi"
+            android:ems="10"
+            android:fontFamily="@font/font_opensan_light"
             android:textColor="@color/Black"
             android:textSize="25sp" />
 
@@ -62,11 +65,12 @@
             android:id="@+id/btnAnswer2"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="30dp"
             android:layout_toRightOf="@id/btnAnswer1"
             android:background="@drawable/button_mode2"
             android:ems="10"
+            android:fontFamily="@font/font_opensan_light"
             android:text="@string/Answer2"
             android:textColor="@color/Black"
             android:textSize="25sp" />
@@ -82,6 +86,7 @@
             android:ems="10"
             android:text="@string/Answer3"
             android:textColor="@color/Black"
+            android:fontFamily="@font/font_opensan_light"
             android:textSize="25sp" />
 
         <Button
@@ -94,6 +99,7 @@
             android:layout_toRightOf="@id/btnAnswer3"
             android:background="@drawable/button_mode2"
             android:ems="10"
+            android:fontFamily="@font/font_opensan_light"
             android:text="@string/Answer4"
             android:textColor="@color/Black"
             android:textSize="25sp" />
@@ -108,12 +114,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="#01D2A9"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="12dp"
             android:text="Point(s):"
-            android:background="#01D2A9"
             android:textColor="@color/White"
-            android:textSize="30sp" />
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/textViewPoint"
@@ -121,12 +127,12 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView"
             android:layout_toRightOf="@+id/textView"
+            android:background="#01D2A9"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="5dp"
             android:text="@string/Score"
             android:textColor="@color/White"
-            android:background="#01D2A9"
-            android:textSize="30sp" />
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/textViewNumberHint"
@@ -135,11 +141,11 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="12dp"
+            android:background="#01D2A9"
             android:fontFamily="@font/font_opensan_regular"
             android:text="@string/Hint"
-            android:background="#01D2A9"
             android:textColor="@color/White"
-            android:textSize="30sp" />
+            android:textSize="23sp" />
 
         <ImageButton
             android:id="@+id/btnHint"

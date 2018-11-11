@@ -58,7 +58,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-         layout = (LinearLayout)inflater.inflate(R.layout.fragment__round__mode3, container, false);
+         layout = (LinearLayout)inflater.inflate(R.layout.fragment_round_mode3, container, false);
         //LinearLayout setBackg=(layout).findViewById(R.id.background_3);
         super.onCreate(savedInstanceState);
         _container = (Round)getActivity();
@@ -117,14 +117,14 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             layout.setBackground(ContextCompat.getDrawable(_container,R.drawable.mode3_hint));
 
             res =  splitrealAnswer(realAnswer);
-           // editText_Answer3.setText("");
+            //editText_Answer3.setText("");
             String notification="";
             numberHint--;
             String strHint=numberHint+"";
             if(numberHint>=0) //nếu còn trợ giúp
             {
                 hint.setText("Hint: "+strHint+""+"/5");
-                notification="Decrease the number of Hint...";
+                notification="Decrease the number of hints...";
                 editText_Answer3.setVisibility(v.VISIBLE);
                 String resultToHint="";
 
@@ -133,7 +133,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                    }
 
                 resultToHint=resultToHint+res[indexOfHint].toString();
-                textHint.setHint("Hints:"+resultToHint);
+                textHint.setHint(resultToHint);
                 int color=getResources().getColor(R.color.BlueViolet);
                 textHint.setHintTextColor(color);
                 indexOfHint++;
@@ -160,7 +160,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 hint.setText(text);
             }
             else{
-                notification="You must use Pont to buy Hint..... ";
+                notification="You're out of hint! ";
             }
             Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
         }
@@ -172,12 +172,10 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 if (result.equalsIgnoreCase(realAnswer)) //đáp án người dùng chọn trùng với đáp án chính
                 {
                     //set background cho cái nút mà người dùng chọn thành màu xanh
-                    //btnCheck.setBackgroundResource(R.drawable.btn_right_mode3);
                     editText_Answer3.setTextColor(getResources().getColor(R.color.SpringGreen));
                     editText_Answer3.setText(result);
                     btnCheck.setText("");
-                    btnCheck.setBackgroundResource(R.drawable.btn_right_mode3);
-                    //btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_right));
+                    btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_right));
                     //tăng điểm lên
                     point += 20;
 
@@ -191,7 +189,6 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                     btnCheck.setBackgroundResource(R.drawable.btn_wrong_mode3);
                     editText_Answer3.setTextColor(getResources().getColor(R.color.Red));
                     editText_Answer3.setText(result);
-                    //btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_wrong));
                     _container.Action("WRONG");
                 }
 
@@ -210,10 +207,10 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                         //về set lại trên màn hình
                         _container.Action("REFRESH");
                     }
-                }, 600);
+                }, 1000);
 
             } else {
-                Toast.makeText(context, "You must enter at least one character", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You must enter at least one character!", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -242,7 +239,6 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             if(btnCheck!=null)
             {
                 btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn3));
-
             }
 
             if(! btnCheck.isEnabled()){

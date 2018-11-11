@@ -212,7 +212,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             //set lai phien am
 
           //  textViewTranscript.setText(transcription);
-             imgRound.setImageResource((Integer) question);
+            imgRound.setImageResource((Integer) question);
              realAnswer = (String)answer;
             //set lại dữ liệu cho 4 button đáp án, nếu nó có bị unenable hoặc bị ẩn thì cho nó bình thường trở lại
             for(int i=0; i<4; i++)

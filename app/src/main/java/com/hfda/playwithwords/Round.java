@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Round extends AppCompatActivity implements fromFragToContainer
 {
@@ -88,21 +89,25 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         boolean same = true; // biến để kiểm tra xem có lấy id trùng với những cái trước đó?
         int number_rows = 0; //số lượng dòng trong bảng data
         try {
+
             SQLiteOpenHelper myDatabase = new MyDatabase(this);
             SQLiteDatabase db = myDatabase.getReadableDatabase();
+
             Cursor cursor = db.query("DATA",
                     new String[]{"COUNT(ID) AS NUM_ROW"},
                     null, null, null, null, null); //truy vấn số lượng dòng
 
-            if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
+             if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
             {
                 number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
             }
-
-            int randRow = 1+(int)Math.random()*(number_rows-1); //random ra 1 dòng dữ liệu
+            Random rd=new Random();
+          //  int randRow = 1+(int)Math.random()*(number_rows-1); //random ra 1 dòng dữ liệu
+            int randRow=rd.nextInt(number_rows)+1;
             while(!idArray.isEmpty() && idArray.indexOf(randRow)!=-1)
             {
-                randRow = 1+(int)Math.random()*(number_rows-1); //phải random lại dòng mới nếu random ra trùng với những câu đã lấy trước đó
+                randRow=rd.nextInt(number_rows)+1;
+              //  randRow = 1+(int)Math.random()*(number_rows-1); //phải random lại dòng mới nếu random ra trùng với những câu đã lấy trước đó
             }
             idArray.add(randRow); //nếu không trùng thì thêm vào ArrayList
 
@@ -123,31 +128,32 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                         newTransciption = cursor.getString(2);
                         newAnswer = cursor.getString(3);
 
-                        int rand[] = {randRow, -1, -1, -1,}; // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                        Log.d("aaa",newTransciption);
+                        ArrayList<Integer> rand = new ArrayList<>(); // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                        rand.add(randRow);
                         //chạy vòng lặp để lấy ngẫu nhiên 3 từ tiếng Việt để đặt trong 3 btn đáp án sai
                         newAnswerInBtn[0] = (String)newAnswer;
                         for(int i=1; i<=3; i++)
                         {
-
-                            while(same) //kiểm tra nếu random ra id bị trùng với những cái đã có
+                           // int random = 1+(int)Math.random()*(number_rows-1);
+                            int random=rd.nextInt(number_rows)+1;
+                            while(rand.indexOf(random)!=-1)
                             {
-                                for(int j=0; j<i; j++) //so sánh với những id đã có
-                                {
-                                    if(rand[i]==rand[j]) //nếu giống
-                                    {
-                                        rand[i] = 1+(int)Math.random()*(number_rows-1); //random lại id mới
-                                        break;
-                                    }
-                                }
-                                if(!same) break; //nếu so sánh hết với những id trước đó mà không bị trùng thì out khỏi vòng while
+                                random = rd.nextInt(number_rows)+1;
                             }
+
+                            rand.add(random);
 
                             cursor = db.query("DATA",
                                     new String[] {"VN_TEXT"},
                                     "ID = ?",
-                                    new String[] {String.valueOf(rand[i])},
+                                    new String[] {String.valueOf(random)},
                                     null, null, null); //truy xuất từ bảng DATA
-                            newAnswerInBtn[i] = cursor.getString(0);
+                            if(cursor.moveToFirst())
+                            {
+                                newAnswerInBtn[i] = cursor.getString(0);
+                            }
+
                         }
                         SufferStringArray(newAnswerInBtn); //hoán vị vị trí của các đáp án
                         break;
@@ -155,34 +161,34 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     case 2:
                     {
                         newQuestion = cursor.getInt(5); //câu hỏi là hình ảnh
-                        newAnswer = cursor.getString(3); // đáp án là từ tiếng anh
+                        newAnswer = cursor.getString(1); // đáp án là từ tiếng anh
 
-                        int rand[] = {cursor.getInt(0), -1, -1, -1}; // chứa id của dòng chứa câu hỏi và 3 câu trả lời
-
+                        ArrayList<Integer> rand = new ArrayList<>(); // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                        rand.add(randRow);
                         newAnswerInBtn[0] = (String)newAnswer;
                         //chạy vòng lặp để lấy ngẫu nhiên 3 từ tiếng Anh nữa để đặt vào mảng btn đáp án
                         for(int i=1; i<=3; i++)
                         {
-                            same = true;
-                            while(same) //kiểm tra nếu random ra id bị trùng với những cái đã có
+                            int random = rd.nextInt(number_rows)+1;
+
+                            while(rand.indexOf(random)!=-1)
                             {
-                                for(int j=0; j<i; j++) //so sánh với những id đã có
-                                {
-                                    if(rand[i]==rand[j]) //nếu giống
-                                    {
-                                        rand[i] = 1+(int)Math.random()*(number_rows-1); //random lại id mới
-                                        break;
-                                    }
-                                }
-                                if(!same) break; //nếu so sánh hết với những id trước đó mà không bị trùng thì out khỏi vòng while
+                                random = rd.nextInt(number_rows)+1;
                             }
+
+                            rand.add(random);
+
 
                             cursor = db.query("DATA",
                                     new String[] {"ENGLISH_TEXT"},
                                     "ID = ?",
-                                    new String[] {String.valueOf(rand[i])},
+                                    new String[] {String.valueOf(random)},
                                     null, null, null); //truy xuất từ bảng DATA
-                            newAnswerInBtn[i] = cursor.getString(0);
+                           if(cursor.moveToFirst())
+
+                           {
+                               newAnswerInBtn[i] = cursor.getString(0);
+                           }
                         }
                         SufferStringArray(newAnswerInBtn); //hoán vị vị trí của các đáp án
                         break;
@@ -271,7 +277,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         {
             if (round < 20) //nếu còn trong 20 vòng thì mới set dữ liệu lại
             {
-               // readData();
+                readData();
                 round++;
                 //thay đổi tất cả text trong button và TextView câu hỏi thành 1 text khác
                 switch (mode)
@@ -279,32 +285,17 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     case 1:
                         //Activity Round sẽ gửi bộ dữ liệu gồm câu hỏi và 4 đáp án mới xuống cho Fragment set lại
                         //thông qua phương thức message của Interface fromContainerToFrag
-                        newQuestion="Cat"; //
-                        newAnswer="con mèo";
-                        newTransciption ="/cæt/";
-                        newAnswerInBtn[0]="con chó"; newAnswerInBtn[1]="con mèo"; newAnswerInBtn[2]="con gà"; newAnswerInBtn[3]="con heo";
                         fragmentRound1.InfoToHandle("NEW", round+"", newQuestion, newAnswer, newTransciption, newAnswerInBtn);
                         break;
                     case 2:
-                        newQuestion=R.mipmap.elephant1; //
-                        newAnswer="Elephant";
-                        newAnswerInBtn[0]="Cow"; newAnswerInBtn[1]="Chicken"; newAnswerInBtn[2]="Duck"; newAnswerInBtn[3]="Pig";
                         fragmentRound2.InfoToHandle("NEW", round+"",newQuestion,newAnswer,"",newAnswerInBtn);
                         break;
                     case 3:
-                        newQuestion="A substance used with water for washing and cleaning";
-                        newAnswer="Soap";
                         fragmentRound3.InfoToHandle("NEW", round+"", newQuestion, newAnswer, newTransciption, newAnswerInBtn);
                         break;
                     case 4:
-                        newQuestion=R.raw.mushroom;
-                        newAnswer="mushroom";
                         fragmentRound4.InfoToHandle("NEW" ,round+"", newQuestion,newAnswer, "",null);
                         break;
-                    case 6:
-                        newQuestion="amphibian";
-                        fragmentRound6.InfoToHandle("NEW" ,round+"", newQuestion,"", "",null);
-                    break;
                 }
             }
             else //nếu đã chơi đủ 20 màn thì tạo 1 intent để show kết quả
@@ -333,7 +324,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                 @Override
                 public void run()
                 {
-                    // Hide your View after 3 seconds
+                    // Hide your View after 1 seconds
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
@@ -365,17 +356,17 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         startActivity(new Intent(this, Menu.class));
         finish();
     }
-   @Override
-    protected void onStart()
-   {
-       super.onStart();
+   //@Override
+   // protected void onStart()
+  // {
+       //super.onStart();
         // Tạo đối tượng Intent cho WeatherService.
       // Intent intent = new Intent(Round.this,MusicService.class);
 
         // Gọi method bindService(..) để giàng buộc dịch vụ với giao diện.
      //   this.bindService(intent, Scon, Context.BIND_AUTO_CREATE);
         //startService(intent);
-    }
+   // }
 
     // Khi Activity ngừng hoạt động.
     @Override

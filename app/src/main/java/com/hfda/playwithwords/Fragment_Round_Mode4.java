@@ -115,7 +115,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
         {
             editTextAnswer.setHint("Your Answer");
             editTextAnswer.setEnabled(true);
-            editTextAnswer.setTextColor(getResources().getColor(R.color.Black));
+            editTextAnswer.setHintTextColor(getResources().getColor(R.color.Black));
             btnHint.setEnabled(true);
             btnDone.setEnabled(true);
             textViewRound.setText(roundOfMode+ "/20");

@@ -21,7 +21,7 @@
             android:id="@+id/btnMode1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/mode1"
+            android:background="@drawable/menumode1"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             />
@@ -29,7 +29,7 @@
             android:id="@+id/btnMode2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/mode2"
+            android:background="@drawable/menumode2"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             />
@@ -40,26 +40,26 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:background="@drawable/mode3" />
+            android:background="@drawable/menumode3" />
         <ImageButton
             android:id="@+id/btnMode4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/mode4"
+            android:background="@drawable/menumode4"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"/>
         <ImageButton
             android:id="@+id/btnMode5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/mode5"
+            android:background="@drawable/menumode5"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"/>
         <ImageButton
             android:id="@+id/btnMode6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/mode6"
+            android:background="@drawable/menumode6"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"/>
     </LinearLayout>

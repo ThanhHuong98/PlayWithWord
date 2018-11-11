@@ -61,7 +61,8 @@
 
     </RelativeLayout>
 
-    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.skyfishjy.library.RippleBackground
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -93,8 +94,8 @@
             android:layout_alignParentBottom="true"
             android:paddingLeft="12dp"
             android:text="Point(s):"
-            android:textSize="30sp"
-            android:background="#104da7"
+            android:textSize="23sp"
+            android:background="#376DAF"
             android:textColor="@color/White"
             android:fontFamily="@font/font_opensan_regular"/>
 
@@ -106,12 +107,12 @@
             android:layout_marginLeft="-1dp"
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/textView"
-            android:background="#104da7"
+            android:background="#376DAF"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="5dp"
             android:text="@string/Score"
             android:textColor="@color/White"
-            android:textSize="30sp" />
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/textViewNumberHint"
@@ -120,7 +121,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="12dp"
             android:text="@string/Hint"
-            android:textSize="30sp"
+            android:textSize="23sp"
             android:layout_alignParentRight="true"
             android:textColor="@color/White"
             android:fontFamily="@font/font_opensan_regular"/>

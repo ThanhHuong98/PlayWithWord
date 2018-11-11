@@ -49,17 +49,17 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    /*@Override
-    public void onClick(View v) {
-
-      if(v.getId()==btnIntentMenu.getId())
-      {
-          //Chuyen den Tab Menu..
-          Intent intent = new Intent(getApplicationContext(), Menu.class);
-          startActivity(intent);
-      }
-
-    }*/
+//    @Override
+//    public void onClick(View v) {
+//
+//      if(v.getId()==btnIntentMenu.getId())
+//      {
+//          //Chuyen den Tab Menu..
+//          Intent intent = new Intent(getApplicationContext(), Menu.class);
+//          startActivity(intent);
+//      }
+//
+//    }
 
     /**
      * Checks if the app has permission to write to device storage

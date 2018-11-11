@@ -30,7 +30,7 @@ public class Fragment_Introduction_Mode3 extends Fragment implements View.OnClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RelativeLayout layout =(RelativeLayout)inflater.inflate(R.layout.fragment__introduction__mode3, container, false);
+        RelativeLayout layout =(RelativeLayout)inflater.inflate(R.layout.fragment_introduction_mode3, container, false);
 
         nextBtn=layout.findViewById(R.id.btnNext3);
         backBtn=layout.findViewById(R.id.btn_back);

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_mode3">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginTop="58dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressBackgroundTint="@color/DimGray"
+        android:progressTint="#59515C"/>
+
+    <TextView
+        android:id="@+id/textViewRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/Round"
+        android:textSize="40sp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/font_opensan_regular"/>
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="5dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/font_opensan_light"
+        android:text="@string/QuestionMode3"
+        android:textColor="#000000"
+        android:textSize="40sp" />
+
+
+    <TextView
+        android:id="@+id/txtAnswer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/font_opensan_regular"
+        android:text="Answer:"
+        android:textColor="#6C5CE7"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#a6b7c9"
+            android:fontFamily="@font/font_opensan_regular"
+            android:paddingLeft="12dp"
+            android:text="Point(s):"
+            android:textColor="@color/White"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textViewPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="-1dp"
+            android:layout_toRightOf="@+id/textView"
+            android:background="#a6b7c9"
+            android:fontFamily="@font/font_opensan_regular"
+            android:paddingLeft="10dp"
+            android:text="@string/Score"
+            android:textColor="@color/White"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textViewNumberHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/font_opensan_regular"
+            android:text="@string/Hint"
+            android:textColor="@color/White"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editText_Answer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:hint="Your Answer"
+
+            android:inputType="textCapCharacters"
+            android:paddingLeft="10dp"
+            android:textSize="40dp" />
+
+    <ImageView
+        android:id="@+id/iconV"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/editText_Answer3"
+        android:background="@color/Black"
+        android:layout_marginLeft="47dp"
+        android:layout_marginRight="47dp"/>
+
+        <TextView
+            android:id="@+id/textHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iconV"
+            android:layout_marginLeft="54dp"
+            android:layout_marginTop="17dp"
+            android:hint="HINT:"
+            android:textSize="25sp" />
+        <Button
+            android:id="@+id/btnCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="90dp"
+            android:paddingRight="50dp"
+            android:paddingLeft="50dp"
+            android:layout_below="@+id/editText_Answer3"
+            android:fontFamily="@font/font_opensan_regular"
+            android:text="@string/Check"
+            android:background="@drawable/button_check3"
+            android:textColor="#FFFFFF"
+
+            android:textSize="30dp" />
+
+        <ImageButton
+            android:id="@+id/btnHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textViewPoint"
+            android:layout_marginTop="10dp"
+            android:layout_alignBottom="@+id/textViewPoint"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/textViewNumberHint"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_action_hint" />
+    </RelativeLayout>
+</LinearLayout>

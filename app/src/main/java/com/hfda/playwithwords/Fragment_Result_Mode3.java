@@ -37,7 +37,7 @@ public class Fragment_Result_Mode3 extends Fragment implements fromContainerToFr
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RelativeLayout layout = (RelativeLayout)inflater.inflate(R.layout.fragment__result__mode3, container, false);
+        RelativeLayout layout = (RelativeLayout)inflater.inflate(R.layout.fragment_result_mode3, container, false);
 
 
 
