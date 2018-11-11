@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_Result_Mode3"
+    tools:context=".Fragment_Result_Mode6"
     android:background="@drawable/result_background_mode3">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:text="Keep it up!"
         android:textSize="65sp"
-        android:textColor="#8E8892"
+        android:textColor="#01d2a9"
         android:fontFamily="..." />
     <TextView
         android:id="@+id/textViewResult"
@@ -83,8 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_alignBottom="@id/btn_finish"
-        android:layout_marginBottom="7dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="1dp"
         android:layout_alignTop="@id/btn_finish"
         android:layout_alignParentLeft="true"
         android:text="Share Now"

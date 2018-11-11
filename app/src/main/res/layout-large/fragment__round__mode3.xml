@@ -18,7 +18,7 @@
         android:layout_marginRight="47dp"
         android:layout_marginTop="58dp"
         style="?android:attr/progressBarStyleHorizontal"
-        android:background="@color/PinkLight"/>
+        android:background="@color/Black"/>
 
     <TextView
         android:id="@+id/textViewRound"
@@ -34,7 +34,7 @@
     <TextView
         android:id="@+id/textViewQuestion"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="5dp"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/font_opensan_regular"
         android:text="Answer:"
         android:textColor="#6C5CE7"
@@ -108,12 +108,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
             android:layout_marginLeft="45dp"
-            android:layout_marginTop="35dp"
-            android:paddingLeft="10dp"
+            android:layout_marginTop="15dp"
             android:hint="Your Answer"
 
             android:inputType="textCapCharacters"
+            android:paddingLeft="10dp"
             android:textSize="40dp" />
 
     <ImageView
@@ -124,21 +125,22 @@
         android:background="@color/Black"
         android:layout_marginLeft="47dp"
         android:layout_marginRight="47dp"/>
+
         <TextView
             android:id="@+id/textHint"
-            android:layout_width="81dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iconV"
             android:layout_marginLeft="54dp"
-            android:textSize="20sp"
+            android:layout_marginTop="17dp"
             android:hint="HINT:"
-            android:layout_below="@+id/iconV"/>
+            android:textSize="25sp" />
         <Button
             android:id="@+id/btnCheck"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="95dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="90dp"
             android:paddingRight="50dp"
             android:paddingLeft="50dp"
             android:layout_below="@+id/editText_Answer3"
@@ -146,7 +148,8 @@
             android:text="@string/Check"
             android:background="@drawable/button_check3"
             android:textColor="#FFFFFF"
-            android:textSize="40dp" />
+
+            android:textSize="30dp" />
 
         <ImageButton
             android:id="@+id/btnHint"

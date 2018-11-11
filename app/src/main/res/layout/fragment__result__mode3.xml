@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:text="Keep it up!"
         android:textSize="65sp"
-        android:textColor="#01d2a9"
+        android:textColor="#8E8892"
         android:fontFamily="..." />
     <TextView
         android:id="@+id/textViewResult"

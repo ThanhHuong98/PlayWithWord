@@ -301,6 +301,10 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                         newAnswer="mushroom";
                         fragmentRound4.InfoToHandle("NEW" ,round+"", newQuestion,newAnswer, "",null);
                         break;
+                    case 6:
+                        newQuestion="amphibian";
+                        fragmentRound6.InfoToHandle("NEW" ,round+"", newQuestion,"", "",null);
+                    break;
                 }
             }
             else //nếu đã chơi đủ 20 màn thì tạo 1 intent để show kết quả

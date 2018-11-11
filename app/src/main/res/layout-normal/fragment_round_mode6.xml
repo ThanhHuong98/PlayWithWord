@@ -14,61 +14,63 @@
         android:id="@+id/textViewRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="45dp"
         android:layout_marginRight="44dp"
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Round0"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="28sp" />
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/textViewQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="170dp"
             android:fontFamily="@font/font_opensan_light"
             android:text="amphibian"
             android:textColor="@color/Black"
-            android:textSize="30sp" />
+            android:textSize="48sp" />
 
         <TextView
-            android:id="@+id/textTransciption"
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewQuestion"
-            android:layout_alignLeft="@id/textViewQuestion"
-            android:layout_marginTop="5dp"
-            android:layout_alignParentStart="@+id/textViewQuestion"
+            android:layout_below="@+id/textViewQuestion"
+            android:layout_alignStart="@+id/textViewQuestion"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:fontFamily="@font/font_opensan_light"
-
+            android:hint="Hints:"
+            android:paddingStart="@+id/textViewQuestion"
             android:textSize="28sp" />
 
         <Button
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_below="@+id/textViewQuestion"
-            android:layout_toRightOf="@id/textViewQuestion"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/textViewQuestion"
+            android:layout_toRightOf="@+id/textViewQuestion"
             android:background="@drawable/btn_play" />
 
     </RelativeLayout>
+
     <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="230dp"
         app:rb_color="#0099CC"
         app:rb_duration="3000"
         app:rb_radius="60dp"
         app:rb_rippleAmount="6"
         app:rb_scale="6">
-
 
         <ImageView
             android:id="@+id/centerImage"
@@ -76,7 +78,6 @@
             android:layout_height="150dp"
             android:layout_centerInParent="true"
             android:src="@drawable/btn_play_red" />
-
 
     </com.skyfishjy.library.RippleBackground>
 

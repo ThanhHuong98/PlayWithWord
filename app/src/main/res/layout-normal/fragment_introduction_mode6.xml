@@ -30,7 +30,7 @@
     <ImageView
         android:id="@+id/infomation_mode6"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="15dp"
         android:layout_alignStart="@+id/howToPlay"
@@ -52,13 +52,13 @@
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="50dp"
         android:layout_below="@id/infomation_mode6"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:text=" Click here to play "
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"/>

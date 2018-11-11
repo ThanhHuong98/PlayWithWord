@@ -117,7 +117,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             layout.setBackground(ContextCompat.getDrawable(_container,R.drawable.mode3_hint));
 
             res =  splitrealAnswer(realAnswer);
-            editText_Answer3.setText("");
+           // editText_Answer3.setText("");
             String notification="";
             numberHint--;
             String strHint=numberHint+"";
@@ -133,7 +133,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                    }
 
                 resultToHint=resultToHint+res[indexOfHint].toString();
-                textHint.setHint(resultToHint);
+                textHint.setHint("Hints:"+resultToHint);
                 int color=getResources().getColor(R.color.BlueViolet);
                 textHint.setHintTextColor(color);
                 indexOfHint++;
@@ -172,7 +172,12 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 if (result.equalsIgnoreCase(realAnswer)) //đáp án người dùng chọn trùng với đáp án chính
                 {
                     //set background cho cái nút mà người dùng chọn thành màu xanh
-                    btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_right));
+                    //btnCheck.setBackgroundResource(R.drawable.btn_right_mode3);
+                    editText_Answer3.setTextColor(getResources().getColor(R.color.SpringGreen));
+                    editText_Answer3.setText(result);
+                    btnCheck.setText("");
+                    btnCheck.setBackgroundResource(R.drawable.btn_right_mode3);
+                    //btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_right));
                     //tăng điểm lên
                     point += 20;
 
@@ -182,7 +187,11 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                     _container.Action("RIGHT");
                 } else //đáp án người dùng chọn khác với đáp án chính
                 {
-                    btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_wrong));
+                    btnCheck.setText("");
+                    btnCheck.setBackgroundResource(R.drawable.btn_wrong_mode3);
+                    editText_Answer3.setTextColor(getResources().getColor(R.color.Red));
+                    editText_Answer3.setText(result);
+                    //btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_wrong));
                     _container.Action("WRONG");
                 }
 
@@ -216,9 +225,14 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
 
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
         {
-            editText_Answer3.setHint("Your Answer");
+            int color=getResources().getColor(R.color.Black);
+            editText_Answer3.setTextColor(color);
             editText_Answer3.setText("");
             editText_Answer3.setEnabled(true);
+            btnCheck.setText("Check");
+            int colorHint=getResources().getColor(R.color.Gray);
+            editText_Answer3.setHintTextColor(colorHint);
+            editText_Answer3.setHint("_ _ _ _ _");
             String text= round + "/20";
             if(numberRound!=null)
                 numberRound.setText(text);

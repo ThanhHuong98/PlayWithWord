@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:text="Keep it up!"
         android:textSize="95sp"
-        android:textColor="#01d2a9"
+        android:textColor="#8E8892"
         android:fontFamily="..." />
     <TextView
         android:id="@+id/textViewResult"
@@ -85,7 +85,7 @@
         android:layout_alignBottom="@id/btn_finish"
         android:layout_alignTop="@id/btn_finish"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="7dp"
         android:layout_marginTop="3dp"
         android:text="Share Now"
         android:textColor="@color/White"
