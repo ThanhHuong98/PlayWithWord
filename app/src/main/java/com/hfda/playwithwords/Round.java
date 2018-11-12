@@ -22,25 +22,6 @@ import java.util.Random;
 
 public class Round extends AppCompatActivity implements fromFragToContainer
 {
-    //set âm thanh nhạc nền trong 20 màn chơi
-   private boolean mIsBound = false;
-    private MusicService mServ;
-
-    private ServiceConnection Scon =new ServiceConnection(){
-
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            // mServ = ((MusicService.ServiceBinder)binder).getService();
-            MusicService.ServiceBinder binder = (MusicService.ServiceBinder)service;
-            mServ =binder.getService();
-            mIsBound=true;
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            // mServ = null;
-            mIsBound=false;
-        }
-    };
-    /*=============================================*/
 
     static final String MODE = "mode"; //Extra của intent, để nhận thông tin mode thứ mấy từ intent của Menu gửi qua
 
@@ -355,30 +336,5 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         super.onBackPressed();
         startActivity(new Intent(this, Menu.class));
         finish();
-    }
-   //@Override
-   // protected void onStart()
-  // {
-       //super.onStart();
-        // Tạo đối tượng Intent cho WeatherService.
-      // Intent intent = new Intent(Round.this,MusicService.class);
-
-        // Gọi method bindService(..) để giàng buộc dịch vụ với giao diện.
-     //   this.bindService(intent, Scon, Context.BIND_AUTO_CREATE);
-        //startService(intent);
-   // }
-
-    // Khi Activity ngừng hoạt động.
-    @Override
-    protected void onStop()
-    {
-        super.onStop();
-        // mServ.stopMusic();
-        //doUnbindService();
-        if (mIsBound) {
-            // Hủy ràng buộc kết nối với dịch vụ.
-            this.unbindService(Scon);
-            mIsBound = false;
-        }
     }
 }

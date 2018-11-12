@@ -43,10 +43,11 @@ public class MusicService extends Service{//  implements MediaPlayer.OnErrorList
         return true;
     }
     @Override
-    public void onCreate() {
+    public void onCreate()
+    {
         super.onCreate();
 
-        mPlayer = MediaPlayer.create(this, R.raw.background);
+        mPlayer = MediaPlayer.create(this, R.raw.music_menu);
         mPlayer.start();
 
         /*mPlayer.setOnErrorListener(this);

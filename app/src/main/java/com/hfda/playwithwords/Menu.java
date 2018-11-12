@@ -1,5 +1,10 @@
 package com.hfda.playwithwords;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -25,6 +30,22 @@ import android.widget.Toast;
 public class Menu extends AppCompatActivity
 {
 
+   /* private boolean mIsBound = false;
+    private MusicService mServ;
+
+    private ServiceConnection Scon =new ServiceConnection(){
+
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            MusicService.ServiceBinder binder = (MusicService.ServiceBinder)service;
+            mServ =binder.getService();
+            mIsBound=true;
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mIsBound=false;
+        }
+    };*/
+    /*---------------------------------------------------------------------------*/
     //First We Declare Titles And Icons For Our Navigation Drawer List View
     String TITLES[] = {"RANKING", "ABOUT US", "LOGOUT"};
     //This Icons And Titles Are holded in an Array as you can see
@@ -224,9 +245,17 @@ public class Menu extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+  /*  @Override
+    protected void onStart()
+   {
+       super.onStart();
+        // Tạo đối tượng Intent cho MusicService.
+      Intent intent = new Intent(Menu.this,MusicService.class);
+        // Gọi method bindService(..) để giàng buộc dịch vụ với giao diện.
+            this.bindService(intent, Scon, Context.BIND_ADJUST_WITH_ACTIVITY);
+            startService(intent);
+    }*/
 }
 
-//}
 
 

@@ -15,7 +15,7 @@ public class Fragment_Result_Mode14 extends Fragment implements fromContainerToF
 {
 
     Button btn_share;
-    ImageButton btn_finish;
+   Button btn_finish;
 
     TextView textViewPoint;
     TextView textViewRound;
