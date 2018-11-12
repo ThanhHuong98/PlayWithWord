@@ -124,6 +124,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             question = (int)newQuestion;
             soundManager.loadSound(context,question);
             realAnswer = (String)answer;
+            i=0;
             StartProgressBar();
         }
         /*if(mess.equals("RIGHTSOUND"))

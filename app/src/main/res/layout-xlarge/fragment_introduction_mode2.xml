@@ -45,10 +45,7 @@
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="50dp"
         android:layout_alignStart="@+id/howToPlay"
-        android:text="Choose one of
-the four options that
-describes the giving
-picture in English"
+        android:text="Choose one of\nthe four options that\ndescribes the giving\npicture in English"
         android:textSize="60sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
