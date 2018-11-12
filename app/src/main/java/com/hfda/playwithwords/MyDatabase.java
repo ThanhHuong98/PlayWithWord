@@ -68,7 +68,7 @@ public class MyDatabase extends SQLiteOpenHelper
                 "a flying insect that bites humans and animals and sucks their blood.",R.mipmap.image11,R.raw.sound11);
         InsertData(db,"spider","/ˈspaɪdər/","con nhện",
                 "a small creature with eight thin legs, spins webs to catch insects for food.",R.mipmap.image12,R.raw.sound12);
-        InsertData(db,"alligator","/ˈælɪɡeɪtər/","cá xấu",
+        InsertData(db,"alligator","/ˈælɪɡeɪtər/","cá sấu",
                 "a large reptile with hard skin and very big jaws, that lives in rivers and lakes ",R.mipmap.image13,R.raw.sound13);
         InsertData(db,"dolphin","/ˈdɑːlfɪn/","cá heo",
                 "a sea animal that looks like a large fish with a pointed mouth",R.mipmap.image14,R.raw.sound14);
@@ -105,6 +105,9 @@ public class MyDatabase extends SQLiteOpenHelper
         InsertData(db,"zebra","/ˈziːbrə/","ngựa vằn",
                 "an African wild animal like a horse with stripes on its body",R.mipmap.image30,R.raw.sound30);
 
+
+
+
         //thêm dữ liệu cho mode 5
         InsertMode5(db,"Cô ấy đang đợi chuyến tàu","She is waiting for the train");
         InsertMode5(db,"Đây là một cuốn sách màu đỏ","This is a red book");
@@ -119,8 +122,8 @@ public class MyDatabase extends SQLiteOpenHelper
         InsertMode5(db,"Tôi làm cho ngân hàng","I work for bank");
         InsertMode5(db,"Trời có vẻ sắp mưa","It's likely to rain");
         InsertMode5(db,"Cô ấy hi vọng sẽ có được một công việc","She hopes to get a job");
-        InsertMode5(db,"Tôi bắt đầu làm việc vào 7 giờ","I starts working at 7");
-        InsertMode5(db,"Cô ấy xinh đẹp làm sao!","How beautiful she is!");
+        InsertMode5(db,"Tôi bắt đầu làm việc vào 7 giờ","I start working at 7");
+        InsertMode5(db,"Cô ấy xinh đẹp làm sao","How beautiful she is");
         InsertMode5(db,"Cậu ta trẻ tuổi hơn tôi","He is younger than I");
         InsertMode5(db,"Tốn khoảng 10 phút để đến được đó","It takes ten minutes to get there");
         InsertMode5(db,"Tôi sẽ ở đây cho đến khi bạn quay lại","I'll stay here until you come back");
@@ -128,23 +131,21 @@ public class MyDatabase extends SQLiteOpenHelper
         InsertMode5(db,"Đây là một tình huống khó khăn","This is a difficult situation");
         InsertMode5(db,"Hãy đặt mấy cuốn sách lên bàn","Put the books on the table");
         InsertMode5(db,"Cậu đã phá luật","You broke the law");
-        InsertMode5(db,"Hãy nói cho tôi sự thật","Tell me the truth");
+        InsertMode5(db,"Hãy nói cho tôi sự thật ngay lập tức","Tell me the truth right now");
         InsertMode5(db,"Tôi được sinh ra trong một ngôi làng nhỏ","I was born in the small village");
         InsertMode5(db,"Ăn cá tốt cho sức khỏe của bạn","Eating fish is good for your health");
         InsertMode5(db,"Tôi không thể nhớ cách sử dụng chiếc máy này","I can't remember how to use this machine");
         InsertMode5(db,"Tòa nhà này gần hoàn thành rồi","This building is near completion");
         InsertMode5(db,"Một cơn bão lớn đang ập đến","A big typhoon is approaching");
-        InsertMode5(db,"Tôi rất hiếm khi sử dụng đồ ăn từ sữa","This sweater is warm");
-        InsertMode5(db,"Đây là một cuốn sách màu đỏ","I seldom eat dairy products");
-
-
-
+        InsertMode5(db,"Tôi rất hiếm khi sử dụng đồ ăn từ sữa","I seldom eat dairy products");
+        InsertMode5(db, "Bạn Toàn là người hướng nội", "Toan is a introvert person");
+        InsertMode5(db, "Hương vừa mới quở trách nhóm của cô ấy", "Huong just scolded at her team");
+        InsertMode5(db, "Cô ấy thật nham hiểm", "She is so mean");
     }
 
 
     private void InsertData(SQLiteDatabase db, String engText, String transcription, String vnText, String discription, int imageId, int audioId)
     {
-
         ContentValues dataValues = new ContentValues();
         dataValues.put("ENGLISH_TEXT", engText);
         dataValues.put("TRANSCRIPTION", transcription);

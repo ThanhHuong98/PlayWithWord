@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="180dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="23dp"
         android:fontFamily="@font/font_opensan_regular"
         android:gravity="center"
         android:text="@string/Round"
@@ -47,12 +47,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="45dp">
 
         <Button
             android:id="@+id/btnAnswer1"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="30dp"
             android:background="@drawable/button_mode2"
             android:text="Con Voi"
@@ -64,7 +64,7 @@
         <Button
             android:id="@+id/btnAnswer2"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="30dp"
             android:layout_toRightOf="@id/btnAnswer1"
@@ -78,10 +78,10 @@
         <Button
             android:id="@+id/btnAnswer3"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_alignLeft="@id/btnAnswer1"
             android:layout_below="@id/btnAnswer1"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:background="@drawable/button_mode2"
             android:ems="10"
             android:text="@string/Answer3"
@@ -92,10 +92,10 @@
         <Button
             android:id="@+id/btnAnswer4"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_alignLeft="@id/btnAnswer2"
             android:layout_below="@id/btnAnswer2"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:layout_toRightOf="@id/btnAnswer3"
             android:background="@drawable/button_mode2"
             android:ems="10"

@@ -160,7 +160,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 hint.setText(text);
             }
             else{
-                notification="You're out of hint! ";
+                notification="You're out of hint!";
             }
             Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
         }
@@ -174,7 +174,6 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                     //set background cho cái nút mà người dùng chọn thành màu xanh
                     editText_Answer3.setTextColor(getResources().getColor(R.color.SpringGreen));
                     editText_Answer3.setText(result);
-                    btnCheck.setText("");
                     btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn_right));
                     //tăng điểm lên
                     point += 20;
@@ -185,8 +184,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                     _container.Action("RIGHT");
                 } else //đáp án người dùng chọn khác với đáp án chính
                 {
-                    btnCheck.setText("");
-                    btnCheck.setBackgroundResource(R.drawable.btn_wrong_mode3);
+                    btnCheck.setBackgroundResource(R.drawable.btn_wrong);
                     editText_Answer3.setTextColor(getResources().getColor(R.color.Red));
                     editText_Answer3.setText(result);
                     _container.Action("WRONG");
