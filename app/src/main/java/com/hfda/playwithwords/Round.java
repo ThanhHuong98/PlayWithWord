@@ -195,7 +195,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     }
                     case 3:
                     {
-                        newTransciption = cursor.getString(4);
+                        newQuestion = cursor.getString(4);
                         newAnswer = cursor.getString(1);
                         break;
                     }
@@ -291,7 +291,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                         fragmentRound2.InfoToHandle("NEW", round+"",newQuestion,newAnswer,"",newAnswerInBtn);
                         break;
                     case 3:
-                        fragmentRound3.InfoToHandle("NEW", round+"", newQuestion, newAnswer, newTransciption, newAnswerInBtn);
+                        fragmentRound3.InfoToHandle("NEW", round+"", newQuestion, newAnswer, "", null);
                         break;
                     case 4:
                         fragmentRound4.InfoToHandle("NEW" ,round+"", newQuestion,newAnswer, "",null);
