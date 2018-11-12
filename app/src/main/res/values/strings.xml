@@ -70,4 +70,8 @@
 
     <string name="titleRanking">RANKINGS</string>
 
+    <string name="userWin1">Bob</string>
+    <string name="userWin2">Pooh</string>
+    <string name="userWin3">Birdy</string>
+
 </resources>
