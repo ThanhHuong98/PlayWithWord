@@ -106,12 +106,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="44dp"
             android:layout_marginEnd="35dp"
             android:hint="@string/textHint"
             android:paddingLeft="7dp"
             android:textColor="@color/Black"
+            android:background="@android:color/transparent"
             android:textSize="25dp" />
 
         <TextView
@@ -142,8 +143,8 @@
         <ImageView
             android:id="@+id/iconV"
             android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginTop="-5dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/editText_Answer3"
             android:layout_marginLeft="47dp"
             android:layout_marginRight="35dp"

@@ -227,7 +227,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             btnCheck.setText("Check");
             int colorHint=getResources().getColor(R.color.Gray);
             editText_Answer3.setHintTextColor(colorHint);
-            editText_Answer3.setHint("_ _ _ _ _");
+            editText_Answer3.setHint("__ __ __ __");
             String text= round + "/20";
             if(numberRound!=null)
                 numberRound.setText(text);
