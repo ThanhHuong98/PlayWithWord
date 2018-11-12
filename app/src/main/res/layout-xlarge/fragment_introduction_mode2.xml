@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_back"
         android:layout_toEndOf="@id/btn_back"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
         android:text="Mode 2"
-        android:textSize="35sp"
+        android:textSize="80sp"
         android:textColor="#6C5CE7"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
@@ -33,9 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMode"
         android:layout_alignStart="@id/textViewMode"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="How to play"
-        android:textSize="35sp"
+        android:textSize="80sp"
         android:textColor="@color/PinkLight"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
@@ -43,25 +43,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/howToPlay"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_alignStart="@+id/howToPlay"
         android:text="Choose one of
 the four options that
 describes the giving
 picture in English"
-        android:textSize="20sp"
+        android:textSize="60sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:layout_below="@id/textViewIntro"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text=" Click here to play "
-        android:textSize="30sp"
+        android:textSize="60sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"/>

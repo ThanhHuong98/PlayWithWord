@@ -13,11 +13,11 @@
         android:id="@+id/progressbar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="47dp"
-        android:layout_marginRight="47dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginTop="50dp"
         android:progressBackgroundTint="@color/DimGray"
         android:progressTint="#01D2A9"/>
 
@@ -25,89 +25,89 @@
         android:id="@+id/textViewRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/font_opensan_regular"
         android:gravity="center"
         android:text="@string/Round"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="50sp" />
 
 
     <ImageView
         android:id="@+id/imgView"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:layout_marginLeft="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="90dp"
         android:layout_gravity="center"
-        android:layout_marginRight="75dp"/>
+        android:layout_marginRight="90dp" />
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="30dp">
 
         <Button
             android:id="@+id/btnAnswer1"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/button_mode2"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="60dp"
+            android:background="@drawable/button_mode2_xlarge"
             android:text="Con Voi"
             android:ems="10"
             android:fontFamily="@font/font_opensan_light"
             android:textColor="@color/Black"
-            android:textSize="25sp" />
+            android:textSize="60sp" />
 
         <Button
             android:id="@+id/btnAnswer2"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="30dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="80dp"
             android:layout_toRightOf="@id/btnAnswer1"
-            android:background="@drawable/button_mode2"
+            android:background="@drawable/button_mode2_xlarge"
             android:ems="10"
             android:fontFamily="@font/font_opensan_light"
             android:text="@string/Answer2"
             android:textColor="@color/Black"
-            android:textSize="25sp" />
+            android:textSize="60sp" />
 
         <Button
             android:id="@+id/btnAnswer3"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
             android:layout_alignLeft="@id/btnAnswer1"
             android:layout_below="@id/btnAnswer1"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_mode2"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_mode2_xlarge"
             android:ems="10"
             android:text="@string/Answer3"
             android:textColor="@color/Black"
             android:fontFamily="@font/font_opensan_light"
-            android:textSize="25sp" />
+            android:textSize="60sp" />
 
         <Button
             android:id="@+id/btnAnswer4"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
             android:layout_alignLeft="@id/btnAnswer2"
             android:layout_below="@id/btnAnswer2"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:layout_toRightOf="@id/btnAnswer3"
-            android:background="@drawable/button_mode2"
+            android:background="@drawable/button_mode2_xlarge"
             android:ems="10"
             android:fontFamily="@font/font_opensan_light"
             android:text="@string/Answer4"
             android:textColor="@color/Black"
-            android:textSize="25sp" />
+            android:textSize="60sp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
         <TextView
             android:id="@+id/textView"
@@ -119,7 +119,7 @@
             android:paddingLeft="12dp"
             android:text="Point(s):"
             android:textColor="@color/White"
-            android:textSize="23sp" />
+            android:textSize="65sp" />
 
         <TextView
             android:id="@+id/textViewPoint"
@@ -132,7 +132,7 @@
             android:paddingLeft="5dp"
             android:text="@string/Score"
             android:textColor="@color/White"
-            android:textSize="23sp" />
+            android:textSize="65sp" />
 
         <TextView
             android:id="@+id/textViewNumberHint"
@@ -145,7 +145,7 @@
             android:fontFamily="@font/font_opensan_regular"
             android:text="@string/Hint"
             android:textColor="@color/White"
-            android:textSize="23sp" />
+            android:textSize="65sp" />
 
         <ImageButton
             android:id="@+id/btnHint"
