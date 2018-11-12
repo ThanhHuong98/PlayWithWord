@@ -119,7 +119,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             btnHint.setEnabled(true);
             btnDone.setEnabled(true);
             textViewRound.setText(roundOfMode+ "/20");
-            textViewPoint.setText(point+"");
+           
             editTextAnswer.setText("");
             question = (int)newQuestion;
             soundManager.loadSound(context,question);
@@ -152,6 +152,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                     point+=20;
                     //Toast.makeText(context, "Right...", Toast.LENGTH_SHORT).show();
                     mainRoundMode4.Action("RIGHT");
+                    textViewPoint.setText(point+"");
                     resID = R.raw.sound_right;
                     soundManager.loadSound(context,resID);
                     soundManager.playClickSound();
@@ -198,7 +199,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             //Handler Split String: Hint: 3/5;
             if(hint>=0)
             {
-                textViewNumberHint.setText("Hint: "+strHint+""+"/5");
+                textViewNumberHint.setText("Hint: "+strHint+"/5");
                 notification="Decrease the number of Hint...";
                 //Show your view
                 editTextAnswer.setVisibility(View.VISIBLE);
@@ -229,7 +230,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
             }
             else{
-                notification="You must use Pont to buy Hint..... ";
+                notification="You're out of hint..... ";
             }
             Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
         }
