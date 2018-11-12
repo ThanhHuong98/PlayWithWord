@@ -93,7 +93,7 @@ public class Menu extends AppCompatActivity
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent))
                 {
                     Drawer.closeDrawers();
-                    Toast.makeText(Menu.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Menu.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
                     onTouchDrawer(mRecyclerView.getChildPosition(child));
                     return true;
                 }
@@ -144,12 +144,14 @@ public class Menu extends AppCompatActivity
         switch (childPosition)
         {
             case 1:
-                Fragment fragment1=new FragmentAboutUs();
-                replaceFragment(fragment1,"ABOUT");
-                break;
-            case 2:
+
                 Fragment fragment2=new FragmentRankings();
                 replaceFragment(fragment2,"RANKING");
+                break;
+
+            case 2:
+                Fragment fragment1=new FragmentAboutUs();
+                replaceFragment(fragment1,"ABOUT");
                 break;
             case 3:
                 //Dialog
