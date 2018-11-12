@@ -16,6 +16,9 @@
             android:layout_height="wrap_content"
             android:text="PLEASE CHOOSE A MODE"
             android:layout_marginTop="35dp"
+            android:textColor="@color/Black"
+            android:fontFamily="@font/font_fs_just_awesome_regular"
+            android:textSize= "35sp"
             android:layout_gravity="center"/>
         <ImageButton
             android:id="@+id/btnMode1"

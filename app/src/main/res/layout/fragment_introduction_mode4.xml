@@ -53,12 +53,12 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_below="@id/textViewIntro"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
         android:text=" Click here to play "
+        android:textSize="25sp"
         android:textColor="@color/Black"
-        android:textSize="35sp"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"/>
 
