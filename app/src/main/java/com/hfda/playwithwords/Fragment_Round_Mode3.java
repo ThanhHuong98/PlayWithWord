@@ -123,13 +123,13 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             String strHint=numberHint+"";
             if(numberHint>=0) //nếu còn trợ giúp
             {
-                hint.setText("Hint: "+strHint+""+"/5");
+                hint.setText("Hint: " + strHint +"/5");
                 notification="Decrease the number of hints...";
                 editText_Answer3.setVisibility(v.VISIBLE);
-                String resultToHint="";
+                String resultToHint = "";
 
                    for (int i = 0; i < indexOfHint; i++) {
-                        resultToHint=resultToHint+"_ ";
+                        resultToHint = resultToHint + "_ ";
                    }
 
                 resultToHint=resultToHint+res[indexOfHint].toString();
@@ -151,9 +151,9 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                     }
                 }, 1000);
 
-                if(indexOfHint==realAnswer.length()){
+                if(indexOfHint == realAnswer.length()){
 
-                    indexOfHint=0;
+                    indexOfHint = 0;
                 }
 
                 String text = "Hint: " + numberHint + "/5";
@@ -225,6 +225,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             editText_Answer3.setText("");
             editText_Answer3.setEnabled(true);
             btnCheck.setText("Check");
+            indexOfHint = 0;
             int colorHint=getResources().getColor(R.color.Gray);
             editText_Answer3.setHintTextColor(colorHint);
             editText_Answer3.setHint("__ __ __ __");

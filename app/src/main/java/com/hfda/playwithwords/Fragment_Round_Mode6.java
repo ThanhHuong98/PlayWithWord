@@ -76,9 +76,8 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     String strOfSpeech;
     TextView textViewRound;
     int index=1;
-    int randomIndex[] = new int[31];
     AtomicBoolean ab=new AtomicBoolean(false);
-
+    private ArrayList<Integer> idArray = new ArrayList<>();
     @Override
     public void onClick(View v) {
         // takeTextToSpeech();
@@ -110,10 +109,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
-        for(int i=1;i<=30;i++){
-            randomIndex[i]=1;
-        }
-        Collections.shuffle(Arrays.asList(randomIndex));
+
         // handler=new Handler();
         _container = (Round)getActivity();
         _container.Action("REFRESH");
@@ -136,13 +132,11 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                     notification="Decrease the number of Hint...";
                 }
                 else{
-                    notification="You must use Pont to buy Hint..... ";
+                    notification="You're out of hint..... ";
                 }
                 Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
             }
         });
-
-
         button.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -185,7 +179,6 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
             }
         });
 
-
         return layout;
     }
 
@@ -193,17 +186,27 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         try {
             SQLiteOpenHelper myDatabase = new MyDatabase(_container.getApplicationContext());
             SQLiteDatabase db = myDatabase.getReadableDatabase();
+            int number_rows=0;
+            Cursor cursor = db.query("DATA",
+                    new String[]{"COUNT(ID) AS NUM_ROW"},
+                    null, null, null, null, null); //truy vấn số lượng dòng
 
-//            Cursor cursor = db.query("DATA",
-//                    new String[]{"COUNT(ID) AS NUM_ROW"},
-//                    null, null, null, null, null); //truy vấn số lượng dòng
-//
-//            if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
-//            {
-//                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
-//            }
+            if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
+            {
+                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
+            }
 
-            Cursor cursor = db.query("MODE5",
+            Random rd=new Random();
+            //  int randRow = 1+(int)Math.random()*(number_rows-1); //random ra 1 dòng dữ liệu
+            index=rd.nextInt(number_rows)+1;
+            while(!idArray.isEmpty() && idArray.indexOf(index)!=-1)
+            {
+                index=rd.nextInt(number_rows)+1;
+                //  randRow = 1+(int)Math.random()*(number_rows-1); //phải random lại dòng mới nếu random ra trùng với những câu đã lấy trước đó
+            }
+            idArray.add(index); //nếu không trùng thì thêm vào ArrayList
+
+            cursor = db.query("MODE5",
                     null,
                     "ID = ?", new String[]{String.valueOf(index)}, null, null, null); //truy vấn số lượng dòng
 
@@ -286,7 +289,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                         public void run() {
                             _container.Action("REFRESH");
                         }
-                    }, 3000);
+                    }, 1000);
                 }
                 break;
 

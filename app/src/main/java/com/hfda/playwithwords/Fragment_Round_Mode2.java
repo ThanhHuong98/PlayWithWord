@@ -1,6 +1,7 @@
 package com.hfda.playwithwords;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -28,7 +30,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
     ImageView imgRound;
     TextView hint;
     ProgressBar myProgressBar;
-
+    Context context;
     Round _container; //Activity chứa Fragment
 
     int numberHint=5; //số hint tối đa cho người dùng
@@ -69,7 +71,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
 
         hint = layout.findViewById(R.id.textViewNumberHint);
 
-
+        context=getActivity().getApplicationContext();
 
         btnAnswer[0].setOnClickListener(this);
         btnAnswer[1].setOnClickListener(this);
@@ -134,6 +136,10 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
 
                 String text = "Hint: " + numberHint + "/5";
                 hint.setText(text);
+            }
+            else
+            {
+                Toast.makeText(context, "You're out of hint......", Toast.LENGTH_SHORT).show();
             }
         }
         else //nguoi dung chon dap an
