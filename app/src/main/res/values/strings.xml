@@ -30,7 +30,7 @@
     <string name="Intro_mode4">Listen carefully and\nwrite down the word.\nPress DONE button\nto finish the task.</string>
     <string name="Intro_mode5">By putting words in the right order, form a suitable sentence that has the giving Vietnamese meaning</string>
     <string name="Result">17/20</string>\
-    <string name="title_mode5">Viết Mục Này Bằng Tiếng Việt</string>
+    <string name="title_mode5">Write this entry in English</string>
     <string name="title_mode6">Speak this sentence</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!--Menu-->

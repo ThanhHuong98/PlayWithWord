@@ -27,7 +27,7 @@
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Round0"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/entry"
@@ -38,11 +38,11 @@
         android:fontFamily="@font/font_opensan_light"
         android:text="@string/title_mode5"
         android:textColor="@color/Black"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/textViewQuestion"
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
         android:layout_marginTop="10dp"
@@ -55,16 +55,16 @@
         android:id="@+id/addGridView"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginStart="46dp"
         android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
         android:numColumns="5" />
 
     <GridView
         android:id="@+id/initGridView"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:numColumns="5">
 
     </GridView>

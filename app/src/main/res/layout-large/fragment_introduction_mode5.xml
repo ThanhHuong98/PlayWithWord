@@ -21,7 +21,7 @@
         android:layout_toEndOf="@id/btn_back"
         android:layout_marginTop="15dp"
         android:text="Mode 5"
-        android:textSize="35sp"
+        android:textSize="40sp"
         android:textColor="#6C5CE7"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
@@ -34,7 +34,7 @@
         android:layout_alignStart="@id/textViewMode"
         android:layout_marginTop="15dp"
         android:text="How to play"
-        android:textSize="35sp"
+        android:textSize="40sp"
         android:textColor="@color/PinkLight"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
@@ -43,9 +43,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
         android:layout_alignStart="@+id/howToPlay"
         android:text="@string/Intro_mode5"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button
@@ -58,7 +59,7 @@
         android:layout_marginTop="15dp"
         android:text="Click here to play "
         android:padding="5dp"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"/>

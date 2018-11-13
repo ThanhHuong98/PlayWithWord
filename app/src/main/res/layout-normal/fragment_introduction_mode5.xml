@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:layout_alignStart="@+id/howToPlay"
         android:text="@string/Intro_mode5"
         android:textSize="20sp"
