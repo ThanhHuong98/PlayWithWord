@@ -79,6 +79,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="60dp"
         android:layout_alignRight="@id/textViewResult"
+        android:layout_marginLeft="20dp"
         android:fontFamily="@font/font_opensan_regular"
         />
     <Button
@@ -92,7 +93,8 @@
         android:padding="5dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="60dp"
-        android:layout_alignLeft="@id/score"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/font_opensan_regular"
         />
 </RelativeLayout>

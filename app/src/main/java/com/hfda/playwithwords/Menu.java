@@ -47,9 +47,9 @@ public class Menu extends AppCompatActivity
     };*/
     /*---------------------------------------------------------------------------*/
     //First We Declare Titles And Icons For Our Navigation Drawer List View
-    String TITLES[] = {"RANKING", "ABOUT US", "LOGOUT"};
+    String TITLES[] = {"HOME", "RANKING", "ABOUT US", "LOGOUT"};
     //This Icons And Titles Are holded in an Array as you can see
-    int ICONS[] = {R.drawable.ic_buffoon, R.drawable.ic_about_us, R.drawable.ic_logout};
+    int ICONS[] = {R.drawable.ic_home_icon, R.drawable.ic_buffoon, R.drawable.ic_about_us, R.drawable.ic_logout};
 
     //Similarly we Create a String Resource for the UserName, Point, Rank  in the header view
     //Sau nany doc tu database vao
@@ -165,16 +165,20 @@ public class Menu extends AppCompatActivity
         switch (childPosition)
         {
             case 1:
+                Fragment fragment3=new FragmentHome();
+                replaceFragment(fragment3,"HOME");
+                break;
+            case 2:
 
                 Fragment fragment2=new FragmentRankings();
                 replaceFragment(fragment2,"RANKING");
                 break;
 
-            case 2:
+            case 3:
                 Fragment fragment1=new FragmentAboutUs();
                 replaceFragment(fragment1,"ABOUT");
                 break;
-            case 3:
+            case 4:
                 //Dialog
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setMessage("Are you sure, You wanted to Log-out");
@@ -244,6 +248,11 @@ public class Menu extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
     }
   /*  @Override
     protected void onStart()

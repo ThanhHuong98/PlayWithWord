@@ -5,6 +5,10 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -22,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,7 +45,11 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.app.Activity.RESULT_OK;
@@ -63,7 +72,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     TextView textViewNumberHint;
     TextView textViewPoint;
     TextView textViewQuestion;
-
+    ImageView  imWave;
     String strOfSpeech;
     TextView textViewRound;
     AtomicBoolean ab=new AtomicBoolean(false);
@@ -77,11 +86,11 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         if(mess.equals("NEW"))
         {
             btnHint.setEnabled(true);
+            updateContent();
 
             textViewRound.setText(roundOfMode+ "/20");
             textViewPoint.setText(points+"");
-            textViewQuestion.setText((String)newQuestion);
-            realAnswer=(String)newQuestion;
+            textViewQuestion.setText(realAnswer);
         }
     }
     @Override
@@ -94,7 +103,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         textViewNumberHint=(layout).findViewById(R.id.textViewNumberHint);
         textViewPoint=(layout).findViewById(R.id.textViewPoint);
         textViewQuestion=layout.findViewById(R.id.textViewQuestion);
-
+        imWave=layout.findViewById(R.id.ic_wave);
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
@@ -132,11 +141,14 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN) {
                     button.setSelected(true);
+                    imWave.setVisibility(View.INVISIBLE);
                     rippleBackground.startRippleAnimation();
 
                     getSpeechInput();
                     return true;
                 } else if(event.getAction()==MotionEvent.ACTION_UP){
+                    imWave.setVisibility(View.VISIBLE);
+
                     button.setSelected(false);
                     rippleBackground.stopRippleAnimation();
 //                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(_container);
@@ -170,27 +182,57 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         return layout;
     }
 
+    public void updateContent(){
+        try {
+            SQLiteOpenHelper myDatabase = new MyDatabase(_container.getApplicationContext());
+            SQLiteDatabase db = myDatabase.getReadableDatabase();
 
-    private int compareString(String strOfSpeech,String realAnswer){
-        int sim=0;
-        if(realAnswer.contains(strOfSpeech)==true){
-            sim = strOfSpeech.length()/realAnswer.length();
-            return sim;
-        }
-        else  {
+//            Cursor cursor = db.query("DATA",
+//                    new String[]{"COUNT(ID) AS NUM_ROW"},
+//                    null, null, null, null, null); //truy vấn số lượng dòng
+//
+//            if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
+//            {
+//                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
+//            }
+             int index = (new Random()).nextInt(30)+1;
 
-            int i=0;
-            do{
-                if(strOfSpeech.charAt(i)==realAnswer.charAt(i)){
-                    sim++;
-                }
-                i++;
-            }while(i!=strOfSpeech.length()&&i!=realAnswer.length());
-            sim=sim/realAnswer.length();
-            return sim;
+            Cursor cursor = db.query("MODE5",
+                    null,
+                    "ID = ?", new String[]{String.valueOf(index)}, null, null, null); //truy vấn số lượng dòng
+
+            if (cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
+            {
+                //textViewQuestion.setText(cursor.getString(2));
+                realAnswer=cursor.getString(2);
+            }
+            cursor.close();
+            db.close();
+        }catch(SQLException ex) {
+            Log.e("Error", "An error occured when trying to access database!");
         }
+
     }
 
+    private double compareString(String strOfSpeech,String realAnswer){
+
+        strOfSpeech= strOfSpeech.toLowerCase();
+        realAnswer=realAnswer.toLowerCase();
+        HashSet<String> set = new HashSet<String>();
+        String[] splitStrOfSpeed = strOfSpeech.split(" ");
+        for(int i=0;i<splitStrOfSpeed.length;i++){
+            set.add(splitStrOfSpeed[i]);
+        }
+        int countCorrect=0;
+        String[] splitRealAnswer = realAnswer.split(" ");
+        for(int i=0;i<splitRealAnswer.length;i++){
+            if(set.contains(splitRealAnswer[i])){
+                countCorrect++;
+            }
+        }
+
+        return countCorrect*1.0/splitRealAnswer.length;
+    }
 //    private void takeTextToSpeech(){
 //        Intent checkIntent = new Intent();
 //        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
@@ -219,23 +261,15 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                 if (resultCode == RESULT_OK && data != null) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     strOfSpeech=result.get(0);
-
-                    if(strOfSpeech.equalsIgnoreCase(realAnswer)){
-//                        countQuestion++;
-//                        if(countQuestion>20){
-//                            countQuestion--;
-//                        }
-                        points+=20;
-//                        textViewRound.setText(countQuestion+"/20");
-//                        myProgressBar.setProgress(countQuestion*100/20);
-//                        textViewPoint.setText(points+"");
-
+                    double sim=compareString(strOfSpeech,realAnswer)*100;
+                    int k=(int)Math.round(sim);
+                    String nof="You only read exactly "+k+"%";
+                    Toast.makeText(context,nof,Toast.LENGTH_LONG).show();
+                    if(k>=60){
+                            points+=20;
                         _container.Action("RIGHT");
                     }
                     else{
-                        int sim=compareString(strOfSpeech,realAnswer)*100;
-                        String nof="You only read exactly"+sim+"%";
-                        Toast.makeText(context,nof,Toast.LENGTH_LONG).show();
                         _container.Action("WRONG");
                     }
 

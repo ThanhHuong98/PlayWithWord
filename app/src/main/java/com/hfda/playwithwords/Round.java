@@ -186,6 +186,8 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                         newAnswer = cursor.getString(1);
                         break;
                     }
+                    case 5:
+                       break;
                     case 6:
                     {
                         newQuestion = cursor.getString(1);
@@ -277,6 +279,12 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     case 4:
                         fragmentRound4.InfoToHandle("NEW" ,round+"", newQuestion,newAnswer, "",null);
                         break;
+                    case 5:
+                        fragmentRound5.InfoToHandle("NEW" ,round+"", newQuestion,newAnswer, "",null);
+                        break;
+                    case 6:
+                        fragmentRound6.InfoToHandle("NEW" ,round+"", newQuestion,newAnswer, "",null);
+                        break;
                 }
             }
             else //nếu đã chơi đủ 20 màn thì tạo 1 intent để show kết quả
@@ -336,5 +344,10 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         super.onBackPressed();
         startActivity(new Intent(this, Menu.class));
         finish();
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
     }
 }

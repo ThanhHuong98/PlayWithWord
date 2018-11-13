@@ -60,7 +60,7 @@
                 android:id="@+id/avatarHuong"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
-                android:background="#FF7576"
+                android:background="@drawable/avatarhuong"
                 />
            <LinearLayout
                android:id="@+id/inforHuong"
@@ -144,7 +144,7 @@
                 android:id="@+id/avatarDuy"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
-                android:background="@color/Green" />
+                android:background="@drawable/avtarduy" />
 
     </LinearLayout>
 
@@ -159,7 +159,7 @@
                 android:id="@+id/avatarDhuy"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
-                android:background="@color/Blue"
+                android:background="@drawable/avatardhuy"
                 />
             <LinearLayout
                 android:id="@+id/inforDHuy"
@@ -241,7 +241,7 @@
                     android:id="@+id/avatarQhuy"
                     android:layout_width="190dp"
                     android:layout_height="190dp"
-                    android:background="@color/MediumOrchid"
+                    android:background="@drawable/avatarqhuy"
                     />
 
             </LinearLayout>
@@ -256,7 +256,7 @@
                     android:id="@+id/avatarToan"
                     android:layout_width="190dp"
                     android:layout_height="190dp"
-                    android:background="@color/Olive"
+                    android:background="@drawable/avatartoan"
                     />
                 <LinearLayout
                     android:id="@+id/inforToan"

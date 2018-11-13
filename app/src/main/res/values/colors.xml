@@ -33,7 +33,7 @@
     <color name="DeepPink">#FF1493</color>
     <color name="Fuchsia">#FF00FF</color>
     <color name="Magenta">#FF00FF</color>
-    <color name="Red">#FF0000</color>
+    <color name="Red">#dcff0000</color>
     <color name="OldLace">#FDF5E6</color>
     <color name="LightGoldenrodYellow">#FAFAD2</color>
     <color name="Linen">#FAF0E6</color>
@@ -94,7 +94,7 @@
     <color name="DarkMagenta">#8B008B</color>
     <color name="DarkRed">#8B0000</color>
     <color name="BlueViolet">#8A2BE2</color>
-    <color name="LightSkyBlue">#87CEFA</color>
+    <color name="LightSkyBlue">#2c87cefa</color>
     <color name="SkyBlue">#87CEEB</color>
     <color name="Gray">#808080</color>
     <color name="Olive">#808000</color>
@@ -148,5 +148,7 @@
 <!--Menu-->
     <color name="transparent">#00fffffe</color>
     <color name="pinkHeader">#71ff7576</color>
-    <color name="colorView">#6b020202</color>
+    <color name="colorView">#3e020202</color>
+
+
 </resources>

@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class Fragment_Result_Mode2 extends Fragment implements fromContainerToFrag,View.OnClickListener {
 
     Button btn_share;
-    ImageButton btn_finish;
+    Button btn_finish;
 
     TextView textViewPoint;
     TextView textViewRound;

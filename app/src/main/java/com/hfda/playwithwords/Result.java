@@ -74,7 +74,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                 fragmentResultMode14 = new Fragment_Result_Mode14();
                 ft.replace(R.id.fragment_result, fragmentResultMode14);
                 break;
-            case 2:
+            case 2: case 5:
                 fragmentResultMode2 = new Fragment_Result_Mode2();
                 ft.replace(R.id.fragment_result,fragmentResultMode2);
                 break;
@@ -99,9 +99,8 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                     //thông qua phương thức InfoToHandle của Interface fromContainerToFrag
                     fragmentResultMode14.InfoToHandle(totalScore, finalResult, "", "", "", null);
                     break;
-                case 2:
+                case 2: case 5:
                     fragmentResultMode2.InfoToHandle(totalScore, finalResult,"","","",null);
-
                     break;
                 case 3:
                     fragmentResultMode3.InfoToHandle(totalScore, finalResult,"","","",null);
@@ -181,5 +180,10 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
 
         startActivity(Intent.createChooser(sharingIntent, "Share app to share..."));
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
     }
 }

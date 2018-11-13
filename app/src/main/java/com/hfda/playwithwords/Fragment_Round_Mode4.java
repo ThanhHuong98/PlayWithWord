@@ -185,7 +185,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             }
             else
             {
-                Toast.makeText(context, "You must enter at least one character", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "You must enter at least one character", Toast.LENGTH_SHORT).show();
             }
         }
         //Trường hợp user dùng hint, xong dùng text nhập đáp án, xong lại dùng hint ???
@@ -233,7 +233,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             else{
                 notification="You're out of hint..... ";
             }
-            Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
         }
     }
     //Cắt chuỗi realAnswer, lưu từng ký tự và mảng res[];

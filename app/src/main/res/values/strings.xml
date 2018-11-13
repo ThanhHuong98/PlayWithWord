@@ -51,23 +51,23 @@
 
     <string name="mssvHuong">1612243</string>
     <string name="nameHuong">Nguyen Thi Thanh Huong</string>
-    <string name="nhiemvuHuong">Leader</string>
+    <string name="nhiemvuHuong">Developer + Designer</string>
 
     <string name="mssvDuy">1612143</string>
     <string name="nameDuy">Tran Phan Phu Duy</string>
-    <string name="nhiemvuDuy">Developer</string>
+    <string name="nhiemvuDuy">Developer + Designer</string>
 
     <string name="mssvDHuy">1612254</string>
     <string name="nameDHuy">Le Duc Huy</string>
-    <string name="nhiemvuDHuy">Developer</string>
+    <string name="nhiemvuDHuy">Developer + Tester</string>
 
     <string name="mssvQHuy">1612263</string>
     <string name="nameQHuy">Nguyen Quang Huy</string>
-    <string name="nhiemvuQHuy">Developer</string>
+    <string name="nhiemvuQHuy">Developer + B.A</string>
 
     <string name="mssvToan">1512281</string>
     <string name="nameToan">Dao Minh Toan</string>
-    <string name="nhiemvuToan">Tester</string>
+    <string name="nhiemvuToan">Manager + Developer</string>
 
     <string name="titleRanking">RANKINGS</string>
 
