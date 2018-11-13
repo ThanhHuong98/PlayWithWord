@@ -50,6 +50,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     AlertDialog.Builder alertDialogError;
     int countQuestion=0;
     public int index=1;
+    int randomIndex[] = new int[31];
     int point=0;
     int hint=5;
     private int number_rows;
@@ -60,6 +61,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     Runnable runnable;
     int accum;
     int progressStep=1;
+
     private void SufferStringArray(String[] arr)
     {
         for (int i = arr.length-1; i > 0; i--)
@@ -85,7 +87,6 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
 //            {
 //                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
 //            }
-            index = (new Random()).nextInt(30)+1;
 
             Cursor cursor = db.query("MODE5",
                     null,
@@ -273,7 +274,10 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
         textViewPoint=(layout).findViewById(R.id.textViewPoint);
         tvHint = (layout).findViewById(R.id.textViewNumberHint);
         imgBntHint = (layout).findViewById(R.id.btnHint);
-
+        for(int i=1;i<=30;i++){
+            randomIndex[i]=1;
+        }
+        Collections.shuffle(Arrays.asList(randomIndex));
        updateContent();
 
         initGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

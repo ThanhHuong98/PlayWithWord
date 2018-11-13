@@ -75,6 +75,8 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     ImageView  imWave;
     String strOfSpeech;
     TextView textViewRound;
+    int index=1;
+    int randomIndex[] = new int[31];
     AtomicBoolean ab=new AtomicBoolean(false);
 
     @Override
@@ -85,6 +87,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     public void InfoToHandle(String mess, String roundOfMode, Object newQuestion, Object answer, String transcription, String[] answerInBtn) {
         if(mess.equals("NEW"))
         {
+            index++;
             btnHint.setEnabled(true);
             updateContent();
 
@@ -107,6 +110,10 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
+        for(int i=1;i<=30;i++){
+            randomIndex[i]=1;
+        }
+        Collections.shuffle(Arrays.asList(randomIndex));
         // handler=new Handler();
         _container = (Round)getActivity();
         _container.Action("REFRESH");
@@ -195,7 +202,6 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
 //            {
 //                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
 //            }
-             int index = (new Random()).nextInt(30)+1;
 
             Cursor cursor = db.query("MODE5",
                     null,

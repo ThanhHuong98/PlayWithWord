@@ -78,7 +78,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                 fragmentResultMode2 = new Fragment_Result_Mode2();
                 ft.replace(R.id.fragment_result,fragmentResultMode2);
                 break;
-            case 3:
+            case 3: case 6:
                 fragmentResultMode3 = new Fragment_Result_Mode3();
                 ft.replace(R.id.fragment_result, fragmentResultMode3);
                 break;
@@ -102,9 +102,8 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                 case 2: case 5:
                     fragmentResultMode2.InfoToHandle(totalScore, finalResult,"","","",null);
                     break;
-                case 3:
+                case 3: case 6:
                     fragmentResultMode3.InfoToHandle(totalScore, finalResult,"","","",null);
-
                     break;
             }
         }
