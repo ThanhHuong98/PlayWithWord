@@ -1,5 +1,6 @@
 package com.hfda.playwithwords;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -12,16 +13,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -89,7 +94,6 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     private ArrayList<Integer> idArray = new ArrayList<>();
     @Override
     public void onClick(View v) {
-        // takeTextToSpeech();
     }
     @Override
     public void InfoToHandle(String mess, String roundOfMode) {
@@ -117,9 +121,13 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
+<<<<<<< HEAD
         for(int i=0;i<dd.length;i++) dd[i]=0;
         // handler=new Handler();
+=======
+>>>>>>> a2e84670a8c515f5fb561a742465cc6f0629dd70
         _container = (Round)getActivity();
+        checkPermission();
         _container.Action("REFRESH");
         txts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
@@ -146,6 +154,85 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                 Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
             }
         });
+
+        final SpeechRecognizer mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
+
+        final Intent mSpeechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+                Locale.getDefault());
+
+        mSpeechRecognizer.setRecognitionListener(new RecognitionListener() {
+            @Override
+            public void onReadyForSpeech(Bundle bundle) {
+
+            }
+
+            @Override
+            public void onBeginningOfSpeech() {
+
+            }
+
+            @Override
+            public void onRmsChanged(float v) {
+
+            }
+
+            @Override
+            public void onBufferReceived(byte[] bytes) {
+
+            }
+
+            @Override
+            public void onEndOfSpeech() {
+
+            }
+
+            @Override
+            public void onError(int i) {
+
+            }
+
+            @Override
+            public void onResults(Bundle bundle) {
+                ArrayList<String> result = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                strOfSpeech=result.get(0);
+
+                double sim=compareString(strOfSpeech,realAnswer)*100;
+                    int k=(int)Math.round(sim);
+                    String nof="You only read exactly "+k+"%";
+                    Toast.makeText(context,nof,Toast.LENGTH_LONG).show();
+                    if(k>=60){
+                            points+=20;
+                        _container.Action("RIGHT");
+                    }
+                    else{
+                        _container.Action("WRONG");
+                    }
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            _container.Action("REFRESH");
+                        }
+                    }, 1000);
+            }
+
+            @Override
+            public void onPartialResults(Bundle bundle) {
+
+            }
+
+            @Override
+            public void onEvent(int i, Bundle bundle) {
+
+            }
+        });
+
+
         button.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -154,11 +241,11 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                     imWave.setVisibility(View.INVISIBLE);
                     rippleBackground.startRippleAnimation();
 
-                    getSpeechInput();
+                    mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
                     return true;
                 } else if(event.getAction()==MotionEvent.ACTION_UP){
                     imWave.setVisibility(View.VISIBLE);
-
+                    mSpeechRecognizer.stopListening();
                     button.setSelected(false);
                     rippleBackground.stopRippleAnimation();
                     return true;
@@ -224,6 +311,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
 
         return countCorrect*1.0/splitRealAnswer.length;
     }
+<<<<<<< HEAD
 
 
     private void getSpeechInput() {
@@ -270,11 +358,24 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                     }, 1000);
                 }
                 break;
+=======
+>>>>>>> a2e84670a8c515f5fb561a742465cc6f0629dd70
 
+    private void checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)) {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.parse("package:" + context.getPackageName()));
+                startActivity(intent);
+                _container.finish();
+            }
         }
     }
+<<<<<<< HEAD
     public   void onStop() {
 
         super.onStop();
     }
+=======
+>>>>>>> a2e84670a8c515f5fb561a742465cc6f0629dd70
 }

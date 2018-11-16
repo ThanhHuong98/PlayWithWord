@@ -8,10 +8,11 @@
     <string name="QuestionMode1">Satellite</string>
     <string name="QuestionMode3">A fossil fuel in the gaseous state; used for cooking and heating homes</string>
  
-   <string name="Check">Check</string>
+    <string name="Check">Check</string>
     <string name="shareNow">Share Now</string>
-
-
+    <string name="Intro_mode6_1">Speak out the giving word</string>
+    <string name="Intro_mode6_2">: Listen to the word</string>
+    <string name="Intro_mode6_3">: Record your voice</string>
     <string name="Transcription">/ˈsætəlaɪt/</string>
     <string name="Answer1">hành tinh</string>
     <string name="Answer2">vệ tinh</string>
