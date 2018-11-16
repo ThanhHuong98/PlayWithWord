@@ -1,9 +1,12 @@
 package com.hfda.playwithwords;
 
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,17 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -31,6 +45,12 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
     TextView hint;
     ProgressBar myProgressBar;
 
+    List<DataMode1234> mData=new ArrayList<>();
+    int[] dd=new int[30];
+    String mQuestion;
+    String mAnswer;
+    String[] mAnswerButton=new String[4];
+    String mTranscript;
     Round _container; //Activity chứa Fragment
 
     int numberHint=5; //số hint tối đa cho người dùng
@@ -73,7 +93,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
         btnAnswer[2].setOnClickListener(this);
         btnAnswer[3].setOnClickListener(this);
         btnHint.setOnClickListener(this);
-
+        for(int i=0;i<dd.length;i++) dd[i]=0;
         //Khi mới vào vòng đầu tiên thì phải gửi thông điệp lên Activity Round ở trên để nó gửi
         //thông điệp + database xuống cho mình set dữ liệu trên màn hình chơi
         _container.Action("REFRESH");
@@ -134,6 +154,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
             }
             else
             {
+
                 Toast.makeText(context, "You're out of hint......", Toast.LENGTH_SHORT).show();
             }
         }
@@ -194,10 +215,87 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
 
         }
     }
+    private void SufferStringArray(String[] arr)
+    {
+        for (int i = arr.length-1; i > 0; i--)
+        {
+            //tạo ra vị trí j ngẫu nhiên từ 0<=j<=i
+            int j = (int)(Math.random() * (i + 1));
+            //hoán vị arr[i] và arr[j]
+            String temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    private  void updateContent()
+    {
+        DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
+        myref.child("DB").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mData.clear();
+                for(DataSnapshot dts: dataSnapshot.getChildren()) {
+                    DataMode1234 data=dts.getValue(DataMode1234.class);
+                    mData.add(data);
+                }
+                Random rd=new Random();
+                int index=rd.nextInt(mData.size());
+
+                while(true)
+                {
+                    if(dd[index]==1)
+                    {
+                        index=rd.nextInt(mData.size());
+                    }
+                    else
+                    {
+                        dd[index]=1;
+                        break;
+                    }
+                }
+                mQuestion=mData.get(index).getWordE();
+                mAnswer=mData.get(index).getWordV();
+                mTranscript=mData.get(index).getPronunciation();
+                ArrayList<Integer> rand = new ArrayList<>(); // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                rand.add(index);
+                mAnswerButton[0]=mAnswer;
+                for(int i=1; i<=3; i++)
+                {
+                    int random = rd.nextInt(mData.size());
+                    while(rand.indexOf(random)>=0)
+                    {
+                        random = rd.nextInt(mData.size());
+                    }
+                    rand.add(random);
+                    mAnswerButton[i] = mData.get(random).getWordV();
+                }
+                //set lai cau hoi
+                textViewQuestion.setText((String)mQuestion);
+                //set lai phien am
+                textViewTranscript.setText(mTranscript);
+                SufferStringArray(mAnswerButton);
+
+                //set lại dữ liệu cho 4 button đáp án, nếu nó có bị unenable hoặc bị ẩn thì cho nó bình thường trở lại
+                for(int i=0; i<4; i++)
+                {
+                    if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
+                    if(!btnAnswer[i].isShown()) btnAnswer[i].setVisibility(View.VISIBLE);
+                    btnAnswer[i].setText(mAnswerButton[i]);
+                }
+                realAnswer = (String)mAnswer;
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
     /*
     phương thức message trong Interface fromContainerToFrag sẽ được kích hoạt khi mà Activity gửi dữ liệu xuống Fragment*/
     @Override
-    public void InfoToHandle(String mess, String roundOfMode, Object question, Object answer, String transcription, String[] answerInBtn)
+    public void InfoToHandle(String mess, String roundOfMode)
     {
 
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
@@ -205,22 +303,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
 
             String text= roundOfMode + "/20";
             numberRound.setText(text);
-
-            //set lai cau hoi
-
-            textViewQuestion.setText((String)question); //phai ep kieu question tuy theo mode (String, Drawable, ...)
-
-            //set lai phien am
-
-            textViewTranscript.setText(transcription);
-
-            //set lại dữ liệu cho 4 button đáp án, nếu nó có bị unenable hoặc bị ẩn thì cho nó bình thường trở lại
-            for(int i=0; i<4; i++)
-            {
-                if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
-                if(!btnAnswer[i].isShown()) btnAnswer[i].setVisibility(View.VISIBLE);
-                btnAnswer[i].setText(answerInBtn[i]);
-            }
+            updateContent();
             //set cái background button đáp án người dùng chọ lúc nãy về bình thường, không còn xanh đỏ nữa
             if(userChosen!=null)
             {
@@ -232,8 +315,13 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                 btnHint.setEnabled(true);
             }
 
-            this.realAnswer = (String)answer; //luư đáp án mà Activity ở trên gửi về
             StartProgressBar();
         }
     }
+
+    public   void onStop() {
+
+        super.onStop();
+    }
+
 }

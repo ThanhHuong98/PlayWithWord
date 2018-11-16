@@ -74,5 +74,8 @@
     <string name="userWin1">Bob</string>
     <string name="userWin2">Pooh</string>
     <string name="userWin3">Birdy</string>
+    <string name="dialog_fire_missiles">YES</string>
+    <string name="fire">Có</string>
+    <string name="cancel">Không</string>
 
 </resources>

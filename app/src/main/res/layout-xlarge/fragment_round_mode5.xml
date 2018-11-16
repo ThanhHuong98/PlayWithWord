@@ -47,7 +47,7 @@
         android:layout_marginStart="46dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/font_opensan_regular"
-        android:text="I read a newspaper"
+
         android:textColor="@color/Black"
         android:textSize="40sp" />
 

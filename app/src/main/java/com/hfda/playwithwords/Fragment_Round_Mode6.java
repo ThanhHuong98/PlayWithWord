@@ -20,6 +20,7 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +36,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.skyfishjy.library.RippleBackground;
 
 import java.io.BufferedReader;
@@ -48,6 +54,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -71,11 +78,13 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     ImageButton btnHint;
     TextView textViewNumberHint;
     TextView textViewPoint;
+    List<Mode5> mangData=new ArrayList<>();
     TextView textViewQuestion;
     ImageView  imWave;
     String strOfSpeech;
     TextView textViewRound;
     int index=1;
+    int[] dd=new int[30];
     AtomicBoolean ab=new AtomicBoolean(false);
     private ArrayList<Integer> idArray = new ArrayList<>();
     @Override
@@ -83,16 +92,15 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         // takeTextToSpeech();
     }
     @Override
-    public void InfoToHandle(String mess, String roundOfMode, Object newQuestion, Object answer, String transcription, String[] answerInBtn) {
+    public void InfoToHandle(String mess, String roundOfMode) {
         if(mess.equals("NEW"))
         {
             index++;
             btnHint.setEnabled(true);
             updateContent();
-
             textViewRound.setText(roundOfMode+ "/20");
             textViewPoint.setText(points+"");
-            textViewQuestion.setText(realAnswer);
+
         }
     }
     @Override
@@ -109,7 +117,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
-
+        for(int i=0;i<dd.length;i++) dd[i]=0;
         // handler=new Handler();
         _container = (Round)getActivity();
         _container.Action("REFRESH");
@@ -119,6 +127,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                 Log.e("TTS", "TextToSpeech.OnInitListener.onInit...");
             }
         });
+
         btnHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,26 +161,6 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
 
                     button.setSelected(false);
                     rippleBackground.stopRippleAnimation();
-//                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(_container);
-
-//                    if(resultStringArrayList.get(0).equalsIgnoreCase(realAnswer)){
-//                        alertDialogBuilder.setMessage("Correct");
-//                        countQuestion++;
-//                        if(countQuestion>20){
-//                            countQuestion--;
-//                        }
-//                        textViewRound.setText(countQuestion+"/20");
-//                        myProgressBar.setProgress(countQuestion*100/20);
-
-//                    }
-//                    else{
-//                        alertDialogBuilder.setMessage("Failure");
-//                    }
-//
-//                    count++;
-//                    AlertDialog alertDialog = alertDialogBuilder.create();
-//                    alertDialog.show();
-//                    //_container.Action("REFRESH");
                     return true;
                 }
 
@@ -183,46 +172,39 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     }
 
     public void updateContent(){
-        try {
-            SQLiteOpenHelper myDatabase = new MyDatabase(_container.getApplicationContext());
-            SQLiteDatabase db = myDatabase.getReadableDatabase();
-            int number_rows=0;
-            Cursor cursor = db.query("DATA",
-                    new String[]{"COUNT(ID) AS NUM_ROW"},
-                    null, null, null, null, null); //truy vấn số lượng dòng
-
-            if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
-            {
-                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
+        DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
+        myref.child("DBmode5").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mangData.clear();
+                for (DataSnapshot dts : dataSnapshot.getChildren()) {
+                    Mode5 mode5 = dts.getValue(Mode5.class);
+                    mangData.add(mode5);
+                }
+                Random rd = new Random();
+                int index = rd.nextInt(mangData.size());
+                while(true)
+                {
+                    if(dd[index]==1)
+                    {
+                        index=rd.nextInt(mangData.size());
+                    }
+                    else
+                    {
+                        dd[index]=1;
+                        break;
+                    }
+                }
+                realAnswer = mangData.get(index).getTA();
+                textViewQuestion.setText(realAnswer);
+                Toast.makeText(getContext(),realAnswer,Toast.LENGTH_SHORT).show();
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            Random rd=new Random();
-            //  int randRow = 1+(int)Math.random()*(number_rows-1); //random ra 1 dòng dữ liệu
-            index=rd.nextInt(number_rows)+1;
-            while(!idArray.isEmpty() && idArray.indexOf(index)!=-1)
-            {
-                index=rd.nextInt(number_rows)+1;
-                //  randRow = 1+(int)Math.random()*(number_rows-1); //phải random lại dòng mới nếu random ra trùng với những câu đã lấy trước đó
             }
-            idArray.add(index); //nếu không trùng thì thêm vào ArrayList
-
-            cursor = db.query("MODE5",
-                    null,
-                    "ID = ?", new String[]{String.valueOf(index)}, null, null, null); //truy vấn số lượng dòng
-
-            if (cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
-            {
-                //textViewQuestion.setText(cursor.getString(2));
-                realAnswer=cursor.getString(2);
-            }
-            cursor.close();
-            db.close();
-        }catch(SQLException ex) {
-            Log.e("Error", "An error occured when trying to access database!");
-        }
-
+        });
     }
-
     private double compareString(String strOfSpeech,String realAnswer){
 
         strOfSpeech= strOfSpeech.toLowerCase();
@@ -242,11 +224,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
 
         return countCorrect*1.0/splitRealAnswer.length;
     }
-//    private void takeTextToSpeech(){
-//        Intent checkIntent = new Intent();
-//        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-//        startActivityForResult(checkIntent, 11);
-//    }
+
 
     private void getSpeechInput() {
 
@@ -295,5 +273,8 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
 
         }
     }
+    public   void onStop() {
 
+        super.onStop();
+    }
 }

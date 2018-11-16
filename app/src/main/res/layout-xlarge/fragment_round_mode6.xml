@@ -35,7 +35,6 @@
            android:layout_centerHorizontal="true"
             android:layout_marginTop="350dp"
             android:fontFamily="@font/font_opensan_light"
-            android:text="Hello"
             android:textColor="@color/Black"
             android:textSize="90sp" />
 

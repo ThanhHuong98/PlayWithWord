@@ -39,7 +39,6 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="5dp"
         android:fontFamily="@font/font_opensan_light"
-        android:text="@string/QuestionMode3"
         android:textColor="@color/Black"
         android:textSize="28sp" />
 

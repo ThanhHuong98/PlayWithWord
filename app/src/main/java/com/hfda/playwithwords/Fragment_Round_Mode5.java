@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,15 +46,13 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     TextView textViewRound;
     Button bntCheck;
     TextView textViewPoint;
-    Data_Mode5 dataMode5;
     ArrayAdapter<String> addarrayAdapter;
     ArrayAdapter<String> initarrayAdapter;
+    final List<Mode5> mangData=new ArrayList<>();
     List<String> listinit;
     List<String> listadd;
     ImageButton imgBntHint;
     TextView tvHint;
-    AlertDialog.Builder alertDialogCorrect;
-    AlertDialog.Builder alertDialogError;
     int countQuestion=0;
     public int index=1;
     int randomIndex[] = new int[31];
@@ -61,7 +66,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     Runnable runnable;
     int accum;
     int progressStep=1;
-
+    int[] dd1=new int[30];
     private void SufferStringArray(String[] arr)
     {
         for (int i = arr.length-1; i > 0; i--)
@@ -74,49 +79,57 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
             arr[j] = temp;
         }
     }
-    public void updateContent(){
-        try {
-            SQLiteOpenHelper myDatabase = new MyDatabase(_container.getApplicationContext());
-            SQLiteDatabase db = myDatabase.getReadableDatabase();
+    private void updateContent(){
 
-//            Cursor cursor = db.query("DATA",
-//                    new String[]{"COUNT(ID) AS NUM_ROW"},
-//                    null, null, null, null, null); //truy vấn số lượng dòng
-//
-//            if(cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
-//            {
-//                number_rows = cursor.getInt(0); //lấy dữ liệu ở cột thứ 0, kiểu int
-//            }
+            DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
+            myref.child("DBmode5").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mangData.clear();
+                    for(DataSnapshot dts:dataSnapshot.getChildren())
+                    {
+                        Mode5 mode5=dts.getValue(Mode5.class);
+                        mangData.add(mode5);
+                    }
+                    Random rd=new Random();
+                    int index=rd.nextInt(mangData.size());
+                    while(true)
+                    {
+                        if(dd1[index]==1)
+                        {
+                            index=rd.nextInt(mangData.size());
+                        }
+                        else
+                        {
+                            dd1[index]=1;
+                            break;
+                        }
+                    }
+                    myVietnam=mangData.get(index).getVN();
+                    myEnglish=mangData.get(index).getTA();
+                    textViewQuestion.setText(myVietnam);
+                    listEnglish = myEnglish.split(" ");
+                    String[] randlistEnglish = myEnglish.split(" ");
+                    Collections.shuffle(Arrays.asList(randlistEnglish));
+                    String[] demo = new String[]{};
+                    listinit = new ArrayList<String>(Arrays.asList(randlistEnglish));
+                    listadd = new ArrayList<String>(Arrays.asList(demo));
+                    initarrayAdapter
+                            = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listinit);
+                    addarrayAdapter
+                            = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listadd);
+                    initGridView.setAdapter(initarrayAdapter);
+                    addGridView.setAdapter(addarrayAdapter);
 
-            Cursor cursor = db.query("MODE5",
-                    null,
-                    "ID = ?", new String[]{String.valueOf(index)}, null, null, null); //truy vấn số lượng dòng
+                }
 
-            if (cursor.moveToFirst())//di chuyển con trỏ lên dòng đầu tiên của bảng kết quả
-            {
-                myEnglish = cursor.getString(2);
-                myVietnam = cursor.getString(1);
-            }
-            cursor.close();
-            db.close();
-        }catch(SQLException ex) {
-            Log.e("Error", "An error occured when trying to access database!");
-        }
-        textViewQuestion.setText(myVietnam);
-        listEnglish = myEnglish.split(" ");
-        String[] randlistEnglish = myEnglish.split(" ");
-        Collections.shuffle(Arrays.asList(randlistEnglish));
-        String[] demo = new String[]{};
-        listinit = new ArrayList<String>(Arrays.asList(randlistEnglish));
-        listadd = new ArrayList<String>(Arrays.asList(demo));
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
 
 
-        initarrayAdapter
-                = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listinit);
-        addarrayAdapter
-                = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listadd);
-        initGridView.setAdapter(initarrayAdapter);
-        addGridView.setAdapter(addarrayAdapter);
     }
     public void StartProgressBar()
     {
@@ -247,7 +260,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     }
 
     @Override
-    public void InfoToHandle(String mess, String roundOfMode, Object question, Object answer, String transcription, String[] answerInBtn) {
+    public void InfoToHandle(String mess, String roundOfMode) {
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
         {
             bntCheck.setBackground(getResources().getDrawable(R.drawable.my_button_mode5));
@@ -256,6 +269,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
             textViewRound.setText(countQuestion+"/20");
             updateContent();
             StartProgressBar();
+            Log.d("AA",mangData.size()+"");
         }
     }
 
@@ -277,6 +291,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
         for(int i=1;i<=30;i++){
             randomIndex[i]=1;
         }
+        for(int i=0;i<dd1.length;i++) dd1[i]=0;
         Collections.shuffle(Arrays.asList(randomIndex));
        updateContent();
 
@@ -351,6 +366,10 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                 }
             });
         }
+    }
+    public   void onStop() {
+
+        super.onStop();
     }
 }
 

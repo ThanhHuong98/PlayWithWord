@@ -4,6 +4,7 @@ package com.hfda.playwithwords;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -16,6 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -34,7 +45,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
     ProgressBar myProgressBar;
     LinearLayout layout;
     Round _container; //Activity chứa Fragment
-
+    int []dd=new int[30];
     Context context;
     int numberHint=5; //số hint tối đa cho người dùng
     int point=0; //điểm người dùng có được
@@ -47,6 +58,10 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
     //String resultToHint=new String();
     String realAnswer;
     Character[] res;
+    List<DataMode1234> mData=new ArrayList<>();
+    String mQuestion;
+    String mAnswer;
+
     public Fragment_Round_Mode3()
     {
 
@@ -74,7 +89,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
         btnHint.setOnClickListener(this);
         btnCheck.setOnClickListener(this);
         context=getActivity().getApplicationContext();
-
+        for(int i=0;i<dd.length;i++) dd[i]=0;
         //Khi mới vào vòng đầu tiên thì phải gửi thông điệp lên Activity Round ở trên để nó gửi
         //thông điệp + database xuống cho mình set dữ liệu trên màn hình chơi
         _container.Action("REFRESH");
@@ -214,8 +229,48 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
     }
     /*
     phương thức message trong Interface fromContainerToFrag sẽ được kích hoạt khi mà Activity gửi dữ liệu xuống Fragment*/
+    private void updateContent()
+    {
+        DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
+        myref.child("DB").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mData.clear();
+                for(DataSnapshot dts: dataSnapshot.getChildren()) {
+                    DataMode1234 data=dts.getValue(DataMode1234.class);
+                    mData.add(data);
+                }
+                Random rd=new Random();
+                int index=rd.nextInt(mData.size());
+                while(true)
+                {
+                    if(dd[index]==1)
+                    {
+                        index=rd.nextInt(mData.size());
+                    }
+                    else
+                    {
+                        dd[index]=1;
+                        break;
+                    }
+                }
+                mAnswer=mData.get(index).getWordE();
+                mQuestion=mData.get(index).getDefinition();
+                textViewQuestion.setText((String)mQuestion);
+                realAnswer=mAnswer;
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
     @Override
-    public void InfoToHandle(String mess, String round, Object question, Object answer, String transcription, String[] answerInBtn)
+    public void InfoToHandle(String mess, String round)
     {
 
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
@@ -232,9 +287,8 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             String text= round + "/20";
             if(numberRound!=null)
                 numberRound.setText(text);
-            //set lai cau hoi
-            textViewQuestion.setText((String)question); //phai ep kieu question tuy theo mode (String, Drawable, ...)
-            //set cái background button đáp án người dùng chọn lúc nãy về bình thường, không còn xanh đỏ nữa
+
+            updateContent();
             if(btnCheck!=null)
             {
                 btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn3));
@@ -247,8 +301,6 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             {
                 btnHint.setEnabled(true);
             }
-
-            this.realAnswer = (String)answer;
             StartProgressBar();
         }
     }
@@ -260,5 +312,9 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             res[i] = str.charAt(i);
         }
         return res;
+    }
+    public   void onStop() {
+
+        super.onStop();
     }
 }

@@ -29,7 +29,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/font_opensan_light"
-            android:text="amphibian"
+
             android:textColor="@color/Black"
             android:textSize="32sp" />
 

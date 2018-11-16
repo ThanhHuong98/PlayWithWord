@@ -34,7 +34,7 @@ public class MyDatabase extends SQLiteOpenHelper
 
         //Tạo bảng chứa thông tin user
         db.execSQL("CREATE TABLE IF NOT EXISTS USER_INFO ("
-                +"ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                +"ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +"USERNAME TEXT, "
                 +"PASSWORD TEXT, "
                 +"TOTAL_SCORE INTEGER);");
