@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -138,17 +139,61 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         btnHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hint--;
+
                 String notification="";
-                String strHint=hint+"";
-                if(hint>=0)
+
+                if(hint==1)
                 {
+                    if(Round.flag==0)
+                    {
+                        Round.HienThongBaoMuaHint(getContext());
+                    }
+                }
+                if(hint>0)
+                {
+                    hint--;
+                    String strHint=hint+"";
                     txts.speak(realAnswer,TextToSpeech.QUEUE_FLUSH, null);
                     textViewNumberHint.setText("Hint: "+strHint+""+"/5");
                     notification="Decrease the number of Hint...";
                 }
                 else{
-                    notification="You're out of hint..... ";
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                    dialog.setTitle("Thông Báo:");
+                    dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
+                    dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (points >= 7) {
+                                points -=7;
+                                hint++;
+                            }
+                            else
+                            {
+                                final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
+                                dialog1.setTitle("Thông Báo:");
+                                dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                                dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog1, int which) {
+                                        dialog1.dismiss();
+                                    }
+                                });
+                                dialog1.show();
+                            }
+                            String text = "Hint: " + hint + "/5";
+                            String txtpoint = points + "";
+                            textViewNumberHint.setText(text);
+                            textViewPoint.setText(txtpoint);
+                        }
+                    });
+                    dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
                 }
                 Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
             }

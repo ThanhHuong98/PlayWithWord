@@ -1,5 +1,6 @@
 package com.hfda.playwithwords;
 
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,9 +34,10 @@ import java.util.Random;
 
 public class Round extends AppCompatActivity implements fromFragToContainer
 {
-
+    static boolean isStart=true;
+    static boolean isStop=true;
     static final String MODE = "mode"; //Extra của intent, để nhận thông tin mode thứ mấy từ intent của Menu gửi qua
-
+    static  int flag=0;
     private Fragment_Round_Mode1 fragmentRound1;
     private Fragment_Round_Mode2 fragmentRound2;
     private Fragment_Round_Mode3 fragmentRound3;
@@ -105,7 +109,31 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         }
         ft.commit();
     }
-
+    public static void HienThongBaoMuaHint(Context context)
+    {
+        isStart=false;
+        Button btnOK;
+        CheckBox checkbox;
+        final Dialog dialog=new Dialog(context);
+        dialog.setContentView(R.layout.dialog_thongbaohethint);
+        btnOK=(Button)dialog.findViewById(R.id.btnOK);
+        checkbox=(CheckBox)dialog.findViewById(R.id.checkBox);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                isStart=true;
+            }
+        });
+        checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Round.flag=1;
+                isStart=true;
+            }
+        });
+        dialog.show();
+    }
     //Khi một item ở bên dưới Fragment_Round_ModeX được click thì interface này sẽ được kích hoạt
     //và nhận thông tin ở dưới Fragment gửi lên
     @Override

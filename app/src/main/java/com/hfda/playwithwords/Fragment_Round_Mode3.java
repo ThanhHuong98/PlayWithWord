@@ -1,7 +1,9 @@
 package com.hfda.playwithwords;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -134,9 +136,17 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             res =  splitrealAnswer(realAnswer);
             //editText_Answer3.setText("");
             String notification="";
-            numberHint--;
+
             String strHint=numberHint+"";
-            if(numberHint>=0) //nếu còn trợ giúp
+
+            if(numberHint==1)
+            {
+                if(Round.flag==0)
+                {
+                    Round.HienThongBaoMuaHint(getContext());
+                }
+            }
+            if(numberHint>0) //nếu còn trợ giúp
             {
                 hint.setText("Hint: " + strHint +"/5");
                 notification="Decrease the number of hints...";
@@ -170,14 +180,51 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
 
                     indexOfHint = 0;
                 }
-
+                numberHint--;
                 String text = "Hint: " + numberHint + "/5";
                 hint.setText(text);
             }
             else{
-                notification="You're out of hint!";
+                AlertDialog.Builder dialog= new AlertDialog.Builder(getContext());
+                dialog.setTitle("Thông Báo:");
+                dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
+                dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(point>=7)
+                        {
+                            point-=7;
+                            numberHint++;
+                        }
+                        else
+                        {
+                            final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
+                            dialog1.setTitle("Thông Báo:");
+                            dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                            dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog1, int which) {
+                                    dialog1.dismiss();
+                                }
+                            });
+                            dialog1.show();
+                        }
+
+                        String text = "Hint: " + numberHint + "/5";
+                        String txtpoint = point + "";
+                        hint.setText(text);
+                        textPoint.setText(txtpoint);
+                    }
+                });
+                dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
-            Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
+
         }
        // String result=editText_Answer3.getText().toString();
 

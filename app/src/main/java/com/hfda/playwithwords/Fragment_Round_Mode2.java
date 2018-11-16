@@ -50,7 +50,6 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
     ProgressBar myProgressBar;
     Context context;
     Round _container; //Activity chứa Fragment
-    int flag=0;
     int numberHint=5; //số hint tối đa cho người dùng
     int point=0; //điểm người dùng có được
     int[] dd=new int[30];
@@ -133,28 +132,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
         myHandler.post(runnable);
     }
 
-    public void HienThongBaoMuaHint()
-    {
-        Button btnOK;
-        CheckBox checkbox;
-        final Dialog dialog=new Dialog(getContext());
-        dialog.setContentView(R.layout.dialog_thongbaohethint);
-        btnOK=(Button)dialog.findViewById(R.id.btnOK);
-        checkbox=(CheckBox)dialog.findViewById(R.id.checkBox);
-        btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        checkbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flag=1;
-            }
-        });
-        dialog.show();
-    }
+
     @Override
     public void onClick(View v)
     {
@@ -162,8 +140,10 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
         {
             if(numberHint==1)
             {
-                if(flag==0)
-                HienThongBaoMuaHint();
+                if(Round.flag==0)
+                {
+                    Round.HienThongBaoMuaHint(getContext());
+                }
             }
             if(numberHint>0) //nếu còn trợ giúp
             {
@@ -179,6 +159,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
                         e.setVisibility(View.INVISIBLE);
                         break;
                     }
+
                 }
 
                 String text = "Hint: " + numberHint + "/5";
@@ -189,12 +170,27 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             {
                 AlertDialog.Builder dialog= new AlertDialog.Builder(getContext());
                 dialog.setTitle("Thông Báo:");
-                dialog.setMessage("Bạn có muốn mua Hint không");
+                dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
                 dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        point-=50;
-                        numberHint++;
+                        if(point>=7) {
+                            point -= 7;
+                            numberHint++;
+                        }
+                        else
+                        {
+                            final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
+                            dialog1.setTitle("Thông Báo:");
+                            dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                            dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog1, int which) {
+                                    dialog1.dismiss();
+                                }
+                            });
+                            dialog1.show();
+                        }
                         String text = "Hint: " + numberHint + "/5";
                         String txtpoint = point + "";
                         hint.setText(text);

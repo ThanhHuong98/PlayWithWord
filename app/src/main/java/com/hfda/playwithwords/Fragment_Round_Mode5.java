@@ -1,6 +1,7 @@
 package com.hfda.playwithwords;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -214,46 +215,97 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
 
                 }
             });
-        }else if(v.getId()==imgBntHint.getId()){
+        }
+        else if(v.getId()==imgBntHint.getId())
+        {
            imgBntHint.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   if(hint<=0){
-                       return;
-                   }
-                   boolean ch=false;
-                   int posCurrent=0;
-                   String[] demo = new String[]{};
-                   listinit = new ArrayList<String>(Arrays.asList(demo));
-
-                   int i;
-                   for(i=0;i<listadd.size();i++){
-                       if(listadd.get(i).compareTo(listEnglish[i])==0){
-                           listadd.add(listEnglish[i]);
-                       }
-                       else{
-                           break;
+                   if(hint==1)
+                   {
+                       if(Round.flag==0)
+                       {
+                           Round.HienThongBaoMuaHint(getContext());
                        }
                    }
+                   if(hint>0)
+                   {
+                       boolean ch=false;
+                       int posCurrent=0;
+                       String[] demo = new String[]{};
+                       listinit = new ArrayList<String>(Arrays.asList(demo));
 
-                   listadd = new ArrayList<String>(Arrays.asList(demo));
-                   for(int j=0;j<=i;j++) {
-                       listadd.add(listEnglish[j]);
+                       int i;
+                       for(i=0;i<listadd.size();i++){
+                           if(listadd.get(i).compareTo(listEnglish[i])==0){
+                               listadd.add(listEnglish[i]);
+                           }
+                           else{
+                               break;
+                           }
+                       }
+
+                       listadd = new ArrayList<String>(Arrays.asList(demo));
+                       for(int j=0;j<=i;j++) {
+                           listadd.add(listEnglish[j]);
+                       }
+                       i++;
+
+                       for(;i<listEnglish.length;i++){
+                           listinit.add(listEnglish[i]);
+
+                       }
+                       initarrayAdapter
+                               = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listinit);
+                       addarrayAdapter
+                               = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listadd);
+                       hint--;
+                       tvHint.setText("Hint: "+String.valueOf(hint)+"/5");
+                       initGridView.setAdapter(initarrayAdapter);
+                       addGridView.setAdapter(addarrayAdapter);
                    }
-                   i++;
+                   else
+                   {
+                       AlertDialog.Builder dialog= new AlertDialog.Builder(getContext());
+                       dialog.setTitle("Thông Báo:");
+                       dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
+                       dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               if(point>=7)
+                               {
+                                   point-=7;
+                                   hint++;
+                               }
+                               else
+                               {
+                                   final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
+                                   dialog1.setTitle("Thông Báo:");
+                                   dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                                   dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                       @Override
+                                       public void onClick(DialogInterface dialog1, int which) {
+                                           dialog1.dismiss();
+                                       }
+                                   });
+                                   dialog1.show();
+                               }
 
-                   for(;i<listEnglish.length;i++){
-                       listinit.add(listEnglish[i]);
-
+                               String text = "Hint: " + hint + "/5";
+                               String txtpoint = point + "";
+                               tvHint.setText(text);
+                               textViewPoint.setText(txtpoint);
+                           }
+                       });
+                       dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               dialog.dismiss();
+                           }
+                       });
+                       dialog.show();
                    }
-                   initarrayAdapter
-                           = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listinit);
-                   addarrayAdapter
-                           = new ArrayAdapter<String>(_container, R.layout.mode5_custom_listitem, R.id.tvText, listadd);
-                   hint--;
-                   tvHint.setText("Hint: "+String.valueOf(hint)+"/5");
-                   initGridView.setAdapter(initarrayAdapter);
-                   addGridView.setAdapter(addarrayAdapter);
+
                }
            });
        }

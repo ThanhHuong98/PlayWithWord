@@ -1,6 +1,8 @@
 package com.hfda.playwithwords;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -100,6 +102,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
     }
     public void StartProgressBar()
     {
+        label:
         myHandler = new Handler();
         accum=0;
         myProgressBar.setMax(1000);
@@ -112,9 +115,9 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             {
                 if(accum<=myProgressBar.getMax())
                 {
-                    myProgressBar.incrementProgressBy(progressStep);
-                    accum++;
-                    myHandler.postDelayed(runnable, 10);
+                        myProgressBar.incrementProgressBy(progressStep);
+                        accum++;
+                        myHandler.postDelayed(runnable, 10);
                 }
                 else
                     _container.Action("REFRESH");
@@ -250,10 +253,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
                 myHandler.removeCallbacks(runnable);
             }
-            else
-            {
-                //Toast.makeText(context, "You must enter at least one character", Toast.LENGTH_SHORT).show();
-            }
+
         }
         //Trường hợp user dùng hint, xong dùng text nhập đáp án, xong lại dùng hint ???
         //Press Button Hint
@@ -262,11 +262,20 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             res =  splitrealAnswer(realAnswer);
             editTextAnswer.setText("");
             String notification="";
-            hint--;
-            String strHint=hint+"";
+
+
             //Handler Split String: Hint: 3/5;
-            if(hint>=0)
+            if(hint==1)
             {
+                if(Round.flag==0)
+                {
+                    Round.HienThongBaoMuaHint(getContext());
+                }
+            }
+            if(hint>0)
+            {
+                hint--;
+                String strHint=hint+"";
                 textViewNumberHint.setText("Hint: "+strHint+"/5");
                 notification="Decrease the number of Hint...";
                 //Show your view
@@ -298,7 +307,45 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
             }
             else{
-                notification="You're out of hint..... ";
+
+                AlertDialog.Builder dialog= new AlertDialog.Builder(getContext());
+                dialog.setTitle("Thông Báo:");
+                dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
+                dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(point>=7) {
+                            point -= 7;
+                            hint++;
+                        }
+                        else
+                        {
+                            final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
+                            dialog1.setTitle("Thông Báo:");
+                            dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                            dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog1, int which) {
+                                    Round.isStart=true;
+                                    dialog1.dismiss();
+                                }
+                            });
+                            dialog1.show();
+                        }
+                        String text = "Hint: " + hint + "/5";
+                        String txtpoint = point + "";
+                        textViewNumberHint.setText(text);
+                        textViewPoint.setText(txtpoint);
+                    }
+                });
+                dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
             }
            // Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
         }
