@@ -121,11 +121,10 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
-<<<<<<< HEAD
+
         for(int i=0;i<dd.length;i++) dd[i]=0;
         // handler=new Handler();
-=======
->>>>>>> a2e84670a8c515f5fb561a742465cc6f0629dd70
+
         _container = (Round)getActivity();
         checkPermission();
         _container.Action("REFRESH");
@@ -311,55 +310,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
 
         return countCorrect*1.0/splitRealAnswer.length;
     }
-<<<<<<< HEAD
 
-
-    private void getSpeechInput() {
-
-        intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-
-        try {
-            startActivityForResult(intent, 10);
-        } catch (ActivityNotFoundException a) {
-            Toast.makeText(context, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case 10:
-                if (resultCode == RESULT_OK && data != null) {
-                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    strOfSpeech=result.get(0);
-                    double sim=compareString(strOfSpeech,realAnswer)*100;
-                    int k=(int)Math.round(sim);
-                    String nof="You only read exactly "+k+"%";
-                    Toast.makeText(context,nof,Toast.LENGTH_LONG).show();
-                    if(k>=60){
-                            points+=20;
-                        _container.Action("RIGHT");
-                    }
-                    else{
-                        _container.Action("WRONG");
-                    }
-
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            _container.Action("REFRESH");
-                        }
-                    }, 1000);
-                }
-                break;
-=======
->>>>>>> a2e84670a8c515f5fb561a742465cc6f0629dd70
 
     private void checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -371,11 +322,8 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
             }
         }
     }
-<<<<<<< HEAD
     public   void onStop() {
 
         super.onStop();
     }
-=======
->>>>>>> a2e84670a8c515f5fb561a742465cc6f0629dd70
 }
