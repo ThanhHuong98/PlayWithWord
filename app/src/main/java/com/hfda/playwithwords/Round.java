@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
@@ -201,10 +202,11 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
+            MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.sound_correct);
+            mediaPlayer.start();
         }
         if(action.equals("WRONG"))
         {
-
             notification.playClickSound();
             gifImageView.setVisibility(View.VISIBLE);
             gifImageView.setGifImageResource(R.drawable.gif_wrong);
@@ -218,6 +220,8 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
+            MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.sound_incorrect);
+            mediaPlayer.start();
 
         }
     }
