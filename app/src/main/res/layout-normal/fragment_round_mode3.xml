@@ -112,7 +112,8 @@
             android:paddingLeft="7dp"
             android:textColor="@color/Black"
             android:background="@android:color/transparent"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/textHint"

@@ -113,10 +113,10 @@
             android:layout_marginLeft="45dp"
             android:layout_marginTop="15dp"
             android:hint="Your Answer"
-
-            android:inputType="textCapCharacters"
+            android:inputType="textCapCharacters|text"
             android:paddingLeft="10dp"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            />
 
     <ImageView
         android:id="@+id/iconV"

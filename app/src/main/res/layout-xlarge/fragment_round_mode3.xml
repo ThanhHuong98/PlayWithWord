@@ -115,7 +115,7 @@
             android:layout_marginTop="74dp"
             android:layout_marginEnd="45dp"
             android:hint="Your Answer"
-            android:inputType="textCapCharacters"
+            android:inputType="textCapCharacters|text"
             android:paddingLeft="30dp"
             android:textSize="55dp"
 
