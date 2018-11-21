@@ -80,8 +80,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
             arr[j] = temp;
         }
     }
-    private void updateContent()
-    {
+    private void updateContent(){
 
             DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
             myref.child("DBmode5").addValueEventListener(new ValueEventListener() {
