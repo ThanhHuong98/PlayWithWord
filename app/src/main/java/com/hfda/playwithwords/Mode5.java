@@ -1,8 +1,8 @@
 package com.hfda.playwithwords;
 
 public class Mode5 {
-    private  String VN;
-    private  String TA;
+    private  String VN;//Câu tiếng việt
+    private  String TA;//Câu tiếng anh
     public Mode5()
     {
         //mac dinh

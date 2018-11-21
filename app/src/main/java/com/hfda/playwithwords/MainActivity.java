@@ -63,26 +63,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-//    @Override
-//    public void onClick(View v) {
-//
-//      if(v.getId()==btnIntentMenu.getId())
-//      {
-//          //Chuyen den Tab Menu..
-//          Intent intent = new Intent(getApplicationContext(), Menu.class);
-//          startActivity(intent);
-//      }
-//
-//    }
-
-    /**
-     * Checks if the app has permission to write to device storage
-     * <p>
-     * If the app does not has permission then the user will be prompted to grant permissions
-     *
-     * @param activity
-     */
-
     public static boolean verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
