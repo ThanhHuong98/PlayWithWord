@@ -1,13 +1,12 @@
 package com.hfda.playwithwords;
 
-public class DataMode1234
-{
-    private  String wordE;//từ tiếng anh
-    private  String image;//Hình ảnh mode 2
-    private  String sound;//âm thanh mode4
-    private  String wordV;//nghĩa tiếng việt
-    private  String pronunciation;//phiên dịch
-    private  String definition;//Định nghĩa mode3
+public class DataMode1234 {
+    private  String wordE;
+    private  String image;
+    private  String sound;
+    private  String wordV;
+    private  String pronunciation;
+    private  String definition;
 
     public DataMode1234(String wordE, String image, String sound, String wordV, String pronunciation, String definition) {
         this.wordE = wordE;
