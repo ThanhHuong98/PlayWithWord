@@ -52,18 +52,19 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     private int numberRightAnswer=0; //s&#x1ed1; c&acirc;u tr&#x1ea3; l&#x1edd;i &#x111;&uacute;ng
     private GifImageView gifImageView;
     private SoundManager notification = new SoundManager();
-    private List<DataMode1234> mData= new ArrayList<>();
+
+
     //những thông tin cần set mới cho mỗi màn chơi trong 20 màn, tùy theo mỗi mode sẽ bỏ thêm
     //một vài đối tượng ở đây, vd như id hình ảnh, id âm thanh, chuỗi định nghĩa từ, ...
     //những đối tượng này sẽ được đọc ra từ database
-    private Object newQuestion; //
-    private Object newAnswer;
+    private String newQuestion; //
+    private String newAnswer;
     private String newTransciption;
     private String[] newAnswerInBtn = new String[4];
-
+    int[] dd=new int[30];
     private ArrayList<Integer> idArray = new ArrayList<>(); //mảng chứa các dòng đã được truy xuất từ database trước đó
     //khi random để lấy 1 dòng mới thì phải so với mảng xem dòng đó đã được random chưa
-
+    int size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -76,7 +77,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         Intent intent = getIntent(); //nhận intent từ Menu gửi qua
         String m = intent.getStringExtra(MODE); //lấy Extra
         mode = Integer.parseInt(m); //chuyển Extra từ String sang int
-
+        for(int i=0;i<dd.length;i++) dd[i]=0;
         ft = getSupportFragmentManager().beginTransaction();
 
         //tùy theo thông tin mode mà Menu gửi qua, ta sẽ tạo ra 1 fragment theo mode đó để
@@ -109,6 +110,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                 break;
         }
         ft.commit();
+
     }
     public static void HienThongBaoMuaHint(Context context)
     {
@@ -135,6 +137,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         });
         dialog.show();
     }
+
     //Khi một item ở bên dưới Fragment_Round_ModeX được click thì interface này sẽ được kích hoạt
     //và nhận thông tin ở dưới Fragment gửi lên
     @Override
@@ -143,32 +146,80 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     {
         if(action.equals("REFRESH")) //người dùng đã click chọn/điền đáp án, ta sẽ set lại toàn bộ dữ liệu mới cho màn hình
         {
+            Random rd=new Random();
+            int index=rd.nextInt(MainActivity.mData.size());
+            while(true)
+            {
+                if(dd[index]==1)
+                {
+                    index=rd.nextInt(MainActivity.mData.size());
+                }
+                else
+                {
+                    dd[index]=1;
+                    break;
+                }
+            }
             if (round < 20) //nếu còn trong 20 vòng thì mới set dữ liệu lại
             {
-             //   readData();
+
                 round++;
                 //thay đổi tất cả text trong button và TextView câu hỏi thành 1 text khác
                 switch (mode)
                 {
                     case 1:
-                        //Activity Round sẽ gửi bộ dữ liệu gồm câu hỏi và 4 đáp án mới xuống cho Fragment set lại
-                        //thông qua phương thức message của Interface fromContainerToFrag
-                        fragmentRound1.InfoToHandle("NEW", round+"");
+                        newQuestion=MainActivity.mData.get(index).getWordE();
+                        newAnswer= MainActivity.mData.get(index).getWordV();
+                        newTransciption=MainActivity.mData.get(index).getPronunciation();
+                        ArrayList<Integer> rand = new ArrayList<>(); // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                        rand.add(index);
+                        newAnswerInBtn[0]=newAnswer;
+                        for(int i=1; i<=3; i++)
+                        {
+                            int random = rd.nextInt(MainActivity.mData.size());
+                            while(rand.indexOf(random)>=0)
+                            {
+                                random = rd.nextInt(MainActivity.mData.size());
+                            }
+                            rand.add(random);
+                            newAnswerInBtn[i] = MainActivity.mData.get(random).getWordV();
+                        }
+
+                        fragmentRound1.InfoToHandle("NEW", round+"",newAnswer,newQuestion,newTransciption,"",newAnswerInBtn);
                         break;
                     case 2:
-                        fragmentRound2.InfoToHandle("NEW", round+"");
+                        newQuestion=MainActivity.mData.get(index).getImage();
+                        newAnswer= MainActivity.mData.get(index).getWordE();
+                        ArrayList<Integer> rand1 = new ArrayList<>(); // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                        rand1.add(index);
+                        newAnswerInBtn[0]=newAnswer;
+                        for(int i=1; i<=3; i++)
+                        {
+                            int random = rd.nextInt(MainActivity.mData.size());
+                            while(rand1.indexOf(random)>=0)
+                            {
+                                random = rd.nextInt(MainActivity.mData.size());
+                            }
+                            rand1.add(random);
+                            newAnswerInBtn[i] = MainActivity.mData.get(random).getWordE();
+                        }
+                        fragmentRound2.InfoToHandle("NEW", round+"",newAnswer,newQuestion,newTransciption,"",newAnswerInBtn);
                         break;
                     case 3:
-                        fragmentRound3.InfoToHandle("NEW", round+"");
+                        newQuestion=MainActivity.mData.get(index).getDefinition();
+                        newAnswer=MainActivity.mData.get(index).getWordE();
+                        fragmentRound3.InfoToHandle("NEW", round+"",newAnswer,newQuestion,"","",null);
                         break;
                     case 4:
-                        fragmentRound4.InfoToHandle("NEW" ,round+"");
+                        newQuestion=MainActivity.mData.get(index).getSound();
+                        newAnswer=MainActivity.mData.get(index).getWordE();
+                        fragmentRound4.InfoToHandle("NEW", round+"",newAnswer,newQuestion,"","",null);
                         break;
                     case 5:
-                        fragmentRound5.InfoToHandle("NEW" ,round+"");
+                        fragmentRound5.InfoToHandle("NEW", round+"",newAnswer,newQuestion,newTransciption,"",newAnswerInBtn);
                         break;
                     case 6:
-                        fragmentRound6.InfoToHandle("NEW" ,round+"");
+                        fragmentRound6.InfoToHandle("NEW", round+"",newAnswer,newQuestion,newTransciption,"",newAnswerInBtn);
                         break;
                 }
             }
@@ -187,7 +238,6 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         {
             point +=20;
             numberRightAnswer++;
-
             notification.playClickSound();
             gifImageView.setVisibility(View.VISIBLE);
             gifImageView.setGifImageResource(R.drawable.gif_right);

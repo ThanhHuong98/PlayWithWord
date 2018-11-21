@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity
     private Handler myHandler;
     private Runnable runnable;
     private boolean canAccess = false;
-
+    public static List<DataMode1234> mData= new ArrayList<>();
+    DatabaseReference myref;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     //mảng lưu các quyền cần truy cập
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity
 /*----------------------*/
 
         //đòi quyển truy cập
-
+        myref=FirebaseDatabase.getInstance().getReference();
         canAccess = verifyStoragePermissions(this);
         while (!canAccess) {
             Toast.makeText(this, "You must allow app access your storage to share your score!", Toast.LENGTH_LONG).show();
@@ -60,9 +61,27 @@ public class MainActivity extends AppCompatActivity
                     startActivity(intent);
                 }
             }, 3000);
+        readData();
 
     }
+    private  void readData()
+    {
+        myref.child("DB").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mData.clear();
+                for(DataSnapshot dts: dataSnapshot.getChildren()) {
+                    DataMode1234 data=dts.getValue(DataMode1234.class);
+                    mData.add(data);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 //    @Override
 //    public void onClick(View v) {
 //

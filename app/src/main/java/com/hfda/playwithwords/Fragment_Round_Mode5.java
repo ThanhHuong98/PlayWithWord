@@ -312,7 +312,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     }
 
     @Override
-    public void InfoToHandle(String mess, String roundOfMode) {
+    public void InfoToHandle(String mess, String roundOfMode,String answer, String question,String Trans,String deFine,String[]answerBtn) {
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
         {
             bntCheck.setBackground(getResources().getDrawable(R.drawable.my_button_mode5));

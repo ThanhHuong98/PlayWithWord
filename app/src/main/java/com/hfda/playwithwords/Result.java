@@ -67,7 +67,6 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         mode = Integer.parseInt(intent.getStringExtra(MODE));
         finalResult = intent.getStringExtra(FINAL_RESULT);
         totalScore = intent.getStringExtra(TOTAL_SCORE);
-
         switch(mode)
         {
             case 1: case 4:
@@ -97,13 +96,13 @@ public class Result extends AppCompatActivity implements fromFragToContainer
                 case 1: case 4:
                     //Activity Round sẽ gửi bộ dữ liệu gồm câu hỏi và 4 đáp án mới xuống cho Fragment set lại
                     //thông qua phương thức InfoToHandle của Interface fromContainerToFrag
-                    fragmentResultMode14.InfoToHandle(totalScore, finalResult);
+                fragmentResultMode14.InfoToHandle(totalScore, finalResult,"","","","",null);
                     break;
                 case 2: case 5:
-                    fragmentResultMode2.InfoToHandle(totalScore, finalResult);
+                fragmentResultMode2.InfoToHandle(totalScore, finalResult,"","","","",null);
                     break;
                 case 3: case 6:
-                    fragmentResultMode3.InfoToHandle(totalScore, finalResult);
+                fragmentResultMode3.InfoToHandle(totalScore, finalResult,"","","","",null);
                     break;
             }
         }

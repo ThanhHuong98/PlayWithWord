@@ -163,7 +163,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
         });
     }
     @Override
-    public void InfoToHandle(String mess, String roundOfMode) {
+    public void InfoToHandle(String mess, String roundOfMode,String answer, String question,String Trans,String deFine,String[]answerBtn) {
         if(mess.equals("NEW"))
         {
             editTextAnswer.setHint("Your Answer");
@@ -174,7 +174,10 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
             textViewRound.setText(roundOfMode+ "/20");
             editTextAnswer.setText("");
             i=0;
-            updateContent();
+            mQuestion = question;
+            realAnswer=answer;
+
+            //updateContent();
             StartProgressBar();
         }
         /*if(mess.equals("RIGHTSOUND"))

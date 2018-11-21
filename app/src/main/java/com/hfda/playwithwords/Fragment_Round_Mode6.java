@@ -97,7 +97,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     public void onClick(View v) {
     }
     @Override
-    public void InfoToHandle(String mess, String roundOfMode) {
+    public void InfoToHandle(String mess, String roundOfMode,String answer, String question,String Trans,String deFine,String[]answerBtn){
         if(mess.equals("NEW"))
         {
             index++;

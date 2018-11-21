@@ -317,7 +317,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
 
     }
     @Override
-    public void InfoToHandle(String mess, String round)
+    public void InfoToHandle(String mess, String round,String answer,String question,String c,String d,String[] e)
     {
 
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
@@ -335,7 +335,10 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             if(numberRound!=null)
                 numberRound.setText(text);
 
-            updateContent();
+            textViewQuestion.setText((String)question);
+            realAnswer=answer;
+
+            //updateContent();
             if(btnCheck!=null)
             {
                 btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn3));

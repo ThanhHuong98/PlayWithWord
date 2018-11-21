@@ -283,8 +283,10 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mData.clear();
+
                 for(DataSnapshot dts: dataSnapshot.getChildren()) {
                     DataMode1234 data=dts.getValue(DataMode1234.class);
+
                     mData.add(data);
                 }
                 Random rd=new Random();
@@ -321,13 +323,14 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
                 }
                 SufferStringArray(mAnswerButton);
                 Picasso.get().load(mQuestion.toString()).into(imgRound);
-                //set lại dữ liệu cho 4 button đáp án, nếu nó có bị unenable hoặc bị ẩn thì cho nó bình thường trở lại
+
                 for(int i=0; i<4; i++)
                 {
                     if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
                     if(!btnAnswer[i].isShown()) btnAnswer[i].setVisibility(View.VISIBLE);
                     btnAnswer[i].setText(mAnswerButton[i]);
                 }
+                SufferStringArray(mAnswerButton);
                 realAnswer = (String)mAnswer;
 
             }
@@ -341,7 +344,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
     /*
     phương thức message trong Interface fromContainerToFrag sẽ được kích hoạt khi mà Activity gửi dữ liệu xuống Fragment*/
     @Override
-    public void InfoToHandle(String mess, String roundOfMode)
+    public void InfoToHandle(String mess, String roundOfMode,String answer, String question,String Trans,String deFine,String[]answerBtn)
     {
 
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
@@ -349,7 +352,17 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
 
             String text= roundOfMode + "/20";
             numberRound.setText(text);
-            updateContent();
+            Picasso.get().load(question.toString()).into(imgRound);
+            SufferStringArray(answerBtn);
+            for(int i=0; i<4; i++)
+            {
+                if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
+                if(!btnAnswer[i].isShown()) btnAnswer[i].setVisibility(View.VISIBLE);
+                btnAnswer[i].setText(answerBtn[i]);
+            }
+
+            realAnswer = (String)answer;
+            //updateContent();
             //set cái background button đáp án người dùng chọ lúc nãy về bình thường, không còn xanh đỏ nữa
             if(userChosen!=null)
             {
