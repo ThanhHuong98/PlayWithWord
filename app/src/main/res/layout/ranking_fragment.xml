@@ -17,7 +17,6 @@
         android:layout_centerHorizontal="true"
         android:textColor="#FF7576"/>
     <RelativeLayout
-        android:id="@+id/ic_rankings"
         android:layout_below="@+id/titleRanking"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -67,10 +66,15 @@
             android:layout_marginRight="50dp"
            />
 
-
     </RelativeLayout>
 
 
     <!--Chua bang xep hang-->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+
+
+    </FrameLayout>
 </RelativeLayout>

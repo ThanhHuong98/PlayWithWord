@@ -59,8 +59,7 @@
             android:textSize="25sp"
             android:paddingLeft="15dp"
             android:fontFamily="@font/font_opensan_regular"
-            android:background="@android:color/transparent"
-            android:inputType="text"/>
+            android:background="@android:color/transparent"/>
         <Button
             android:id="@+id/btn_done"
             android:layout_width="71dp"
