@@ -360,7 +360,6 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
                 if(!btnAnswer[i].isShown()) btnAnswer[i].setVisibility(View.VISIBLE);
                 btnAnswer[i].setText(answerBtn[i]);
             }
-
             realAnswer = (String)answer;
             //updateContent();
             //set cái background button đáp án người dùng chọ lúc nãy về bình thường, không còn xanh đỏ nữa

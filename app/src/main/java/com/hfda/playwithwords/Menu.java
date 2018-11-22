@@ -47,9 +47,9 @@ public class Menu extends AppCompatActivity
     };*/
     /*---------------------------------------------------------------------------*/
     //First We Declare Titles And Icons For Our Navigation Drawer List View
-    String TITLES[] = {"HOME", "RANKING", "ABOUT US", "LOGOUT"};
+    String TITLES[] = {"HOME", "RANKING", "ABOUT US", "FEED BACK", "LOGOUT"};
     //This Icons And Titles Are holded in an Array as you can see
-    int ICONS[] = {R.drawable.ic_home_icon, R.drawable.ic_buffoon, R.drawable.ic_about_us, R.drawable.ic_logout};
+    int ICONS[] = {R.drawable.ic_home_icon, R.drawable.ic_buffoon, R.drawable.ic_about_us,R.drawable.ic_love ,R.drawable.ic_logout};
 
     //Similarly we Create a String Resource for the UserName, Point, Rank  in the header view
     //Sau nany doc tu database vao
@@ -179,6 +179,10 @@ public class Menu extends AppCompatActivity
                 replaceFragment(fragment1,"ABOUT");
                 break;
             case 4:
+                Fragment fragment4=new Fragment_FeedBack();
+                replaceFragment(fragment4,"FEED BACK");
+                break;
+            case 5:
                 //Dialog
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setMessage("Are you sure, You wanted to Log-out");
@@ -215,6 +219,7 @@ public class Menu extends AppCompatActivity
                 break;
         }
     }
+    /*--------------------------------------------------------------------------------------------*/
     public void replaceFragment(Fragment fragment, String tag)
     {
         //Get current fragment placed in container
@@ -235,7 +240,8 @@ public class Menu extends AppCompatActivity
                 .commit();
     }
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         int fragmentsInStack = getSupportFragmentManager().getBackStackEntryCount();
         while (fragmentsInStack > 1)
         { // If we have more than one fragment, pop back stack
@@ -243,8 +249,6 @@ public class Menu extends AppCompatActivity
             fragmentsInStack--;
         }
         if (fragmentsInStack == 1) { // Finish activity, if only one fragment left, to prevent
-            // leaving empty screen
-            //finish();
         } else {
             super.onBackPressed();
         }

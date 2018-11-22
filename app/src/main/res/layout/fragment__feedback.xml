@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment_FeedBack"
+    android:background="@drawable/feedback_background"
+    android:layout_centerHorizontal="true">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="@font/font_roboto"
+        android:textColor="#000"
+        android:layout_marginTop="30dp"
+        android:text="We hope you enjoyed our Game"
+        android:layout_gravity="center_horizontal"
+        />
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:stepSize="1"
+        android:rating="5"
+        android:theme="@style/RatingBar"
+        />
+    <TextView
+        android:id="@+id/tvRatingScale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Awesome. I love it"
+        android:textSize="16sp"
+        android:fontFamily="@font/font_opensan_regular"
+        android:textStyle="normal"
+        android:textColor="#000"/>
+    <EditText
+        android:id="@+id/txtFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:lines="7"
+        android:layout_marginTop="20dp"
+        android:hint="Tell us what you loved"
+        android:textColorHint="#d6020202"
+        android:fontFamily="@font/font_opensan_regular"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:gravity="top"
+        android:background="@drawable/custom_textbox_feedback"
+
+        />
+    <Button
+        android:id="@+id/btnSendFeedBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button_sendfeedback"
+        android:text="Submit"
+        android:textSize="15sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

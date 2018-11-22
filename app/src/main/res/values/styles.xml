@@ -16,4 +16,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@color/PinkLight</item>
+    </style>
+
     </resources>
