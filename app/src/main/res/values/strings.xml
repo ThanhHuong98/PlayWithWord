@@ -79,4 +79,16 @@
     <string name="fire">Có</string>
     <string name="cancel">Không</string>
 
+    <!--Used for SignIn.....-->
+    <string name="title">PLAY WITH WORDS</string>
+    <string name="signin">Sign In</string>
+    <string name="signup">Sign Up</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="forgotPassword">Forgot password?</string>
+    <string name="confirmPass">Confirm Password</string>
+    <string name="connectWith">Connect with</string>
+    <string name="facebook_app_id">199136370967670</string>
+    <string name="fb_login_protocol_scheme">fb199136370967670</string>
+
 </resources>

@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentRankings extends Fragment {
+public class FragmentRankings extends Fragment
+{
 
     ListView lv;
     List<ListViewRankings>mListViewRankings;

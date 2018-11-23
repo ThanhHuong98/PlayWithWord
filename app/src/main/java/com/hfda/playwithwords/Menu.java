@@ -249,6 +249,8 @@ public class Menu extends AppCompatActivity
             fragmentsInStack--;
         }
         if (fragmentsInStack == 1) { // Finish activity, if only one fragment left, to prevent
+            /*Intent intent = new Intent(getApplicationContext(),MainSignIn_SignUpActivity.class);
+            startActivity(intent);*/
         } else {
             super.onBackPressed();
         }

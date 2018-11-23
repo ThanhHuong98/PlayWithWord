@@ -27,7 +27,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
-    private Button btnIntentMenu;
     private Handler myHandler;
     private Runnable runnable;
     private boolean canAccess = false;
@@ -51,13 +50,14 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "You must allow app access your storage to share your score!", Toast.LENGTH_LONG).show();
             canAccess = verifyStoragePermissions(this);
         }
-            //Sau 3s thì sẽ tự động chuyển qua menu
+        //Man hinh Splash...
+            //Sau 3s thì sẽ tự động chuyển qua SignIn Main
             myHandler = new Handler();
             myHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     while(!canAccess){}
-                    Intent intent = new Intent(getApplicationContext(), Menu.class);
+                    Intent intent = new Intent(getApplicationContext(),SignIn_SignUpActivity.class);
                     startActivity(intent);
                 }
             }, 3000);
@@ -82,25 +82,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-//    @Override
-//    public void onClick(View v) {
-//
-//      if(v.getId()==btnIntentMenu.getId())
-//      {
-//          //Chuyen den Tab Menu..
-//          Intent intent = new Intent(getApplicationContext(), Menu.class);
-//          startActivity(intent);
-//      }
-//
-//    }
 
-    /**
-     * Checks if the app has permission to write to device storage
-     * <p>
-     * If the app does not has permission then the user will be prompted to grant permissions
-     *
-     * @param activity
-     */
 
     public static boolean verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
