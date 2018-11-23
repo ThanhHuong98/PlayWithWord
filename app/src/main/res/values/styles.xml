@@ -5,6 +5,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- enable window content transitions -->
     </style>
 
     <style name="AppTheme.NoActionBar">

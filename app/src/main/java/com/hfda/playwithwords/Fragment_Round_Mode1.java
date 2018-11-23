@@ -146,7 +146,6 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                     Round.HienThongBaoMuaHint(getContext());
                 }
             }
-            else
             if(numberHint>0) //nếu còn trợ giúp
             {
                 //lam mo di 1 dap an sai
