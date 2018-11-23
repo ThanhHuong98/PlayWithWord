@@ -21,6 +21,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -182,7 +183,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                         alertDialogBuilder.setMessage("Correct");
                         AlertDialog alertDialog = alertDialogBuilder.create();
                         alertDialog.show();*/
-                       bntCheck.setBackground(getResources().getDrawable(R.drawable.btn_mode5_press));
+                     //  bntCheck.setBackground(getResources().getDrawable(R.drawable.btn_mode5_press));
 
                         point+=20;
                         textViewPoint.setText(String.valueOf(point));
@@ -192,7 +193,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                     }
                     else{
 
-                        bntCheck.setBackground(getResources().getDrawable(R.drawable.btn_wrong));
+                      //  bntCheck.setBackground(getResources().getDrawable(R.drawable.btn_wrong));
                         _container.Action("WRONG");
                         /*AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(_container);
                         alertDialogBuilder.setMessage("Error");
@@ -319,7 +320,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     public void InfoToHandle(String mess, String roundOfMode,String answer, String question,String Trans,String deFine,String[]answerBtn) {
         if(mess.equals("NEW")) //Activity gửi thông diệp xuống kêu set lại dữ liệu trên màn hình cho vòng chơi mới
         {
-            bntCheck.setBackground(getResources().getDrawable(R.drawable.my_button_mode5));
+          //  bntCheck.setBackground(getResources().getDrawable(R.drawable.my_button_mode5));
             index++;
             countQuestion++;
             textViewRound.setText(countQuestion+"/20");
@@ -333,7 +334,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_round_mode5, container, false);
+        RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_round_mode5, container, false);
         _container = (Round)getActivity();
         textViewQuestion = (layout).findViewById(R.id.textViewQuestion);
         initGridView = (layout).findViewById(R.id.initGridView);

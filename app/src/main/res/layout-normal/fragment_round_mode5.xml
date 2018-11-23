@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_mode5"
-    android:orientation="vertical">
+    android:background="@drawable/background_mode5">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,56 +15,78 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="35dp"
         android:progressBackgroundTint="@color/DimGray"
-        android:progressTint="@color/Blue" />
+        android:progressTint="#0D8DF0" />
 
     <TextView
         android:id="@+id/textViewRound"
+        android:layout_below="@+id/myProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="19dp"
+        android:layout_alignLeft="@id/myProgressBar"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Round0"
         android:textColor="@color/Black"
-        android:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/entry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/font_opensan_light"
-        android:text="@string/title_mode5"
-        android:textColor="@color/Black"
         android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/textViewQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/font_opensan_regular"
+        <TextView
+            android:id="@+id/entry"
+            android:layout_below="@+id/textViewRound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensanslight"
+            android:text="@string/title_mode5"
+            android:layout_marginTop="20dp"
+            android:layout_alignLeft="@id/myProgressBar"
+            android:textColor="@color/Black"
+            android:textSize="25sp" />
 
-        android:textColor="@color/Black"
-        android:textSize="20sp" />
-
-    <GridView
-        android:id="@+id/addGridView"
+        <TextView
+            android:id="@+id/textViewQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/opensansregular"
+            android:textColor="@color/Black"
+            android:textSize="20sp"
+            android:layout_below="@+id/entry"
+            android:layout_alignLeft="@id/myProgressBar"
+            android:layout_alignRight="@id/myProgressBar"
+            android:text="Toi doc mot quyen sach"/>
+    <RelativeLayout
+        android:layout_below="@+id/textViewQuestion"
+        android:id="@+id/addGridViewLayout"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/LightSkyBlue"
+        android:layout_marginTop="10dp">
+        <GridView
+            android:id="@+id/addGridView"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:numColumns="5" />
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="#0D8DF0"
+            android:layout_centerVertical="true"
+            />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="#0D8DF0"
+            android:layout_alignParentBottom="true"/>
 
-        android:numColumns="5" />
+    </RelativeLayout>
 
     <GridView
+        android:layout_below="@id/addGridViewLayout"
         android:id="@+id/initGridView"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp"
@@ -75,18 +96,17 @@
 
     <Button
         android:id="@+id/btnCheck"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/my_button_mode5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/initGridView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_button_mode5"
         android:fontFamily="@font/font_opensan_light"
-        android:gravity="center"
-        android:padding="5dp"
         android:text="@string/Check"
         android:textAlignment="center"
-        android:textColor="@color/Black"
-        android:textSize="35sp"
+        android:textColor="@color/White"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -98,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/Blue"
+            android:background="#0D8DF0"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="12dp"
             android:text="Point(s):"
@@ -111,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView"
             android:layout_toRightOf="@+id/textView"
-            android:background="@color/Blue"
+            android:background="#0D8DF0"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="25dp"
             android:text="@string/Score"
@@ -142,4 +162,7 @@
             android:src="@drawable/ic_action_hint" />
     </RelativeLayout>
 
-</LinearLayout>
+
+
+
+</RelativeLayout>

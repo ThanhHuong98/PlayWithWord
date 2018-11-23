@@ -35,7 +35,7 @@
         android:layout_marginTop="15dp"
         android:text="How to play"
         android:textSize="60sp"
-        android:textColor="@color/PinkLight"
+        android:textColor="#8AC0E3"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
         android:id="@+id/textViewIntro"
