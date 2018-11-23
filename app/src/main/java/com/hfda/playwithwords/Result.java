@@ -120,6 +120,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         {
             Intent intent = new Intent(this, Menu.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -177,11 +178,12 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
 
-        startActivity(Intent.createChooser(sharingIntent, "Share app to share..."));
+        startActivity(Intent.createChooser(sharingIntent, "Choose an app to share..."));
     }
     @Override
     public void onDestroy()
     {
         super.onDestroy();
+        finish();
     }
 }

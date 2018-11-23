@@ -79,5 +79,6 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
             intent = new Intent(this, Menu.class); //neu nhan nut Back thi chuyen intent ve Menu
         }
         startActivity(intent);
+        finish();
     }
 }

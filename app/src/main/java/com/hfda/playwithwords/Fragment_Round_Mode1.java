@@ -47,7 +47,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
     TextView textViewTranscript;
     TextView hint;
     ProgressBar myProgressBar;
-
+    boolean runable = true;
     List<DataMode1234> mData=new ArrayList<>();
     int[] dd=new int[30];
     String mQuestion;
@@ -119,10 +119,11 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
             {
                 if(accum<=myProgressBar.getMax())
                 {
-                    myProgressBar.incrementProgressBy(progressStep);
-
+                    if(runable)
+                    {
+                        myProgressBar.incrementProgressBy(progressStep);
                         accum++;
-
+                    }
                     myHandler.postDelayed(runnable, 10);
                 }
                 else
@@ -167,9 +168,9 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
             else
                 {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                    dialog.setTitle("Thông Báo:");
-                    dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
-                    dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    dialog.setTitle("Hey, ");
+                    dialog.setMessage(" Just 7 points for 1 hint\n Do you really want to buy more hint?");
+                    dialog.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (point >= 7) {
@@ -179,8 +180,8 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                             else
                             {
                                 final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
-                                dialog1.setTitle("Thông Báo:");
-                                dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                                dialog1.setTitle("Sorry!");
+                                dialog1.setMessage(" You don't have enough point to buy hint! ");
                                 dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog1, int which) {
@@ -195,14 +196,13 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                             textPoint.setText(txtpoint);
                         }
                     });
-                    dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
                     });
                     dialog.show();
-
                 }
 
 
@@ -378,10 +378,22 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
             StartProgressBar();
         }
     }
-
-    public   void onStop() {
-
-        super.onStop();
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        runable = false;
     }
-
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        runable = true;
+    }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        myHandler.removeCallbacks(runnable);
+    }
 }

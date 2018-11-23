@@ -159,8 +159,8 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                 }
                 else{
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                    dialog.setTitle("Thông Báo:");
-                    dialog.setMessage(" 1 hint = 7 điểm \n Bạn có muốn mua thêm hint không?");
+                    dialog.setTitle("Hey");
+                    dialog.setMessage(" Just 7 points for 1 hint \n Do you really want to buy more hint?");
                     dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -171,8 +171,8 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                             else
                             {
                                 final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
-                                dialog1.setTitle("Thông Báo:");
-                                dialog1.setMessage(" Bạn không đủ điểm để mua gợi ý!!");
+                                dialog1.setTitle("Sorry");
+                                dialog1.setMessage(" You don't have enough point to buy hint!");
                                 dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog1, int which) {
@@ -187,7 +187,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                             textViewPoint.setText(txtpoint);
                         }
                     });
-                    dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -366,9 +366,5 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                 _container.finish();
             }
         }
-    }
-    public   void onStop() {
-
-        super.onStop();
     }
 }
