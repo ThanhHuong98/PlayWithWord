@@ -23,7 +23,7 @@
         android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="80dp"
         >
         <ImageView
             android:id="@+id/tableRanking"
@@ -70,7 +70,13 @@
 
     </RelativeLayout>
 
-
+    <ListView
+        android:id="@+id/lvRankings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ic_rankings"
+        android:background="@color/PinkLight"
+        />
     <!--Chua bang xep hang-->
 
 </RelativeLayout>

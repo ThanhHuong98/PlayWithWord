@@ -185,7 +185,7 @@ public class Menu extends AppCompatActivity
             case 5:
                 //Dialog
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setMessage("Are you sure, You wanted to Log-out");
+                alertDialogBuilder.setMessage("Are you sure, you want to Log-out");
                 alertDialogBuilder.setPositiveButton("yes",
                         new DialogInterface.OnClickListener()
                         {
