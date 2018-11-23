@@ -16,7 +16,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     Button btnSignIn;
     Button btnSignUp;
-    SignInSigUpActivity _container;
+    SignInSignUpActivity _container;
 
     public MainFragment() {
         // Required empty public constructor
@@ -27,7 +27,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_main, container, false);
-        _container=(SignInSigUpActivity) getActivity();
+        _container=(SignInSignUpActivity) getActivity();
         ///Xu  ly
         btnSignIn=(layout).findViewById(R.id.btnSignIn);
         btnSignUp=(layout).findViewById(R.id.btnSignUp);

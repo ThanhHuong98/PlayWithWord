@@ -41,7 +41,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 
-public class SignInSigUpActivity extends AppCompatActivity implements fromFragToContainer {
+public class SignInSignUpActivity extends AppCompatActivity implements fromFragToContainer {
 
     private int out=0;
     GoogleSignInClient mGoogleSignInClient;
@@ -59,7 +59,7 @@ public class SignInSigUpActivity extends AppCompatActivity implements fromFragTo
         fs.replace(R.id.holder,fragmentMain);
         fs.addToBackStack("MAIN");
         fs.commit();
-        setContentView(R.layout.activitymain__signin__singup);
+        setContentView(R.layout.activity_sign_in_sign_up);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))

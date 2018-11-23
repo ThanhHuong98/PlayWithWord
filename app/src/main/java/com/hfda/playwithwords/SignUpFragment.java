@@ -19,7 +19,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     EditText txtPassWords;
     EditText txtPassWordsConfirm;
     Button btnSignUp1;
-   SignInSigUpActivity _container;
+   SignInSignUpActivity _container;
 
     public SignUpFragment() {
         // Required empty public constructor
@@ -72,12 +72,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             txtUserName.setError(null);
         }
 
-        /*if (username.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
-            valid = false;
-        } else {
-            _emailText.setError(null);
-        }*/
 
         if (password.isEmpty()||password.length()<4||password.length()>10) {
             txtPassWords.setError("between 4 and 10 alphanumeric characters");

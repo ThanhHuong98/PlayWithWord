@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity
         myHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                Intent intent = new Intent(getApplicationContext(), SignInSignUpActivity.class);
                 startActivity(intent);
                 finish();
             }
