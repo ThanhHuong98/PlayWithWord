@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/White"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
+    android:layout_marginEnd="20dp"
     android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/tvSTT"
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="4"
         android:textColor="@color/Black"
-        android:fontFamily="@font/font_opensan_regular"
+        android:fontFamily="@font/font_opensan_light"
         android:textSize="20sp"
         android:padding="3dp"
         android:layout_marginLeft="3dp"
@@ -27,9 +26,9 @@
         android:layout_height="wrap_content"
         android:text="Tiger"
         android:textColor="@color/Black"
-        android:fontFamily="@font/font_opensan_regular"
+        android:fontFamily="@font/font_opensan_light"
         android:textSize="20sp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
         android:padding="3dp"
 
        />
@@ -41,12 +40,12 @@
             android:text="250"
             android:background="@drawable/custom_drawable_point"
             android:textColor="@color/Black"
-            android:fontFamily="@font/font_opensan_regular"
-            android:textSize="20sp"
+            android:fontFamily="@font/font_opensan_light"
+            android:textSize="16sp"
             android:gravity="center"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="2dp"
             />
 
 

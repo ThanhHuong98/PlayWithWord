@@ -16,67 +16,193 @@
         android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
         android:textColor="#FF7576"/>
-    <RelativeLayout
-        android:id="@+id/ic_rankings"
-        android:layout_below="@+id/titleRanking"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        >
-        <ImageView
-            android:id="@+id/tableRanking"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/ic_podium"
-            android:layout_centerVertical="true" />
-        <TextView
-            android:id="@+id/userWin1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/userWin1"
-            android:textColor="@color/Salmon"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/opensansregular"/>
-        <TextView
-            android:id="@+id/userWin2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/userWin2"
-            android:textColor="@color/Salmon"
-            android:fontFamily="@font/opensansregular"
-            android:textSize="20sp"
-            android:layout_marginTop="110dp"
-            android:layout_marginLeft="50dp"
-            />
+<!--bang xep hang-->
+   <LinearLayout
+       android:id="@+id/ic_rankings"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/titleRanking"
+       android:orientation="horizontal"
+       android:layout_centerHorizontal="true"
+       android:background="#0000"
+       android:layout_marginTop="30dp">
+       <!--Hang2-->
+       <LinearLayout
+           android:id="@+id/hang2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_gravity="bottom">
+           <TextView
+               android:id="@+id/userHang2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Birdy"
+               android:textColor="#00B894"
+               android:textSize="20sp"
+               android:layout_gravity="center"
+               />
+           <RelativeLayout
+               android:id="@+id/poit_rankSecond"
+               android:layout_width="71dp"
+               android:layout_height="140dp"
+               android:layout_marginTop="25dp">
+               <ImageView
+                   android:layout_marginTop="10dp"
+                   android:id="@+id/imageHang2"
+                   android:layout_width="71dp"
+                   android:layout_height="131dp"
+                   android:adjustViewBounds="false"
+                   android:background="#55EFC4"
+                   />
 
-        <TextView
-            android:id="@+id/userWin3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/userWin3"
-            android:textColor="@color/Salmon"
-            android:textSize="20sp"
-            android:fontFamily="@font/opensansregular"
-            android:layout_marginTop="130dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="50dp"
-           />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="2"
+                   android:gravity="center"
+                   android:textSize="60sp"
+                   android:layout_centerVertical="true"
+                   android:layout_centerHorizontal="true"
+                   android:fontFamily="@font/font_fs_just_awesome_regular"
+                   />
+
+                   <TextView
+                       android:id="@+id/poitHang2"
+                       android:layout_width="57dp"
+                       android:layout_height="22dp"
+                       android:layout_centerHorizontal="true"
+                       android:background="@drawable/custom_point_rank_second"
+                       android:fontFamily="@font/font_opensan_regular"
+                       android:gravity="center"
+                       android:text="250"
+                       android:textColor="@color/White"
+                       android:textStyle="bold" />
+
+           </RelativeLayout>
+
+       </LinearLayout>
+       <!--Hang 1-->
+       <LinearLayout
+           android:id="@+id/hang1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+          >
+           <TextView
+               android:id="@+id/userHang1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Piglet"
+               android:textColor="#FF7675"
+               android:textSize="20sp"
+               android:layout_gravity="center"
+               />
+           <RelativeLayout
+               android:id="@+id/poit_rankFirst"
+               android:layout_width="81dp"
+               android:layout_height="200dp"
+               android:layout_marginTop="25dp">
+               <ImageView
+                   android:layout_marginTop="10dp"
+                   android:id="@+id/imageHang1"
+                   android:layout_width="81dp"
+                   android:layout_height="197dp"
+                   android:background="#F9BAA8"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="1"
+                   android:gravity="center"
+                   android:textSize="100sp"
+                   android:layout_centerVertical="true"
+                   android:layout_centerHorizontal="true"
+                   android:fontFamily="@font/font_fs_just_awesome_regular"
+                   />
+               <TextView
+                   android:id="@+id/poitHang1"
+                   android:layout_width="57dp"
+                   android:layout_height="22dp"
+                   android:layout_centerHorizontal="true"
+                   android:background="@drawable/custom_point_rank_first"
+                   android:fontFamily="@font/font_opensan_regular"
+                   android:gravity="center"
+                   android:text="250"
+                   android:textColor="@color/White"
+                   android:textStyle="bold" />
+
+           </RelativeLayout>
+
+       </LinearLayout>
+       <!--Hang3-->
+       <LinearLayout
+           android:id="@+id/hang3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_gravity="bottom"
+           >
+           <TextView
+               android:id="@+id/userHang3"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Pooh"
+               android:textColor="#FDCB6E"
+               android:textSize="20sp"
+               android:layout_gravity="center"
+               />
+           <RelativeLayout
+               android:id="@+id/poit_rankThird"
+               android:layout_width="69dp"
+               android:layout_height="80dp"
+               android:layout_marginTop="25dp">
+               <ImageView
+                   android:layout_marginTop="10dp"
+                   android:id="@+id/imageHang3"
+                   android:layout_width="69dp"
+                   android:layout_height="76dp"
+                   android:background="#FFEAA7"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="3"
+                   android:gravity="center"
+                   android:textSize="50sp"
+                   android:layout_marginTop="25dp"
+                   android:layout_centerHorizontal="true"
+                   android:fontFamily="@font/font_fs_just_awesome_regular"
+                   />
+               <TextView
+                   android:id="@+id/poitHang3"
+                   android:layout_width="57dp"
+                   android:layout_height="22dp"
+                   android:layout_centerHorizontal="true"
+                   android:background="@drawable/custom_point_rank_third"
+                   android:fontFamily="@font/font_opensan_regular"
+                   android:gravity="center"
+                   android:text="250"
+                   android:textColor="@color/White"
+                   android:textStyle="bold" />
+
+           </RelativeLayout>
+
+       </LinearLayout>
 
 
-    </RelativeLayout>
 
+   </LinearLayout>
+
+
+    <!--Chua bang xep hang-->
     <ListView
+        android:layout_marginTop="20dp"
         android:id="@+id/lvRankings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ic_rankings"
-        android:background="@color/PinkLight"
+        android:background="@color/White"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         />
-    <!--Chua bang xep hang-->
 
 </RelativeLayout>
