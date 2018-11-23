@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -45,22 +50,28 @@ public class MainActivity extends AppCompatActivity
 
         //đòi quyển truy cập
         myref=FirebaseDatabase.getInstance().getReference();
-        canAccess = verifyStoragePermissions(this);
-        while (!canAccess) {
-            Toast.makeText(this, "You must allow app access your storage to share your score!", Toast.LENGTH_LONG).show();
-            canAccess = verifyStoragePermissions(this);
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            checkPermissions();
+        } else {
+            startNextActivity();
         }
-        //Man hinh Splash...
-            //Sau 3s thì sẽ tự động chuyển qua SignIn Main
-            myHandler = new Handler();
-            myHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    while(!canAccess){}
-                    Intent intent = new Intent(getApplicationContext(),SignInSigUpActivity.class);
-                    startActivity(intent);
-                }
-            }, 3000);
+//        canAccess = verifyStoragePermissions(this);
+//        while (!canAccess) {
+//            Toast.makeText(this, "You must allow app access your storage to share your score!", Toast.LENGTH_LONG).show();
+//            canAccess = verifyStoragePermissions(this);
+//        }
+//        //Man hinh Splash...
+//            //Sau 3s thì sẽ tự động chuyển qua SignIn Main
+//            myHandler = new Handler();
+//            myHandler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    while(!canAccess){}
+//                    Intent intent = new Intent(getApplicationContext(),SignInSigUpActivity.class);
+//                    startActivity(intent);
+//                }
+//            }, 3000);
         readData();
 
     }
@@ -93,6 +104,70 @@ public class MainActivity extends AppCompatActivity
             ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
         }
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == REQUEST_EXTERNAL_STORAGE) {
+            checkPermissions();
+        }
+    }
+
+    private void checkPermissions() {
+        String[] ungrantedPermissions = requiredPermissionsStillNeeded();
+        if (ungrantedPermissions.length == 0) {
+            startNextActivity();
+        } else {
+            ActivityCompat.requestPermissions(this,ungrantedPermissions,REQUEST_EXTERNAL_STORAGE);
+        }
+    }
+
+    private void startNextActivity(){
+
+        myHandler = new Handler();
+        myHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 3000);
+    }
+
+    private String[] requiredPermissionsStillNeeded() {
+
+        Set<String> permissions = new HashSet<String>();
+        for (String permission : getRequiredPermissions()) {
+            permissions.add(permission);
+        }
+        for (Iterator<String> i = permissions.iterator(); i.hasNext();) {
+            String permission = i.next();
+            if (ActivityCompat.checkSelfPermission(this,permission) == PackageManager.PERMISSION_GRANTED) {
+                Log.d(MainActivity.class.getSimpleName(),
+                        "Permission: " + permission + " already granted.");
+                i.remove();
+            } else {
+                Log.d(MainActivity.class.getSimpleName(),
+                        "Permission: " + permission + " not yet granted.");
+            }
+        }
+        return permissions.toArray(new String[permissions.size()]);
+    }
+
+    public String[] getRequiredPermissions() {
+        String[] permissions = null;
+        try {
+            permissions = getPackageManager().getPackageInfo(getPackageName(),
+                    PackageManager.GET_PERMISSIONS).requestedPermissions;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (permissions == null) {
+            return new String[0];
+        } else {
+            return permissions.clone();
+        }
     }
 
     @Override
