@@ -43,7 +43,7 @@
         android:fontFamily="@font/font_opensan_light"
         android:text="@string/QuestionMode3"
         android:textColor="#000000"
-        android:textSize="40sp" />
+        android:textSize="35sp" />
 
 
     <TextView
@@ -118,14 +118,14 @@
             android:textSize="40dp"
             />
 
-    <ImageView
-        android:id="@+id/iconV"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@id/editText_Answer3"
-        android:background="@color/Black"
-        android:layout_marginLeft="47dp"
-        android:layout_marginRight="47dp"/>
+        <ImageView
+            android:id="@+id/iconV"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/editText_Answer3"
+            android:background="@color/Black"
+            android:layout_marginLeft="47dp"
+            android:layout_marginRight="47dp"/>
 
         <TextView
             android:id="@+id/textHint"
