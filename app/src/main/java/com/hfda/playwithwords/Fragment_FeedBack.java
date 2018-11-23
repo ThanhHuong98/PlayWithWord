@@ -46,19 +46,19 @@ public class Fragment_FeedBack extends Fragment implements View.OnClickListener,
         tvRatingScale.setText(String.valueOf(rating));
         switch ((int) ratingBar.getRating()) {
             case 1:
-                tvRatingScale.setText("Very bad");
+                tvRatingScale.setText("Very bad!");
                 break;
             case 2:
-                tvRatingScale.setText("Need some improvement");
+                tvRatingScale.setText("Need some improvement!");
                 break;
             case 3:
-                tvRatingScale.setText("Good");
+                tvRatingScale.setText("Good!");
                 break;
             case 4:
-                tvRatingScale.setText("Great");
+                tvRatingScale.setText("Great!");
                 break;
             case 5:
-                tvRatingScale.setText("Awesome. I love it");
+                tvRatingScale.setText("Awesome, I really love it!");
                 break;
             default:
                 tvRatingScale.setText("");
@@ -69,13 +69,14 @@ public class Fragment_FeedBack extends Fragment implements View.OnClickListener,
     {
         if (txtFeedBack.getText().toString().isEmpty())
         {
-            Toast.makeText(getContext(), "Please fill in feedback text box", Toast.LENGTH_SHORT).show();
-        } else
+            Toast.makeText(getContext(), "Please fill in the feedback text box!", Toast.LENGTH_SHORT).show();
+        }
+        else
         {
            txtFeedBack.setText("");
             mRatingBar.setRating(0);
-            tvRatingScale.setText("Rating :)");
-            Toast.makeText(getContext(), "Thank you for sharing your feedback", Toast.LENGTH_SHORT).show();
+            tvRatingScale.setText("Rating");
+            Toast.makeText(getContext(), "Thanks for sharing your feedback!", Toast.LENGTH_SHORT).show();
         }
     }
 }

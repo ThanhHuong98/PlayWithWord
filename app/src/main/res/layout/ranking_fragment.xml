@@ -191,8 +191,6 @@
 
 
     </LinearLayout>
-
-
     <!--Chua bang xep hang-->
     <ListView
         android:layout_marginTop="20dp"

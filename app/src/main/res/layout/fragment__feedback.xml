@@ -47,7 +47,7 @@
         android:inputType="textMultiLine"
         android:lines="7"
         android:layout_marginTop="20dp"
-        android:hint="Tell us what you loved"
+        android:hint="Tell us what you think"
         android:textColorHint="#d6020202"
         android:fontFamily="@font/font_opensan_regular"
         android:textSize="16sp"

@@ -257,6 +257,7 @@ public class Menu extends AppCompatActivity
     public void onDestroy()
     {
         super.onDestroy();
+        finish();
     }
   /*  @Override
     protected void onStart()

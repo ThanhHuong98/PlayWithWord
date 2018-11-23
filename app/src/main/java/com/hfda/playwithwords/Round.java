@@ -234,6 +234,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                 intent.putExtra(Result.TOTAL_SCORE, point + ""); //thông tin số điểm
                 intent.putExtra(Result.MODE, mode+"");
                 startActivity(intent);
+                finish();
             }
         }
         if(action.equals("RIGHT"))
@@ -285,7 +286,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     (ViewGroup)findViewById(R.id.custom_toast_layout_id));
 
             TextView text = (TextView) layout.findViewById(R.id.text);
-            text.setText("You must write down at least once character...");
+            text.setText("You must write down at least one character...");
 
             Toast toast = new Toast(getApplicationContext());
           //  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -306,5 +307,6 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     public void onDestroy()
     {
         super.onDestroy();
+        finish();
     }
 }
