@@ -1,5 +1,4 @@
 package com.hfda.playwithwords;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -42,7 +41,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 
-public class SignIn_SignUpActivity extends AppCompatActivity implements fromFragToContainer {
+public class SignInSigUpActivity extends AppCompatActivity implements fromFragToContainer {
 
     private int out=0;
     GoogleSignInClient mGoogleSignInClient;
@@ -82,12 +81,12 @@ public class SignIn_SignUpActivity extends AppCompatActivity implements fromFrag
 
                     @Override
                     public void onCancel() {
-                        // Toast.makeText(AuthorizationActivity.this, "Login Cancel", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(AuthorizationActivity.this, "Login Cancel", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onError(FacebookException exception) {
-                        //Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(AuthorizationActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -106,9 +105,6 @@ public class SignIn_SignUpActivity extends AppCompatActivity implements fromFrag
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        Intent intent = new Intent(getApplicationContext(),Menu.class);
-        startActivity(intent);
     }
 
     @Override
@@ -190,9 +186,6 @@ public class SignIn_SignUpActivity extends AppCompatActivity implements fromFrag
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-
-                Intent intent = new Intent(getApplicationContext(),Menu.class);
-                startActivity(intent);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 //Log.w(TAG, "Google sign in failed", e);

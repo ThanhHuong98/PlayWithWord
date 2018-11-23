@@ -23,7 +23,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     Button btnSignIn1;
     ImageButton btnGoogle;
     ImageButton btnFB;
-    SignIn_SignUpActivity _container;
+    SignInSigUpActivity _container;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -35,7 +35,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sign_in, container, false);
-        _container=(SignIn_SignUpActivity) getActivity();
+        _container=(SignInSigUpActivity) getActivity();
 
         txtUsername1 = v.findViewById(R.id.txtUserName1);
         txtPassword1 = v.findViewById(R.id.txtPassword1);

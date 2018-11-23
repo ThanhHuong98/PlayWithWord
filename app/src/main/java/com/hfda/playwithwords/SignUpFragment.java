@@ -19,7 +19,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     EditText txtPassWords;
     EditText txtPassWordsConfirm;
     Button btnSignUp1;
-   SignIn_SignUpActivity _container;
+   SignInSigUpActivity _container;
 
     public SignUpFragment() {
         // Required empty public constructor

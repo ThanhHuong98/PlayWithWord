@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void run() {
                     while(!canAccess){}
-                    Intent intent = new Intent(getApplicationContext(),SignIn_SignUpActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),SignInSigUpActivity.class);
                     startActivity(intent);
                 }
             }, 3000);
