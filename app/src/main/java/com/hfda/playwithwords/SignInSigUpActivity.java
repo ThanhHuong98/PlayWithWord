@@ -112,7 +112,6 @@ public class SignInSigUpActivity extends AppCompatActivity implements fromFragTo
     {
         if(action.equals("SIGN IN"))
         {
-            //Xu ly
             Fragment fragmentSignIn = new SignInFragment();
             replaceFragment(fragmentSignIn,"SIGN IN");
         }
@@ -197,7 +196,6 @@ public class SignInSigUpActivity extends AppCompatActivity implements fromFragTo
         }
 
     }
-
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         //Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         Toast.makeText(this,"firebaseAuthWithGoogle:",Toast.LENGTH_SHORT).show();

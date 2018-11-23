@@ -89,6 +89,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         if (password.isEmpty()||(!password.equals(passwordFireBase)) ){
             txtPassword1.setError("Your password incorrect, check again");
             txtPassword1.requestFocus();
+            valid = false;
             if(username.isEmpty() || username.length() < 3)
             {
                 txtUsername1.requestFocus();
