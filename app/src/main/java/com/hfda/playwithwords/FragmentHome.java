@@ -18,7 +18,7 @@ import android.widget.ImageView;
 public class FragmentHome extends Fragment implements View.OnClickListener
 {
 ImageButton btnMode1, btnMode2,btnMode3,btnMode4,btnMode5,btnMode6;
-
+Menu _container;
     public FragmentHome() {
         // Required empty public constructor
     }
@@ -41,7 +41,7 @@ ImageButton btnMode1, btnMode2,btnMode3,btnMode4,btnMode5,btnMode6;
         btnMode4.setOnClickListener(this);
         btnMode5.setOnClickListener(this);
         btnMode6.setOnClickListener(this);
-
+         _container = (Menu)getActivity();
         //btnMode1.setOnClickListener(this);
         return v;
     }
@@ -79,5 +79,7 @@ ImageButton btnMode1, btnMode2,btnMode3,btnMode4,btnMode5,btnMode6;
         Intent intent = new Intent(getActivity(), Introduction.class);
         intent.putExtra(Introduction.MODE, mode);
         startActivity(intent);
+        //Activity chuyển động theo hướng đi lên khi mới vào
+        //Chuyển động đi xuống nếu thoát khỏi acivity
     }
 }

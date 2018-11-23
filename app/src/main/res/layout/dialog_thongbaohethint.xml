@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/feedback_background"
+    android:background="@drawable/custom_hint_notification_dialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,7 +28,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/font_opensan_light"
         android:gravity="center_horizontal"
-        android:text="You're out of hint. Use your point to get more hints, just 7 points for 1 hint!"
+        android:text="Oh, you're almost out of hint. Use your point to get more hints, just 7 points for 1 hint!"
         android:textColor="@color/Black"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
