@@ -2,6 +2,7 @@ package com.hfda.playwithwords;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +12,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -34,6 +36,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -158,44 +161,64 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                     notification="Decrease the number of Hint...";
                 }
                 else{
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                    dialog.setTitle("Hey");
-                    dialog.setMessage(" Just 7 points for 1 hint \n Do you really want to buy more hint?");
-                    dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    final TextView tvHey;
+                    final TextView tvNofitication;
+                    final Button btnOkeBuy;
+                    final Button btnCancelBuy;
+                    final Button btnExitBuyHint;
+                    final Dialog dialog=new Dialog(getContext());
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.setContentView(R.layout.dialog_buy_hint);
+                    tvHey=(TextView) dialog.findViewById(R.id.tvHey);
+                    tvNofitication=(TextView)dialog.findViewById(R.id.tvNotification);
+                    btnOkeBuy=(Button)dialog.findViewById(R.id.btnOkeBuyHint);
+                    btnCancelBuy=(Button)dialog.findViewById(R.id.btnCancelBuyHint);
+                    btnExitBuyHint=(Button)dialog.findViewById(R.id.btnExit);
+                    btnCancelBuy.setVisibility(View.VISIBLE);
+                    btnOkeBuy.setVisibility(View.VISIBLE);
+                    btnExitBuyHint.setVisibility(View.INVISIBLE);
+                    btnOkeBuy.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (points >= 7) {
+                        public void onClick(View v) {
+                            if(points>=7)
+                            {
                                 points -=7;
                                 hint++;
+                                String text = "Hint: " + hint + "/5";
+                                String txtpoint = points + "";
+                                textViewNumberHint.setText(text);
+                                textViewPoint.setText(txtpoint);
+
+                                dialog.dismiss();
                             }
                             else
                             {
-                                final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
-                                dialog1.setTitle("Sorry");
-                                dialog1.setMessage(" You don't have enough point to buy hint!");
-                                dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                tvHey.setText("Sorry!");
+                                tvNofitication.setText("You don't have enough point to buy hint.");
+                                btnExitBuyHint.setVisibility(View.VISIBLE);
+                                btnCancelBuy.setVisibility(View.INVISIBLE);
+                                btnOkeBuy.setVisibility(View.INVISIBLE);
+                                btnExitBuyHint.setOnClickListener(new View.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog1, int which) {
-                                        dialog1.dismiss();
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                        btnExitBuyHint.setVisibility(View.INVISIBLE);
                                     }
                                 });
-                                dialog1.show();
                             }
-                            String text = "Hint: " + hint + "/5";
-                            String txtpoint = points + "";
-                            textViewNumberHint.setText(text);
-                            textViewPoint.setText(txtpoint);
                         }
                     });
-                    dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    btnCancelBuy.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(View v) {
                             dialog.dismiss();
                         }
                     });
+                    tvHey.setText("Hey,");
+                    tvNofitication.setText("Just 7 points for 1 hint.\nDo you really want to buy more hint?");
                     dialog.show();
                 }
-                Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
             }
         });
 

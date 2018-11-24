@@ -224,8 +224,6 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
                     tvNofitication.setText("Just 7 points for 1 hint.\nDo you really want to buy more hint?");
                     dialog.show();
                 }
-
-
         }
         else //nguoi dung chon dap an
         {
