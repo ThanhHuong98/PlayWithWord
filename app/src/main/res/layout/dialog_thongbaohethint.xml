@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/custom_shape_dialog_buy_hint"
     android:layout_width="300dp"
-    android:layout_height="300dp">
+    android:layout_height="250dp">
     <ImageView
         android:id="@+id/headerDialog"
         android:layout_width="300dp"
@@ -41,22 +41,24 @@
         android:layout_below="@id/textView2"
         android:layout_width="60dp"
         android:layout_height="30dp"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/custom_buttom_dialog_buy_hint"
-        android:text="OK"
-        android:textColor="@color/Black"
+        android:background="@color/transparent"
+        android:text="Got it"
+        android:textColor="@color/PinkLight"
         android:gravity="center"
         android:padding="2dp"
-        android:textSize="16sp" />
+        android:textSize="15sp" />
 
     <CheckBox
-        android:layout_below="@id/btnOK"
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textView2"
         android:checked="false"
         android:fontFamily="@font/font_roboto"
         android:text="Never show again"

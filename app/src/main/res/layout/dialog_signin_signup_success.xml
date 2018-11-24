@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="300dp">
+    <RelativeLayout
+        android:layout_marginTop="28dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/custom_shape_dialog_logout"
+        />
+    <ImageView
+        android:id="@+id/ic_star"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_checked_signin"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/tvSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Success"
+        android:textColor="@color/Gray"
+        android:layout_below="@+id/ic_star"
+        android:textSize="30sp"
+        android:fontFamily="@font/font_opensan_light"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/tvContentSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSuccess"
+        android:text="You have already signed in.
+        Have a fun time!"
+        android:textColor="@color/Gray"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/font_opensan_regular"/>
+    <Button
+        android:id="@+id/btnGetStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Get Start"
+        android:textColor="@color/White"
+        android:layout_below="@id/tvContentSuccess"
+        android:background="#6AC359"/>
+</RelativeLayout>

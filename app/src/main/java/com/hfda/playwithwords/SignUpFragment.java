@@ -1,7 +1,13 @@
 package com.hfda.playwithwords;
 
 
+import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -42,16 +50,47 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == btnSignUp1.getId()) {
-            //intent to FlashActivity
-            //txtUserName.setError("Invalid username");
-
-            //txtUserName.setTextColor(getResources().getColor(R.color.colorAccent));
+        if (v.getId() == btnSignUp1.getId())
+        {
             if (validate())
             {
-                //btnSignUp1.setEnabled(false);
-                Intent intent = new Intent(getContext(),Menu.class);
-                startActivity(intent);
+                //Hiện Dialog thông báo dang ky thanh cong, người dùng vào MenuScreen
+                TextView tvContentSucces;
+                Button btnGetStart;
+
+                final Dialog dialog=new Dialog(getContext());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.setContentView(R.layout.dialog_signin_signup_success);
+
+                tvContentSucces=dialog.findViewById(R.id.tvContentSuccess);
+                tvContentSucces.setText("You have already signed up.\nHave a fun time!");
+                btnGetStart=dialog.findViewById(R.id.btnGetStart);
+                btnGetStart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(),Menu.class);
+                        startActivity(intent);
+                    }
+                });
+
+                dialog.show();
+
+                /*//nếu đăng ky tai khoan thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
+                String username = txtUserName.getText().toString();
+                String password = txtPassWords.getText().toString();
+                try
+                {
+                    SQLiteOpenHelper UserDB = new UserLogedIn(_container);
+                    SQLiteDatabase db = UserDB.getReadableDatabase();
+                    ContentValues value = new ContentValues();
+                    value.put("USER_NAME", username);
+                    value.put("PASSWORD", password);
+                    long insertToDb = db.insert("USER", null, value);
+                    db.close();
+                }catch(SQLiteException e)
+                {
+                    Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
+                }*/
             }
         }
 

@@ -1,6 +1,7 @@
 package com.hfda.playwithwords;
 
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
@@ -63,12 +66,27 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         if (v.getId() == btnSignIn1.getId()) {
             if(validate())
             {
-                /*Context context = getContext();
-                Toast toast = Toast.makeText(context, "Nguyen Quang Huan", Toast.LENGTH_LONG);
-                toast.show();*/
+                TextView tvContentSucces;
+                Button btnGetStart;
+
+                final Dialog dialog=new Dialog(getContext());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.setContentView(R.layout.dialog_signin_signup_success);
+
+                tvContentSucces=dialog.findViewById(R.id.tvContentSuccess);
+                btnGetStart=dialog.findViewById(R.id.btnGetStart);
+                btnGetStart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(),Menu.class);
+                        startActivity(intent);
+                    }
+                });
+
+                dialog.show();
 
                 //nếu đăng nhập thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
-                String username = txtUsername1.getText().toString();
+                /*String username = txtUsername1.getText().toString();
                 String password = txtPassword1.getText().toString();
                 try
                 {
@@ -82,9 +100,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                 }catch(SQLiteException e)
                 {
                     Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-                }
-                Intent intent = new Intent(getContext(),Menu.class);
-                startActivity(intent);
+                }*/
             }
         }
         else if(v.getId()==btnGoogle.getId()){

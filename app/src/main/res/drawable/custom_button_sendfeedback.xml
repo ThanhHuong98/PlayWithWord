@@ -7,8 +7,8 @@
         android:startColor="@color/White"
         android:endColor="@color/White"
          />
-    <solid android:color="#66ff7576"/>
-    <corners android:radius="3dp" />
+    <solid android:color="#fc7d7d"/>
+    <corners android:radius="0dp" />
 </shape>
     </item>
 
@@ -20,7 +20,7 @@
                 android:endColor="@color/White"
                 />
             <solid android:color="#FF7576"/>
-            <corners android:radius="3dp" />
+            <corners android:radius="0dp" />
         </shape>
     </item>
 

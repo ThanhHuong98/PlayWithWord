@@ -78,6 +78,8 @@
     <string name="dialog_fire_missiles">YES</string>
     <string name="fire">Có</string>
     <string name="cancel">Không</string>
+    <string name="btnSubmit">Submit</string>
+
 
     <!--Used for SignIn.....-->
     <string name="title">PLAY WITH WORDS</string>

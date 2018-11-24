@@ -40,31 +40,36 @@
         android:fontFamily="@font/font_opensan_regular"
         android:textStyle="normal"
         android:textColor="#000"/>
+
     <EditText
         android:id="@+id/txtFeedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_textbox_feedback"
+        android:fontFamily="@font/font_opensan_regular"
+        android:gravity="top"
+        android:hint="Tell us what you think"
         android:inputType="textMultiLine"
         android:lines="7"
-        android:layout_marginTop="20dp"
-        android:hint="Tell us what you think"
-        android:textColorHint="#d6020202"
-        android:fontFamily="@font/font_opensan_regular"
-        android:textSize="16sp"
         android:textColor="#000"
-        android:gravity="top"
-        android:background="@drawable/custom_textbox_feedback"
+        android:textColorHint="#d6020202"
+        android:textSize="16sp"
 
         />
     <Button
         android:id="@+id/btnSendFeedBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_button_sendfeedback"
-        android:text="Submit"
+        android:fontFamily="@font/font_opensan_regular"
+        android:text="@string/btnSubmit"
         android:textSize="15sp"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="3dp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
