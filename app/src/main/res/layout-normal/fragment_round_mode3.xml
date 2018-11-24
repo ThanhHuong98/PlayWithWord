@@ -111,6 +111,7 @@
             android:hint="@string/textHint"
             android:paddingLeft="7dp"
             android:textColor="@color/Black"
+            android:textColorHint="#E0E0E0"
             android:background="@android:color/transparent"
             android:textSize="25dp"
             android:inputType="text"/>
@@ -137,17 +138,18 @@
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:text="@string/Check"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp" />
+            android:textColor="@color/GhostWhite"
+            android:textSize="20dp"
+            android:textAllCaps="false"/>
 
-        <ImageView
+        <View
             android:id="@+id/iconV"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_marginTop="1dp"
             android:layout_below="@id/editText_Answer3"
             android:layout_marginLeft="47dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="50dp"
             android:background="@color/Black" />
 
         <ImageButton

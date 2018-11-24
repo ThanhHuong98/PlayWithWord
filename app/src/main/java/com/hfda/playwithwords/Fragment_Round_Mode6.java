@@ -328,7 +328,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                 }
                 realAnswer = mangData.get(index).getTA();
                 textViewQuestion.setText(realAnswer);
-                Toast.makeText(getContext(),realAnswer,Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(),realAnswer,Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

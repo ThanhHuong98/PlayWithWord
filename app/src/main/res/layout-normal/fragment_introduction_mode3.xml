@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_back"
         android:layout_toRightOf="@id/btn_back"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:text="Mode 3"
         android:textSize="35sp"
         android:textColor="#6C5CE7"
@@ -49,13 +49,14 @@
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewIntro"
         android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/textViewIntro"
         android:text="@string/textNote"
-        android:textSize="11sp"
+        android:textSize="13sp"
         android:textStyle="italic"
         android:textColor="#000000"
         />
@@ -64,13 +65,14 @@
         android:id="@+id/btnNext3"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@id/textViewIntro"
+        android:layout_below="@id/text"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
         android:text=" Click here to play "
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
-        android:background="@android:color/transparent"/>
+        android:background="@drawable/my_button3"
+        android:textAllCaps="false"/>
 </RelativeLayout>

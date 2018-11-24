@@ -147,7 +147,7 @@
             android:text="@string/Check"
             android:background="@drawable/button_check3"
             android:textColor="#FFFFFF"
-
+            android:textAllCaps="false"
             android:textSize="45dp" />
         <ImageView
             android:id="@+id/iconV"
