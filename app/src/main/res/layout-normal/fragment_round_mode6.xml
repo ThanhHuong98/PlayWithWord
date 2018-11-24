@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background_mode6">
 
     <!-- TODO: Update blank fragment layout -->
-
-
-    <TextView
-        android:id="@+id/textViewRound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/font_opensan_regular"
-        android:text="@string/Round0"
-        android:textColor="@color/Black"
-        android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/textViewQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/font_opensan_light"
-
-            android:textColor="@color/Black"
-            android:textSize="32sp" />
 
 
     <com.skyfishjy.library.RippleBackground
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
         app:rb_color="#0099CC"
         app:rb_duration="3000"
         app:rb_radius="60dp"
         app:rb_rippleAmount="6"
         app:rb_scale="6">
+
+        <TextView
+            android:id="@+id/textViewRound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/font_opensan_regular"
+            android:text="@string/Round0"
+            android:textColor="@color/Black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textViewQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/textViewRound"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/font_opensan_light"
+            android:textColor="@color/Black"
+            android:textSize="32sp" />
 
         <ImageView
             android:id="@+id/centerImage"
@@ -54,11 +51,6 @@
             android:layout_height="150dp"
             android:layout_centerInParent="true"
             android:src="@drawable/btn_play_red" />
-        <ImageView
-            android:id="@+id/ic_wave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_wave"/>
 
     </com.skyfishjy.library.RippleBackground>
 
@@ -119,4 +111,4 @@
             android:background="@android:color/transparent"/>
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

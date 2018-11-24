@@ -42,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -114,14 +115,14 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_round_mode6, container, false);
+        RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_round_mode6, container, false);
         myProgressBar = (layout).findViewById(R.id.myProgressBar);
         textViewRound = (layout).findViewById(R.id.textViewRound);
         btnHint=(layout).findViewById(R.id.btnHint);
         textViewNumberHint=(layout).findViewById(R.id.textViewNumberHint);
         textViewPoint=(layout).findViewById(R.id.textViewPoint);
         textViewQuestion=layout.findViewById(R.id.textViewQuestion);
-        imWave=layout.findViewById(R.id.ic_wave);
+       // imWave=layout.findViewById(R.id.ic_wave);
         final RippleBackground rippleBackground=(layout).findViewById(R.id.content);
         button=layout.findViewById(R.id.centerImage);
         context=getActivity().getApplicationContext();
@@ -305,13 +306,13 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN) {
                     button.setSelected(true);
-                    imWave.setVisibility(View.INVISIBLE);
+                   // imWave.setVisibility(View.INVISIBLE);
                     rippleBackground.startRippleAnimation();
 
                     mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
                     return true;
                 } else if(event.getAction()==MotionEvent.ACTION_UP){
-                    imWave.setVisibility(View.VISIBLE);
+                    //imWave.setVisibility(View.VISIBLE);
                     mSpeechRecognizer.stopListening();
                     button.setSelected(false);
                     rippleBackground.stopRippleAnimation();

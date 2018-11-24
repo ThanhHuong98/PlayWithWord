@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,78 +8,58 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textViewRound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="550dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginRight="44dp"
-        android:fontFamily="@font/font_opensan_regular"
-        android:text="@string/Round0"
-        android:textColor="@color/Black"
-        android:textSize="55sp" />
 
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textViewQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-           android:layout_centerHorizontal="true"
-            android:layout_marginTop="350dp"
-            android:fontFamily="@font/font_opensan_light"
-            android:textColor="@color/Black"
-            android:textSize="90sp" />
-
-        <TextView
-            android:id="@+id/textTransciption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/textViewQuestion"
-            android:fontFamily="@font/font_opensan_light"
-            android:hint="Hints:"
-            android:textSize="50sp" />
-
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@id/textViewQuestion"
-            android:layout_below="@id/textViewQuestion"
-            android:background="@drawable/btn_play" />
-
-    </RelativeLayout>
-    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.skyfishjy.library.RippleBackground
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
         app:rb_color="#0099CC"
         app:rb_duration="3000"
         app:rb_radius="60dp"
         app:rb_rippleAmount="6"
         app:rb_scale="6">
 
+        <TextView
+            android:id="@+id/textViewRound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/font_opensan_regular"
+            android:text="@string/Round0"
+            android:textColor="@color/Black"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/textViewQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/textViewRound"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/font_opensan_light"
+            android:textColor="@color/Black"
+            android:textSize="32sp" />
+
         <ImageView
             android:id="@+id/centerImage"
-            android:layout_width="270dp"
-            android:layout_height="270dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_centerInParent="true"
+            android:layout_below="@id/textViewQuestion"
             android:src="@drawable/btn_play_red" />
-
 
     </com.skyfishjy.library.RippleBackground>
 
 
+
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <TextView
@@ -90,8 +69,8 @@
             android:layout_alignParentBottom="true"
             android:paddingLeft="12dp"
             android:text="Point(s):"
-            android:textSize="50sp"
-            android:background="#104da7"
+            android:textSize="23sp"
+            android:background="#376DAF"
             android:textColor="@color/White"
             android:fontFamily="@font/font_opensan_regular"/>
 
@@ -103,12 +82,12 @@
             android:layout_marginLeft="-1dp"
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/textView"
-            android:background="#104da7"
+            android:background="#376DAF"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="5dp"
             android:text="@string/Score"
             android:textColor="@color/White"
-            android:textSize="50sp" />
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/textViewNumberHint"
@@ -117,7 +96,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="12dp"
             android:text="@string/Hint"
-            android:textSize="50sp"
+            android:textSize="23sp"
             android:layout_alignParentRight="true"
             android:textColor="@color/White"
             android:fontFamily="@font/font_opensan_regular"/>
@@ -134,4 +113,4 @@
             android:background="@android:color/transparent"/>
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
