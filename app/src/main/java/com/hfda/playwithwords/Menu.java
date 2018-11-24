@@ -4,6 +4,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -186,18 +188,19 @@ public class Menu extends AppCompatActivity
                 //Dialog
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setMessage("Are you sure, you want to Log-out");
-                alertDialogBuilder.setPositiveButton("yes",
+                alertDialogBuilder.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener()
                         {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1)
                             {
-                                //Doi Activity SignIn cua Huan
-                               /*Intent intent = new Intent(getApplicationContext(),Login.class);
-                               startActivity(intent);*/
-
-                                //Toast.makeText(MainActivity.this,"Return SignIn",Toast.LENGTH_LONG).show();
-
+                                //Chuyển sang màn hình đăng nhập, đăng ký, đồng thời xóa thông tin lưu trữ trong database SQLite
+                                SQLiteOpenHelper UserDB = new UserLogedIn(getApplicationContext());
+                                SQLiteDatabase db = UserDB.getReadableDatabase();
+                                long delete = db.delete("USER", null, null);
+                                Intent intent = new Intent(getApplicationContext(),SignInSignUpActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         });
 

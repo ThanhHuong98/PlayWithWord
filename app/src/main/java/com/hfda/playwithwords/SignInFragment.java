@@ -1,8 +1,13 @@
 package com.hfda.playwithwords;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.sql.SQLException;
 
 
 /**
@@ -59,6 +66,23 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                 /*Context context = getContext();
                 Toast toast = Toast.makeText(context, "Nguyen Quang Huan", Toast.LENGTH_LONG);
                 toast.show();*/
+
+                //nếu đăng nhập thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
+                String username = txtUsername1.getText().toString();
+                String password = txtPassword1.getText().toString();
+                try
+                {
+                    SQLiteOpenHelper UserDB = new UserLogedIn(_container);
+                    SQLiteDatabase db = UserDB.getReadableDatabase();
+                    ContentValues value = new ContentValues();
+                    value.put("USER_NAME", username);
+                    value.put("PASSWORD", password);
+                    long insertToDb = db.insert("USER", null, value);
+                    db.close();
+                }catch(SQLiteException e)
+                {
+                    Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
+                }
                 Intent intent = new Intent(getContext(),Menu.class);
                 startActivity(intent);
             }
@@ -99,5 +123,4 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         }
         return valid;
     }
-
 }
