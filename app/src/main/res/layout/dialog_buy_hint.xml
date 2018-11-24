@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="220dp"
+    android:background="#00ff7576">
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/my_button"
+        />
+    <ImageView
+        android:id="@+id/ic_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_star_dialog"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/tvHey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hey,"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/font_roboto"
+        android:layout_marginTop="45dp"
+        android:textColor="@color/Gray"/>
+    <TextView
+        android:id="@+id/tvNotification"
+        android:layout_below="@+id/tvHey"
+        android:layout_alignLeft="@+id/tvHey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Just 7 points for 1 hint.\nDo you really want to buy more hint?"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/Gray"/>
+    <LinearLayout
+        android:id="@+id/layoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tvNotification"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp">
+
+        <Button
+            android:id="@+id/btnOkeBuyHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="oke"
+            android:textSize="13sp"
+            android:fontFamily="@font/font_roboto"
+            android:textColor="#ff7576"
+            android:background="@color/transparent"/>
+        <Button
+            android:id="@+id/btnCancelBuyHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cancel"
+            android:textSize="13sp"
+            android:fontFamily="@font/font_roboto"
+            android:textColor="#FF7576"
+            android:background="@color/transparent"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="oke"
+        android:textSize="13sp"
+        android:fontFamily="@font/font_roboto"
+        android:layout_alignBottom="@id/layoutButton"
+        android:layout_alignRight="@id/layoutButton"
+        android:textColor="#FF7576"
+        android:background="@color/transparent"/>
+
+
+
+</RelativeLayout>

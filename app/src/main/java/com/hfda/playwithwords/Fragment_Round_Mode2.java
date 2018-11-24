@@ -27,8 +27,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -175,8 +173,8 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             else
             {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                dialog.setTitle("Hey");
-                dialog.setMessage("Just 7 points for 1 hint\nDo you really want to buy more hint?");
+                dialog.setTitle("Hey, ");
+                dialog.setMessage(" Just 7 points for 1 hint\n Do you really want to buy more hint?");
                 dialog.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -188,7 +186,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
                         {
                             final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
                             dialog1.setTitle("Sorry!");
-                            dialog1.setMessage("You don't have enough point to buy hint! ");
+                            dialog1.setMessage(" You don't have enough point to buy hint! ");
                             dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog1, int which) {
@@ -281,6 +279,71 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             arr[j] = temp;
         }
     }
+    private  void updateContent()
+    {
+        DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
+        myref.child("DB").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mData.clear();
+
+                for(DataSnapshot dts: dataSnapshot.getChildren()) {
+                    DataMode1234 data=dts.getValue(DataMode1234.class);
+
+                    mData.add(data);
+                }
+                Random rd=new Random();
+                int index=rd.nextInt(mData.size());
+
+                while(true)
+                {
+                    if(dd[index]==1)
+                    {
+                        index=rd.nextInt(mData.size());
+                    }
+                    else
+                    {
+                        dd[index]=1;
+                        break;
+                    }
+                }
+                mQuestion=mData.get(index).getImage();
+                mAnswer=mData.get(index).getWordE();
+                ArrayList<Integer> rand = new ArrayList<>(); // chứa id của dòng chứa câu hỏi và 3 câu trả lời sai
+                rand.add(index);
+                mAnswerButton[0]=mAnswer;
+                for(int i=1; i<=3; i++)
+                {
+                    int random = rd.nextInt(mData.size());
+                    while(rand.indexOf(random)>=0)
+                    {
+                        random = rd.nextInt(mData.size());
+                    }
+
+                    rand.add(random);
+                    mAnswerButton[i] = mData.get(random).getWordE();
+
+                }
+                SufferStringArray(mAnswerButton);
+                Picasso.get().load(mQuestion.toString()).into(imgRound);
+
+                for(int i=0; i<4; i++)
+                {
+                    if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
+                    if(!btnAnswer[i].isShown()) btnAnswer[i].setVisibility(View.VISIBLE);
+                    btnAnswer[i].setText(mAnswerButton[i]);
+                }
+                SufferStringArray(mAnswerButton);
+                realAnswer = (String)mAnswer;
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
     /*
     phương thức message trong Interface fromContainerToFrag sẽ được kích hoạt khi mà Activity gửi dữ liệu xuống Fragment*/
     @Override
@@ -292,16 +355,8 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
 
             String text= roundOfMode + "/20";
             numberRound.setText(text);
-
-            //Lấy tham chiếu đến firebase storage từ link question
-            StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(question);;
-
-            //load ảnh lên ImageView từ tham chiếu đã lấy
-            GlideApp.with(_container)
-                    .load(storageReference)
-                    .into(imgRound);
+            Picasso.get().load(question.toString()).into(imgRound);
             SufferStringArray(answerBtn);
-
             for(int i=0; i<4; i++)
             {
                 if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
@@ -320,6 +375,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             {
                 btnHint.setEnabled(true);
             }
+
               //luư đáp án mà Activity ở trên gửi về
             StartProgressBar();
         }
