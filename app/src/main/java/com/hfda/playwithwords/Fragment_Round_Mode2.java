@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -173,8 +175,8 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             else
             {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                dialog.setTitle("Hey, ");
-                dialog.setMessage(" Just 7 points for 1 hint\n Do you really want to buy more hint?");
+                dialog.setTitle("Hey");
+                dialog.setMessage("Just 7 points for 1 hint\nDo you really want to buy more hint?");
                 dialog.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -186,7 +188,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
                         {
                             final AlertDialog.Builder dialog1= new AlertDialog.Builder(getContext());
                             dialog1.setTitle("Sorry!");
-                            dialog1.setMessage(" You don't have enough point to buy hint! ");
+                            dialog1.setMessage("You don't have enough point to buy hint! ");
                             dialog1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog1, int which) {
@@ -281,6 +283,14 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
     }
     private  void updateContent()
     {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://mydb-860d8.appspot.com");;
+        StorageReference pathReference = storageReference.child("image/image1.png");
+// Download directly from StorageReference using Glide
+// (See MyAppGlideModule for Loader registration)
+        GlideApp.with(_container)
+                .load(storageReference)
+                .into(imgRound);
+
         DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
         myref.child("DB").addValueEventListener(new ValueEventListener() {
             @Override
@@ -325,8 +335,8 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
 
                 }
                 SufferStringArray(mAnswerButton);
-                Picasso.get().load(mQuestion.toString()).into(imgRound);
-
+                //Picasso.get().load(mQuestion.toString()).into(imgRound);
+                // Reference to an image file in Cloud Storage
                 for(int i=0; i<4; i++)
                 {
                     if(!btnAnswer[i].isEnabled()) btnAnswer[i].setEnabled(true);
