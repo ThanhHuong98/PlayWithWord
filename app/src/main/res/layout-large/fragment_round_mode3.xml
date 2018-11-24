@@ -149,8 +149,8 @@
             android:text="@string/Check"
             android:background="@drawable/button_check3"
             android:textColor="#FFFFFF"
-
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAllCaps="false"/>
 
         <ImageButton
             android:id="@+id/btnHint"

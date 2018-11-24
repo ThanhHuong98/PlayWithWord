@@ -342,7 +342,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             //updateContent();
             if(btnCheck!=null)
             {
-                btnCheck.setBackground(this.getResources().getDrawable(R.drawable.btn3));
+                btnCheck.setBackground(this.getResources().getDrawable(R.drawable.button_check3));
             }
 
             if(! btnCheck.isEnabled()){

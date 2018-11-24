@@ -107,7 +107,8 @@
         android:textAlignment="center"
         android:textColor="@color/White"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="false"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -133,7 +134,7 @@
             android:layout_toRightOf="@+id/textView"
             android:background="#0D8DF0"
             android:fontFamily="@font/font_opensan_regular"
-            android:paddingLeft="25dp"
+            android:paddingLeft="5dp"
             android:text="@string/Score"
             android:textColor="@color/White"
             android:textSize="25sp" />

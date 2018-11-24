@@ -73,7 +73,8 @@
             android:gravity="center"
             android:text="Done"
             android:textSize="35sp"
-            android:background="@drawable/btn_done"/>
+            android:background="@drawable/btn_done"
+            android:textAllCaps="false"/>
     </RelativeLayout>
 
     <RelativeLayout

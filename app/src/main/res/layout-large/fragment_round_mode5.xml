@@ -109,7 +109,8 @@
         android:textAlignment="center"
         android:textColor="@color/White"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="false"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

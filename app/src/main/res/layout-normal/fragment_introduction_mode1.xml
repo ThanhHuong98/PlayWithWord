@@ -58,9 +58,10 @@
         android:layout_marginEnd="40dp"
         android:layout_marginTop="40dp"
         android:text=" Click here to play "
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
-        android:background="@drawable/my_button"/>
+        android:background="@drawable/my_button"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

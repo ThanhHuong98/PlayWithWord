@@ -45,7 +45,7 @@
         android:layout_marginTop="20dp"
         android:layout_alignLeft="@+id/howToPlay"
         android:text="@string/Intro_mode4"
-        android:textSize="25sp"
+        android:textSize="24sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button
@@ -57,9 +57,10 @@
         android:layout_marginEnd="40dp"
         android:layout_marginTop="30dp"
         android:text=" Click here to play "
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
-        android:background="@drawable/my_button"/>
+        android:background="@drawable/my_button"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

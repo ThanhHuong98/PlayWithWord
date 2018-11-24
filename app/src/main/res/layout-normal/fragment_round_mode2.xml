@@ -60,8 +60,8 @@
             android:background="@drawable/button_mode2"
             android:fontFamily="@font/font_opensan_light"
             android:textColor="@color/Black"
-
-            android:textSize="25sp" />
+            android:textAllCaps="false"
+            android:textSize="27sp" />
 
         <Button
 
@@ -75,7 +75,8 @@
             android:background="@drawable/button_mode2"
             android:fontFamily="@font/font_opensan_light"
             android:textColor="@color/Black"
-            android:textSize="25sp" />
+            android:textSize="27sp"
+            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/btnAnswer3"
@@ -88,7 +89,8 @@
             android:background="@drawable/button_mode2"
             android:fontFamily="@font/font_opensan_light"
             android:textColor="@color/Black"
-            android:textSize="25sp" />
+            android:textSize="27sp"
+            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/btnAnswer4"
@@ -102,7 +104,8 @@
             android:background="@drawable/button_mode2"
             android:fontFamily="@font/font_opensan_light"
             android:textColor="@color/Black"
-            android:textSize="25sp" />
+            android:textSize="27sp"
+            android:textAllCaps="false"/>
     </GridLayout>
 
     <RelativeLayout
