@@ -375,7 +375,6 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             {
                 btnHint.setEnabled(true);
             }
-
               //luư đáp án mà Activity ở trên gửi về
             StartProgressBar();
         }
