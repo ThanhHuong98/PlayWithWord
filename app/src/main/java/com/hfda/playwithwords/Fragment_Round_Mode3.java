@@ -163,9 +163,9 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                    }
 
                 resultToHint=resultToHint+res[indexOfHint].toString();
-                textHint.setHint(resultToHint);
+                editText_Answer3.setHint(resultToHint);
                 int color=getResources().getColor(R.color.BlueViolet);
-                textHint.setHintTextColor(color);
+                editText_Answer3.setHintTextColor(color);
                 indexOfHint++;
 
                 Handler handler = new Handler();
@@ -175,7 +175,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                     public void run() {
 
                         // Hide your View after 3 seconds
-                        textHint.setHint("");
+                        editText_Answer3.setHint("");
                         layout.setBackground(ContextCompat.getDrawable(_container,R.drawable.background_mode3));
 
                     }

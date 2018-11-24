@@ -60,7 +60,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         return v;
     }
 
-
     @Override
     public void onClick(View v) {
         if (v.getId() == btnSignIn1.getId()) {
