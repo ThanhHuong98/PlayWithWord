@@ -1,11 +1,13 @@
 package com.hfda.playwithwords;
 
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.ColorDrawable;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -185,38 +188,42 @@ public class Menu extends AppCompatActivity
                 replaceFragment(fragment4,"FEED BACK");
                 break;
             case 5:
-                //Dialog
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setMessage("Are you sure, you want to Log-out");
-                alertDialogBuilder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1)
-                            {
-                                //Chuyển sang màn hình đăng nhập, đăng ký, đồng thời xóa thông tin lưu trữ trong database SQLite
-                                SQLiteOpenHelper UserDB = new UserLogedIn(getApplicationContext());
-                                SQLiteDatabase db = UserDB.getReadableDatabase();
-                                long delete = db.delete("USER", null, null);
-                                Intent intent = new Intent(getApplicationContext(),SignInSignUpActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
+                final Button btnYesLogOut;
+                final Button btnNoLogOut;
+                GifImageView gifImageView;
 
-                alertDialogBuilder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                       /* Fragment fragment3 = new FragmentHome();
-                        replaceFragment(fragment3,"HOME");*/
+                final Dialog dialog=new Dialog(this);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.setContentView(R.layout.dialog_logout);
 
-                            }
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                gifImageView=dialog.findViewById(R.id.GifImageViewLogout);
+                gifImageView.setVisibility(View.VISIBLE);
+                gifImageView.setGifImageResource(R.drawable.gif_rabbit_dialog);
+                btnYesLogOut=dialog.findViewById(R.id.btnYesLogout);
+                btnNoLogOut=dialog.findViewById(R.id.btnNoLogout);
+                //Khong muon thoat
+                btnNoLogOut.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                //Muon LogOut
+                btnYesLogOut.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Chuyen qua man hinh LogOut, Chao tam biet!
+                        Intent intent = new Intent(getApplicationContext(),LogoutActivity.class);
+                        startActivity(intent);
+                        // đồng thời xóa thông tin lưu trữ trong database SQLite
+                        SQLiteOpenHelper UserDB = new UserLogedIn(getApplicationContext());
+                        SQLiteDatabase db = UserDB.getReadableDatabase();
+                        long delete = db.delete("USER", null, null);
+                        finish();
+                    }
+                });
+
+                dialog.show();
                 break;
             default:
                 break;
