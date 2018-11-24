@@ -2,9 +2,14 @@ package com.hfda.playwithwords;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -128,9 +133,32 @@ public class MainActivity extends AppCompatActivity
         myHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), SignInSignUpActivity.class);
-                startActivity(intent);
-                finish();
+                //kiểm tra xem trong bảng database bên dưới đã có ai đăng nhập chưa, nếu chưa thì chuyển intent qua màn hình đăng nhập, có rồi thì chuyển
+                //thẳng qua menu luôn
+                try
+                {
+                    SQLiteOpenHelper UserDB = new UserLogedIn(getApplicationContext());
+                    SQLiteDatabase db = UserDB.getReadableDatabase();
+                    Cursor cursor = db.query("USER",
+                            new String[]{"COUNT(USER_NAME)"}, null, null, null, null, null);
+                    cursor.moveToFirst();
+                    if(cursor.getInt(0) == 0)
+                    {
+                        Intent intent = new Intent(getApplicationContext(), SignInSignUpActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(getApplicationContext(), Menu.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }catch(SQLiteException e)
+                {
+                    Toast.makeText(getApplicationContext(), "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
+                }
+
             }
         }, 3000);
     }
