@@ -32,7 +32,7 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:background="@color/pinkHeader"
+        android:background="#d7ff7576"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>
 
