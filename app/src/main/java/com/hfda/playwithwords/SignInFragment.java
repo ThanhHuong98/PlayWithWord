@@ -79,11 +79,11 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(),Menu.class);
                         startActivity(intent);
-<<<<<<< HEAD
+
                         _container.finish();
-=======
+
                         //dialog.dismiss();
->>>>>>> parent of 143224d... Revert "UI Mode4"
+
                     }
                 });
                 dialog.show();

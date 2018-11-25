@@ -60,7 +60,6 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/imagebtn_mode6_play"
             android:background="@drawable/btn_play_red" />
         <TextView
             android:id="@+id/textView_Info_Record"
