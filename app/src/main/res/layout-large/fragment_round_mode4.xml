@@ -55,7 +55,7 @@
             android:gravity="left|center"
             android:textColor="@color/Black"
             android:hint="@string/textHint"
-            android:textColorHint="@color/Black"
+            android:textColorHint="@color/Gray"
             android:textSize="30sp"
             android:paddingLeft="15dp"
             android:fontFamily="@font/font_opensan_regular"
@@ -89,7 +89,7 @@
             android:paddingLeft="12dp"
             android:text="Point(s):"
             android:textSize="40sp"
-            android:background="#F9BAA8"
+            android:background="#FF7576"
             android:textColor="@color/White"
             android:fontFamily="@font/font_opensan_regular"/>
 
@@ -103,7 +103,7 @@
             android:text="@string/Score"
             android:textSize="40sp"
             android:textColor="@color/White"
-            android:background="#F9BAA8"
+            android:background="#FF7576"
             android:fontFamily="@font/font_opensan_regular"/>
 
         <TextView

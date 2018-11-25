@@ -295,7 +295,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                 }
                 text = text + res[i].toString();
                 editTextAnswer.setHint(text);
-                int color=getResources().getColor(R.color.BlueViolet);
+                int color=getResources().getColor(R.color.MidnightBlue);
                 editTextAnswer.setHintTextColor(color);
                 i++;
                 Handler handler = new Handler();
