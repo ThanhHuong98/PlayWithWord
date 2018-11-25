@@ -39,6 +39,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +52,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         btnSignIn1 = v.findViewById(R.id.btnSignIn1);
         btnGoogle = v.findViewById(R.id.btnGoogle);
         btnFB = v.findViewById(R.id.btnFB);
-
         btnSignIn1.setOnClickListener(this);
         btnGoogle.setOnClickListener(this);
         btnFB.setOnClickListener(this);
@@ -79,11 +79,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(),Menu.class);
                         startActivity(intent);
-
-                      //  _container.finish();
-
-                        //dialog.dismiss();
-
+                        _container.finish();
                     }
                 });
                 dialog.show();
@@ -114,7 +110,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         }
     }
-//Nay là kiểm tra thông tin user với thông tin đã SignUp lần đầu tiên được save trên fireBase
+    //Nay là kiểm tra thông tin user với thông tin đã SignUp lần đầu tiên được save trên fireBase
     public boolean validate()
     {
         boolean valid = true;
