@@ -80,7 +80,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                         Intent intent = new Intent(getContext(),Menu.class);
                         startActivity(intent);
 
-                        _container.finish();
+                      //  _container.finish();
 
                         //dialog.dismiss();
 

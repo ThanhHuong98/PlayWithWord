@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/introduction_background_mode6">
 
     <ImageButton
@@ -21,10 +23,39 @@
         android:layout_toEndOf="@id/btn_back"
         android:layout_marginTop="15dp"
         android:text="Mode 6"
-        android:textSize="40sp"
+        android:textSize="70sp"
         android:textColor="#FBE748"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
+
+    <TextView
+        android:id="@+id/textViewIntro1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/howToPlay"
+        android:layout_marginTop="30dp"
+        android:layout_alignStart="@id/howToPlay"
+        android:text="@string/Intro_mode6_1"
+        android:textColor="@color/Black"
+        android:textSize="33sp"
+        android:fontFamily="@font/font_opensan_regular"/>
+
+    <ImageView
+        android:id="@+id/imagebtn_mode6_play"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_below="@id/textViewIntro1"
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@id/textViewIntro1"
+        android:background="@drawable/btn_play" />
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@id/imagebtn_mode6_play"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/btn_play_black"
+        android:layout_below="@id/imagebtn_mode6_play"
+        />
     <TextView
         android:id="@+id/howToPlay"
         android:layout_width="wrap_content"
@@ -33,58 +64,43 @@
         android:layout_alignStart="@id/textViewMode"
         android:layout_marginTop="15dp"
         android:text="How to play"
-        android:textSize="40sp"
+        android:textSize="70sp"
         android:textColor="@color/PinkLight"
         android:fontFamily="@font/font_opensan_regular"/>
-
-    <TextView
-        android:id="@+id/textViewIntro1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/howToPlay"
-        android:layout_alignStart="@id/howToPlay"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/font_opensan_regular"
-        android:text="@string/Intro_mode6_1"
-        android:textColor="@color/Black"
-        android:textSize="30sp" />
-    <LinearLayout
-        android:id="@+id/layoutInfor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/textViewIntro1"
-        android:layout_alignLeft="@id/textViewIntro1">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_play_red" />
         <TextView
-            android:id="@+id/textView_Info_Record"
+            android:id="@+id/textView_Info_Lis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Intro_mode6_3"
             android:textColor="@color/Black"
-            android:layout_marginLeft="10dp"
-            android:textSize="30sp"
-            android:fontFamily="@font/font_opensan_regular"/>
-    </LinearLayout>
+            android:layout_marginLeft="15dp"
+            android:layout_below="@id/textViewIntro1"
+            android:textSize="33sp"
 
+            android:layout_toRightOf="@id/imagebtn_mode6_play"
+            android:text="@string/Intro_mode6_2"
+            android:fontFamily="@font/font_opensan_regular"/>
+    <TextView
+        android:id="@+id/textView_Info_Record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Intro_mode6_3"
+        android:textColor="@color/Black"
+        android:layout_alignStart="@id/textView_Info_Lis"
+        android:textSize="33sp"
+        android:layout_below="@id/textView_Info_Lis"
+        android:fontFamily="@font/font_opensan_regular"/>
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_below="@id/textView_Info_Record"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/layoutInfor"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="67dp"
         android:text=" Click here to play "
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
-        android:background="@drawable/my_button"
-        android:textAllCaps="false"/>
+        android:background="@drawable/my_button"/>
 
 </RelativeLayout>
