@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="250dp"
-    android:background="@drawable/custom_shape_dialog_logout">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/custom_shape_dialog_logout"
+    tools:igore="MissingDefaultResource">
     <RelativeLayout
         android:id="@+id/anhGif"
         android:layout_width="110dp"

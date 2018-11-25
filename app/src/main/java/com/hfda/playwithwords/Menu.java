@@ -71,6 +71,7 @@ public class Menu extends AppCompatActivity
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
 
+    int out = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -172,20 +173,24 @@ public class Menu extends AppCompatActivity
             case 1:
                 Fragment fragment3=new FragmentHome();
                 replaceFragment(fragment3,"HOME");
+                out=0;
                 break;
             case 2:
 
                 Fragment fragment2=new FragmentRankings();
                 replaceFragment(fragment2,"RANKING");
+                out=0;
                 break;
 
             case 3:
                 Fragment fragment1=new FragmentAboutUs();
                 replaceFragment(fragment1,"ABOUT");
+                out=0;
                 break;
             case 4:
                 Fragment fragment4=new Fragment_FeedBack();
                 replaceFragment(fragment4,"FEED BACK");
+                out=0;
                 break;
             case 5:
                 final Button btnYesLogOut;
@@ -258,12 +263,24 @@ public class Menu extends AppCompatActivity
             getSupportFragmentManager().popBackStack();
             fragmentsInStack--;
         }
-        if (fragmentsInStack == 1) { // Finish activity, if only one fragment left, to prevent
-            Intent intent = new Intent(getApplicationContext(),SignInSignUpActivity.class);
-            startActivity(intent);
-        } else {
-            super.onBackPressed();
+        if (fragmentsInStack == 1)
+        {
+           // Finish activity, if only one fragment left, to prevent
+            //leaving empty screen
+            Context context = getApplicationContext();
+            CharSequence text = "Press back again to exit!";
+            out++;
+            int duration = Toast.LENGTH_SHORT;
+            if(out<2)
+            {
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+            if(out==2)
+                finish();
         }
+        else
+            super.onBackPressed();
     }
     @Override
     public void onDestroy()

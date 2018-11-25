@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:layout_height="300dp">
+    android:layout_height="300dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:igore="MissingDefaultResource">
     <RelativeLayout
         android:layout_marginTop="28dp"
         android:layout_width="300dp"
@@ -20,7 +21,7 @@
         android:id="@+id/tvSuccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Success"
+        android:text="Success!"
         android:textColor="@color/Gray"
         android:layout_below="@+id/ic_star"
         android:textSize="30sp"
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvSuccess"
         android:text="You have already signed in.
-        Have a fun time!"
+        Enjoy our game!"
         android:textColor="@color/Gray"
         android:textSize="17sp"
         android:layout_centerHorizontal="true"
@@ -49,7 +50,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:text="Get Start"
+        android:text="Let Play"
         android:textColor="@color/White"
         android:layout_below="@id/tvContentSuccess"
         android:background="#6AC359"/>
