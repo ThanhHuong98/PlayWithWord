@@ -217,8 +217,9 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
         if(v.getId() == btnDone.getId())
         {
-
+            //Lấy ra câu trả lời
             String result = editTextAnswer.getText().toString();
+            //Kiểm tra nếu khác rỗng
             if(!result.equals(""))
             {
 
@@ -257,6 +258,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
                 myHandler.removeCallbacks(runnable);
             }
+            //Nếu rỗng, thì gửi 1 thông báo rỗng lên Round để hiện Toast Custom nên ko hiện ở Fragment đươc
            else
             {
                 mainRoundMode4.Action("NOTIFICATION");
@@ -285,7 +287,6 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                 hint--;
                 String strHint=hint+"";
                 textViewNumberHint.setText("Hint: "+strHint+"/5");
-                notification="Decrease the number of Hint...";
                 //Show your view
                 editTextAnswer.setVisibility(View.VISIBLE);
                 String text="";

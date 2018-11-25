@@ -279,18 +279,18 @@ public class Round extends AppCompatActivity implements fromFragToContainer
             mediaPlayer.start();
 
         }
+        //Dùng cho mode 4, trường hợp nhập câu trả lời rỗng, thì xuất thông báo
         if(action.equals("NOTIFICATION"))
         {
             LayoutInflater inflater = getLayoutInflater();
             View layout = inflater.inflate(R.layout.custom_toast,
                     (ViewGroup)findViewById(R.id.custom_toast_layout_id));
-
             TextView text = (TextView) layout.findViewById(R.id.text);
             text.setText("You must write down at least one character...");
 
             Toast toast = new Toast(getApplicationContext());
-          //  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setDuration(Toast.LENGTH_LONG);
+          //  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);//Vị trị toast
+            toast.setDuration(Toast.LENGTH_SHORT);
             toast.setView(layout);
             toast.show();
         }
