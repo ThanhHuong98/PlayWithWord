@@ -27,7 +27,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     EditText txtPassWords;
     EditText txtPassWordsConfirm;
     Button btnSignUp1;
-   SignInSignUpActivity _container;
+    SignInSignUpActivity _container;
 
     public SignUpFragment() {
         // Required empty public constructor
@@ -44,6 +44,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         txtPassWordsConfirm = v.findViewById(R.id.txtConfirmPassword);
         btnSignUp1 = v.findViewById(R.id.btnSignUp1);
         btnSignUp1.setOnClickListener(this);
+        _container = (SignInSignUpActivity)getActivity();
         return v;
     }
 
@@ -54,28 +55,33 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         {
             if (validate())
             {
+                //Thêm thông tin người dùng vào firebase
+                MainActivity.mUser.add(new User(txtUserName.getText().toString(), txtPassWords.getText().toString(), 0));
+
+                MainActivity.myref.child("UserInfo").child(String.valueOf(MainActivity.mUser.size())).child("name").setValue(txtUserName.getText().toString());
+                MainActivity.myref.child("UserInfo").child(String.valueOf(MainActivity.mUser.size())).child("password").setValue(txtPassWords.getText().toString());
+                MainActivity.myref.child("UserInfo").child(String.valueOf(MainActivity.mUser.size())).child("totalScore").setValue(0);
+
                 //Hiện Dialog thông báo dang ky thanh cong, người dùng vào MenuScreen
                 TextView tvContentSucces;
                 Button btnGetStart;
-
                 final Dialog dialog=new Dialog(getContext());
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_signin_signup_success);
 
                 tvContentSucces=dialog.findViewById(R.id.tvContentSuccess);
-                tvContentSucces.setText("You have already signed up.\nHave a fun time!");
+                tvContentSucces.setText("You have already signed up!");
                 btnGetStart=dialog.findViewById(R.id.btnGetStart);
                 btnGetStart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getContext(),Menu.class);
-                        startActivity(intent);
+                        dialog.dismiss();
+                        _container.Action("SIGN IN");
                     }
                 });
-
                 dialog.show();
 
-                /*//nếu đăng ky tai khoan thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
+                //nếu đăng ky tai khoan thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
                 String username = txtUserName.getText().toString();
                 String password = txtPassWords.getText().toString();
                 try
@@ -87,49 +93,84 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     value.put("PASSWORD", password);
                     long insertToDb = db.insert("USER", null, value);
                     db.close();
-                }catch(SQLiteException e)
+                }catch(SQLiteException ex)
                 {
                     Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-                }*/
+                }
             }
         }
 
     }
 //Kiểm tra thỏa mãn quy định đăng ký
-    public boolean validate() {
+    public boolean validate()
+    {
         boolean valid = true;
         String username = txtUserName.getText().toString();
         //String email = _emailText.getText().toString();
         String password = txtPassWords.getText().toString();
         String confirmPass = txtPassWordsConfirm.getText().toString();
 
-        if (username.isEmpty() || username.length() < 3) {
-            txtUserName.setError("at least 3 characters");
+        //check xem user đã tồn tại trên csdl hay chưa
+        if(MainActivity.indexUser(username)!=-1)
+        {
+            txtUserName.setError("User name has been existed!");
             txtUserName.requestFocus();
             valid = false;
-        } else {
+        }
+        //check xem user name đã đủ số ký tự quy định hay chưa
+        else if (username.isEmpty() || username.length() < 3)
+        {
+            txtUserName.setError("User name must consists at least 3 characters!");
+            txtUserName.requestFocus();
+            valid = false;
+        }
+        else {
             txtUserName.setError(null);
         }
 
-
+        //check xem password đã đủ từ 4-10 ký tự hay chưa
         if (password.isEmpty()||password.length()<4||password.length()>10) {
-            txtPassWords.setError("between 4 and 10 alphanumeric characters");
+            txtPassWords.setError("Password must be between 4 and 10 alphanumeric characters!");
             txtPassWords.requestFocus();
             if (username.isEmpty() || username.length() < 3) {
                 txtUserName.requestFocus();
             }
             valid = false;
-        } else {
+        }
+        //có bao gồm ít nhất 1 chữ cái hay không
+        else if (!CheckPass(password))
+        {
+            txtPassWords.setError("Password must have at least one letter!");
+            txtPassWords.requestFocus();
+            if (username.isEmpty() || username.length() < 3) {
+                txtUserName.requestFocus();
+            }
+            valid = false;
+        }
+        else {
             txtPassWords.setError(null);
         }
+
         if (!confirmPass.equals(password)) {
-            txtPassWordsConfirm.setError("The confirm password does not match");
+            txtPassWordsConfirm.setError("The confirming password does not match!");
             txtPassWordsConfirm.requestFocus();
             valid = false;
-        } else {
+        }
+        else {
             txtPassWordsConfirm.setError(null);
         }
         return valid;
+    }
+
+
+    private boolean CheckPass(String pass) //password phải gồm có ít nhất 1 chữ cái
+    {
+        for(int i=0; i< pass.length(); i++)
+        {
+            if(Character.isLetter(pass.charAt(i)))
+                return true;
+        }
+        return false;
     }
 }
 

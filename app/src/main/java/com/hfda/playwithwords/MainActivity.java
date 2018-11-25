@@ -3,6 +3,7 @@ package com.hfda.playwithwords;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -20,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,51 +40,63 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity
 {
     private Handler myHandler;
-    private Runnable runnable;
-    private boolean canAccess = false;
     public static List<DataMode1234> mData= new ArrayList<>();
-    DatabaseReference myref;
+    public static List<User> mUser= new ArrayList<>();
+    public static DatabaseReference myref;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     //mảng lưu các quyền cần truy cập
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+    protected static Context context;
+
+    protected static boolean CheckLogedIn()
+    {
+        try
+        {
+            SQLiteOpenHelper UserDB = new UserLogedIn(context);
+            SQLiteDatabase db = UserDB.getReadableDatabase();
+            Cursor cursor = db.query("USER",
+                    new String[]{"COUNT(USER_NAME)"}, null, null, null, null, null);
+            cursor.moveToFirst();
+            if(cursor.getInt(0)==0)
+                return false;
+            else
+                return true;
+        }catch(SQLiteException ex)
+        {
+            Toast.makeText(context, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
+            return false;
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RelativeLayout layout = findViewById(R.id.layout);
+        context = getApplicationContext();
+        if(CheckLogedIn())
+        {
+            layout.setBackground(getResources().getDrawable(R.drawable.welcome));
+        }
+        else
+        {
+            layout.setBackground(getResources().getDrawable(R.drawable.poweron));
+        }
 /*----------------------*/
-
         //đòi quyển truy cập
         myref=FirebaseDatabase.getInstance().getReference();
-
         if (Build.VERSION.SDK_INT >= 23) {
             checkPermissions();
         } else {
             startNextActivity();
         }
-//        canAccess = verifyStoragePermissions(this);
-//        while (!canAccess) {
-//            Toast.makeText(this, "You must allow app access your storage to share your score!", Toast.LENGTH_LONG).show();
-//            canAccess = verifyStoragePermissions(this);
-//        }
-//        //Man hinh Splash...
-//            //Sau 3s thì sẽ tự động chuyển qua SignIn Main
-//            myHandler = new Handler();
-//            myHandler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    while(!canAccess){}
-//                    Intent intent = new Intent(getApplicationContext(),SignInSigUpActivity.class);
-//                    startActivity(intent);
-//                }
-//            }, 3000);
         readData();
-
+        readUserInfo();
     }
     private  void readData()
     {
-        myref.child("DB").addListenerForSingleValueEvent(new ValueEventListener() {
+        myref.child("DB").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mData.clear();
@@ -91,15 +105,38 @@ public class MainActivity extends AppCompatActivity
                     mData.add(data);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
 
-
+    private  void readUserInfo()
+    {
+        myref.child("UserInfo").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUser.clear();
+                for(DataSnapshot dts: dataSnapshot.getChildren()) {
+                    User data=dts.getValue(User.class);
+                    if(data!=null)
+                        mUser.add(data);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+    protected static int indexUser(String Name)
+    {
+        for(int i = 0; i< mUser.size(); i++)
+        {
+            if(mUser.get(i).getName().equals(Name))
+                return i;
+        }
+        return -1;
+    }
     public static boolean verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -135,14 +172,7 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 //kiểm tra xem trong bảng database bên dưới đã có ai đăng nhập chưa, nếu chưa thì chuyển intent qua màn hình đăng nhập, có rồi thì chuyển
                 //thẳng qua menu luôn
-                try
-                {
-                    SQLiteOpenHelper UserDB = new UserLogedIn(getApplicationContext());
-                    SQLiteDatabase db = UserDB.getReadableDatabase();
-                    Cursor cursor = db.query("USER",
-                            new String[]{"COUNT(USER_NAME)"}, null, null, null, null, null);
-                    cursor.moveToFirst();
-                    if(cursor.getInt(0) == 0)
+                    if(!CheckLogedIn())
                     {
                         Intent intent = new Intent(getApplicationContext(), SignInSignUpActivity.class);
                         startActivity(intent);
@@ -154,13 +184,10 @@ public class MainActivity extends AppCompatActivity
                         startActivity(intent);
                         finish();
                     }
-                }catch(SQLiteException e)
-                {
-                    Toast.makeText(getApplicationContext(), "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-                }
+
 
             }
-        }, 3000);
+        }, 2000);
     }
 
     private String[] requiredPermissionsStillNeeded() {

@@ -79,13 +79,13 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(),Menu.class);
                         startActivity(intent);
+                        _container.finish();
                     }
                 });
-
                 dialog.show();
 
                 //nếu đăng nhập thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
-                /*String username = txtUsername1.getText().toString();
+                String username = txtUsername1.getText().toString();
                 String password = txtPassword1.getText().toString();
                 try
                 {
@@ -96,10 +96,10 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     value.put("PASSWORD", password);
                     long insertToDb = db.insert("USER", null, value);
                     db.close();
-                }catch(SQLiteException e)
+                }catch(SQLiteException ex)
                 {
                     Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-                }*/
+                }
             }
         }
         else if(v.getId()==btnGoogle.getId()){
@@ -111,22 +111,23 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         }
     }
 //Nay là kiểm tra thông tin user với thông tin đã SignUp lần đầu tiên được save trên fireBase
-    public boolean validate() {
+    public boolean validate()
+    {
         boolean valid = true;
         String username = txtUsername1.getText().toString();
         String password = txtPassword1.getText().toString();
-        String nameUserFireBase="ntThanhHuong";
-        String passwordFireBase ="123456";
 
-        if (username.isEmpty() || (!username.equals(nameUserFireBase))) {
-            txtUsername1.setError("Username incorrect, check again");
+        if (username.isEmpty() || MainActivity.indexUser(username)==-1)
+        {
+            txtUsername1.setError("Username incorrect, check again!");
             txtUsername1.requestFocus();
             valid = false;
         } else {
             txtUsername1.setError(null);
         }
-        if (password.isEmpty()||(!password.equals(passwordFireBase)) ){
-            txtPassword1.setError("Your password incorrect, check again");
+        if (password.isEmpty()|| (!password.equals(MainActivity.mUser.get(MainActivity.indexUser(username)).getPassword())))
+        {
+            txtPassword1.setError("Your password incorrect, check again!");
             txtPassword1.requestFocus();
             valid = false;
             if(username.isEmpty() || username.length() < 3)

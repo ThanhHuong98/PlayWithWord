@@ -169,9 +169,9 @@ public class SignInSignUpActivity extends AppCompatActivity implements fromFragT
             }
             if(out==2)
                 finish();
-        } else {
-            super.onBackPressed();
         }
+        else
+            super.onBackPressed();
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
