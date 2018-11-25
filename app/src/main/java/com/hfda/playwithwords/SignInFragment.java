@@ -39,7 +39,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +51,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         btnSignIn1 = v.findViewById(R.id.btnSignIn1);
         btnGoogle = v.findViewById(R.id.btnGoogle);
         btnFB = v.findViewById(R.id.btnFB);
+
         btnSignIn1.setOnClickListener(this);
         btnGoogle.setOnClickListener(this);
         btnFB.setOnClickListener(this);
@@ -79,6 +79,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(),Menu.class);
                         startActivity(intent);
+                        //dialog.dismiss();
                     }
                 });
 
