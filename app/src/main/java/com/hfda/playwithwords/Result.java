@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Parcelable;
@@ -53,6 +54,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     int mode;
     File imageFile;
     Context context;
+    MediaPlayer mediaPlayer;
 
 
     @Override
@@ -60,6 +62,10 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        mediaPlayer=MediaPlayer.create(this,R.raw.gaming);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
@@ -184,6 +190,13 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     public void onDestroy()
     {
         super.onDestroy();
+        finish();
+    }
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        mediaPlayer.stop();
         finish();
     }
 }
