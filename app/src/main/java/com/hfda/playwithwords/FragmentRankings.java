@@ -26,7 +26,7 @@ public class FragmentRankings extends Fragment
         // Required empty public constructor
     }
 
-    private int userRanking(String name) //thứ tự của user trong bảng xếp hạng
+    protected static int userRanking(String name) //thứ tự của user trong bảng xếp hạng
     {
         int rank=1;
         for(int i=0; i < MainActivity.mUser.size(); i++)

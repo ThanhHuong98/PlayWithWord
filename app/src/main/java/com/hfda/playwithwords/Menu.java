@@ -99,7 +99,14 @@ public class Menu extends AppCompatActivity
 
        // mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
         long score = MainActivity.mUser.get(MainActivity.indexUser(MainActivity.userName)).getTotalScore();
-        mAdapter = new MyAdapter(TITLES, ICONS, MainActivity.userName, "Total Score: " + score, rank, profile,this); // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
+        int rank=FragmentRankings.userRanking(userName);
+        String sttRank;
+        if(rank==1) sttRank=rank+"st";
+        else if(rank==2) sttRank=rank+"nd";
+        else if(rank==3) sttRank=rank+"rd";
+        else
+            sttRank=rank+"th";
+        mAdapter = new MyAdapter(TITLES, ICONS, MainActivity.userName, "Total Score: " + score, sttRank, profile,this); // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
         // And passing the titles,icons,header view username, header view point,header view rank
         // and header view profile picture
 
