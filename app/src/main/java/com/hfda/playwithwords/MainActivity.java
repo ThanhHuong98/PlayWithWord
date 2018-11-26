@@ -45,18 +45,16 @@ public class MainActivity extends AppCompatActivity
     public static DatabaseReference myref;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     //mảng lưu các quyền cần truy cập
-    private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+   // private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     protected static Context context;
     protected static String userName;
-    protected static int userKey; //thứ tự node của user trên firebase
+    //protected static int userKey; //thứ tự node của user trên firebase
     protected static long totalScore;
     protected static int Userrank; //vị trí của user trong bảng xếp hạng
 
     protected static boolean CheckLogedIn()
     {
-        try
-        {
             SQLiteOpenHelper UserDB = new UserLogedIn(context);
             SQLiteDatabase db = UserDB.getReadableDatabase();
             Cursor cursor = db.query("USER",
@@ -72,12 +70,6 @@ public class MainActivity extends AppCompatActivity
                 userName = cursor.getString(0);
                 return true;
             }
-
-        }catch(SQLiteException ex)
-        {
-            Toast.makeText(context, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-            return false;
-        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -86,6 +78,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         RelativeLayout layout = findViewById(R.id.layout);
         context = getApplicationContext();
+        myref=FirebaseDatabase.getInstance().getReference();
+        readData();
+        readUserInfo();
         if(CheckLogedIn())
         {
             layout.setBackground(getResources().getDrawable(R.drawable.welcome));
@@ -96,14 +91,11 @@ public class MainActivity extends AppCompatActivity
         }
 /*----------------------*/
         //đòi quyển truy cập
-        myref=FirebaseDatabase.getInstance().getReference();
         if (Build.VERSION.SDK_INT >= 23) {
             checkPermissions();
         } else {
             startNextActivity();
         }
-        readData();
-        readUserInfo();
     }
     private  void readData()
     {
@@ -111,7 +103,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mData.clear();
-                for(DataSnapshot dts: dataSnapshot.getChildren()) {
+                for(DataSnapshot dts: dataSnapshot.getChildren())
+                {
                     DataMode1234 data=dts.getValue(DataMode1234.class);
                     mData.add(data);
                 }
@@ -122,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private  void readUserInfo()
+    protected static void readUserInfo()
     {
         myref.child("UserInfo").addValueEventListener(new ValueEventListener() {
             @Override
@@ -143,28 +136,12 @@ public class MainActivity extends AppCompatActivity
     {
         for(int i = 0; i< mUser.size(); i++)
         {
-            if(mUser.get(i).getName().equals(Name))
+            if(mUser.get(i).getName().equalsIgnoreCase(Name))
                 return i;
         }
         return -1;
     }
 
-    //Sắp xếp các tài khoản người dùng theo thứ tự từ cao đến thấp để xếp hạng
-    protected static void SortUserList()
-    {
-        for(int i=0; i< mUser.size()-1; i++)
-        {
-            for(int j=i+1; j<mUser.size(); j++)
-            {
-                if(mUser.get(i).getTotalScore() < mUser.get(i).getTotalScore())
-                {
-                    User temp = mUser.get(i);
-                    mUser.set(i, mUser.get(j));
-                    mUser.set(j, temp);
-                }
-            }
-        }
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {

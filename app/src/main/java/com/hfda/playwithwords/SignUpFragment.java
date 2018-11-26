@@ -81,7 +81,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 });
                 dialog.show();
 
-                //nếu đăng ky tai khoan thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
+                /*//nếu đăng ky tai khoan thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
                 String username = txtUserName.getText().toString();
                 String password = txtPassWords.getText().toString();
                 try
@@ -91,12 +91,13 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     ContentValues value = new ContentValues();
                     value.put("USER_NAME", username);
                     value.put("PASSWORD", password);
+                    value.put("USER_KEY", MainActivity.indexUser(username));
                     long insertToDb = db.insert("USER", null, value);
                     db.close();
                 }catch(SQLiteException ex)
                 {
                     Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-                }
+                }*/
             }
         }
 

@@ -34,7 +34,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Round extends AppCompatActivity implements fromFragToContainer
@@ -230,6 +232,13 @@ public class Round extends AppCompatActivity implements fromFragToContainer
             }
             else //nếu đã chơi đủ 20 màn thì tạo 1 intent để show kết quả
             {
+                //Cập nhật điểm lên firebase trước khi chuyển intent
+                Map<String, Object> childUpdates = new HashMap<>();
+                int key = MainActivity.indexUser(MainActivity.userName)+1;
+                long score = MainActivity.totalScore;
+                childUpdates.put(""+ key +"/totalScore", score);
+                MainActivity.myref.child("UserInfo").updateChildren(childUpdates);
+                //tạo intent và chuyển màn hình
                 Intent intent = new Intent(this, Result.class);
                 intent.putExtra(Result.FINAL_RESULT, numberRightAnswer + ""); //thông tin số vòng người chơi trả lời đúng
                 intent.putExtra(Result.TOTAL_SCORE, point + ""); //thông tin số điểm
@@ -243,6 +252,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
             //so sánh với đáp án của database ứng với câu hỏi
         {
             point +=20;
+            MainActivity.totalScore+=20;
             numberRightAnswer++;
             notification.playClickSound();
             gifImageView.setVisibility(View.VISIBLE);
@@ -303,6 +313,13 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     public void onBackPressed()
     {
         super.onBackPressed();
+        //cập nhật điểm nếu người dùng đang chơi giữa chừng mà out ra
+        Map<String, Object> childUpdates = new HashMap<>();
+        int key = MainActivity.indexUser(MainActivity.userName)+1;
+        long score = MainActivity.totalScore;
+        childUpdates.put(""+ key +"/totalScore", score);
+        MainActivity.myref.child("UserInfo").updateChildren(childUpdates);
+        //chuyển intent về menu
         startActivity(new Intent(this, Menu.class));
         finish();
     }

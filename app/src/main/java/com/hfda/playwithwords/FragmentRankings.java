@@ -28,7 +28,6 @@ public class FragmentRankings extends Fragment
 
     private int userRanking(String name) //thứ tự của user trong bảng xếp hạng
     {
-        MainActivity.SortUserList();
         int rank=1;
         for(int i=0; i < MainActivity.mUser.size(); i++)
         {
@@ -43,8 +42,23 @@ public class FragmentRankings extends Fragment
         }
         return rank;
     }
-
-    private void setRankChart(View view)
+    //Sắp xếp các tài khoản người dùng theo thứ tự từ cao đến thấp để xếp hạng
+    protected static void SortUserList(List<User> array)
+    {
+        for(int i=0; i< array.size()-1; i++)
+        {
+            for(int j=i+1; j<array.size(); j++)
+            {
+                if(array.get(i).getTotalScore() < array.get(j).getTotalScore())
+                {
+                    User temp = array.get(i);
+                    array.set(i, array.get(j));
+                    array.set(j, temp);
+                }
+            }
+        }
+    }
+    private void setRankChart(View view, List<User> array)
     {
         TextView userNameFirst = view.findViewById(R.id.userHang1);
         TextView userNameSecond = view.findViewById(R.id.userHang2);
@@ -57,7 +71,7 @@ public class FragmentRankings extends Fragment
         User top3[] = new User[3];
         for(int i=0; i< 3; i++)
         {
-            top3[i] = MainActivity.mUser.get(i);
+            top3[i] = array.get(i);
             if(i==0)
             {
                 if(top3[i]!=null)
@@ -131,13 +145,15 @@ public class FragmentRankings extends Fragment
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.ranking_fragment, container, false);
+        MainActivity.readUserInfo();
+        List<User> arrayUser = MainActivity.mUser;
+        SortUserList(arrayUser);
+        setRankChart(view, arrayUser);
+
         mListViewRankings=getListData();
         lv = view.findViewById(R.id.lvRankings);
         lv.setAdapter(new CustomListAdapter(getContext(),mListViewRankings));
         lv.smoothScrollToPosition(3);//Cuon 3 Item keo
-
-        setRankChart(view);
-
         return view;
     }
     private  List<ListViewRankings> getListData()

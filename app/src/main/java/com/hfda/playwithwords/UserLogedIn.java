@@ -18,7 +18,8 @@ public class UserLogedIn extends SQLiteOpenHelper
     {
         db.execSQL("CREATE TABLE USER ("
                 + "USER_NAME TEXT,"
-                + "PASSWORD TEXT);");
+                + "PASSWORD TEXT,"
+                + "USER_KEY INT);");
     }
 
     @Override

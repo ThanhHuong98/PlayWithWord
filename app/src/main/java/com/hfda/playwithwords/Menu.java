@@ -82,7 +82,7 @@ public class Menu extends AppCompatActivity
         ft.replace(R.id.frame, fragmentHome);
         ft.addToBackStack("HOME");
         ft.commit();
-
+        MainActivity.readUserInfo();
         setContentView(R.layout.activity_menu);
         //Chạy nhạc nền trên mwnd hình menu
         mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
@@ -98,8 +98,8 @@ public class Menu extends AppCompatActivity
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
 
        // mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-
-        mAdapter = new MyAdapter(TITLES, ICONS, MainActivity.userName, "Total Score: " + MainActivity.totalScore, rank, profile,this); // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
+        long score = MainActivity.mUser.get(MainActivity.indexUser(MainActivity.userName)).getTotalScore();
+        mAdapter = new MyAdapter(TITLES, ICONS, MainActivity.userName, "Total Score: " + score, rank, profile,this); // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
         // And passing the titles,icons,header view username, header view point,header view rank
         // and header view profile picture
 

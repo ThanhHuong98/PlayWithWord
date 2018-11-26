@@ -70,7 +70,9 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                 String username = txtUsername1.getText().toString();
                 String password = txtPassword1.getText().toString();
 
-                MainActivity.userKey = MainActivity.indexUser(username);
+                //MainActivity.userKey = MainActivity.indexUser(username) + 1;
+                MainActivity.userName = username;
+                MainActivity.totalScore = MainActivity.mUser.get(MainActivity.indexUser(username)).getTotalScore();
                 final Dialog dialog=new Dialog(getContext());
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_signin_signup_success);
@@ -89,19 +91,14 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
                 //nếu đăng nhập thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
 
-                try
-                {
                     SQLiteOpenHelper UserDB = new UserLogedIn(_container);
                     SQLiteDatabase db = UserDB.getReadableDatabase();
                     ContentValues value = new ContentValues();
                     value.put("USER_NAME", username);
                     value.put("PASSWORD", password);
+                    value.put("USER_KEY", MainActivity.indexUser(username));
                     long insertToDb = db.insert("USER", null, value);
                     db.close();
-                }catch(SQLiteException ex)
-                {
-                    Toast.makeText(_container, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
-                }
             }
         }
         else if(v.getId()==btnGoogle.getId()){
