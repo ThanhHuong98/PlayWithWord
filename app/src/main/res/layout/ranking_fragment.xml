@@ -50,7 +50,7 @@
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:id="@+id/imageHang2"
-                    android:layout_width="71dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="false"
                     android:background="#55EFC4"
@@ -108,7 +108,7 @@
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:id="@+id/imageHang1"
-                    android:layout_width="81dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="#F9BAA8"/>
                 <TextView
@@ -157,13 +157,13 @@
                 />
             <RelativeLayout
                 android:id="@+id/point_rankThird"
-                android:layout_width="69dp"
-                android:layout_height="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="69dp"
                 android:layout_marginTop="25dp">
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:id="@+id/imageHang3"
-                    android:layout_width="69dp"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:background="#FFEAA7"/>
                 <TextView

@@ -118,9 +118,9 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             valid = false;
         }
         //check xem user name đã đủ số ký tự quy định hay chưa
-        else if (username.isEmpty() || username.length() < 3)
+        else if (username.isEmpty() || username.length() < 3 || username.length() >8)
         {
-            txtUserName.setError("User name must consists at least 3 characters!");
+            txtUserName.setError("User name must consists at least 3 characters and maximum character is 8!");
             txtUserName.requestFocus();
             valid = false;
         }
