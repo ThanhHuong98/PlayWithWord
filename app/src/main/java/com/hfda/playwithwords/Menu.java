@@ -95,8 +95,8 @@ public class Menu extends AppCompatActivity
 
        // mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
 
-        mAdapter = new MyAdapter(TITLES, ICONS, userName, point, rank, profile,this); // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
-        // And passing the titles,icons,header view username, header view point,header view rank;
+        mAdapter = new MyAdapter(TITLES, ICONS, MainActivity.userName, "Total Score: " + MainActivity.totalScore, rank, profile,this); // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
+        // And passing the titles,icons,header view username, header view point,header view rank
         // and header view profile picture
 
         mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView

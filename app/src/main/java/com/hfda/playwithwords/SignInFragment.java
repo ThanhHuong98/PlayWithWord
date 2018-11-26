@@ -67,7 +67,10 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
             {
                 TextView tvContentSucces;
                 Button btnGetStart;
+                String username = txtUsername1.getText().toString();
+                String password = txtPassword1.getText().toString();
 
+                MainActivity.userKey = MainActivity.indexUser(username);
                 final Dialog dialog=new Dialog(getContext());
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_signin_signup_success);
@@ -85,8 +88,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                 dialog.show();
 
                 //nếu đăng nhập thành công thì add người dùng vào database bên dưới để lần sau k cần đn lại
-                String username = txtUsername1.getText().toString();
-                String password = txtPassword1.getText().toString();
+
                 try
                 {
                     SQLiteOpenHelper UserDB = new UserLogedIn(_container);

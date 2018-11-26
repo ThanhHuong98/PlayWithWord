@@ -48,6 +48,10 @@ public class MainActivity extends AppCompatActivity
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     protected static Context context;
+    protected static String userName;
+    protected static int userKey; //thứ tự node của user trên firebase
+    protected static long totalScore;
+    protected static int Userrank; //vị trí của user trong bảng xếp hạng
 
     protected static boolean CheckLogedIn()
     {
@@ -61,7 +65,14 @@ public class MainActivity extends AppCompatActivity
             if(cursor.getInt(0)==0)
                 return false;
             else
+            {
+                cursor = db.query("USER",
+                        new String[]{"USER_NAME"}, null, null, null, null, null);
+                cursor.moveToFirst();
+                userName = cursor.getString(0);
                 return true;
+            }
+
         }catch(SQLiteException ex)
         {
             Toast.makeText(context, "Failed to connect to data base! You must log in again in the next time!", Toast.LENGTH_LONG);
@@ -128,7 +139,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-    protected static int indexUser(String Name)
+    protected static int indexUser(String Name) //trả ra vị trí của userName trong List
     {
         for(int i = 0; i< mUser.size(); i++)
         {
@@ -137,15 +148,22 @@ public class MainActivity extends AppCompatActivity
         }
         return -1;
     }
-    public static boolean verifyStoragePermissions(Activity activity) {
-        // Check if we have write permission
-        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
+    //Sắp xếp các tài khoản người dùng theo thứ tự từ cao đến thấp để xếp hạng
+    protected static void SortUserList()
+    {
+        for(int i=0; i< mUser.size()-1; i++)
+        {
+            for(int j=i+1; j<mUser.size(); j++)
+            {
+                if(mUser.get(i).getTotalScore() < mUser.get(i).getTotalScore())
+                {
+                    User temp = mUser.get(i);
+                    mUser.set(i, mUser.get(j));
+                    mUser.set(j, temp);
+                }
+            }
         }
-        return true;
     }
 
     @Override
@@ -184,8 +202,6 @@ public class MainActivity extends AppCompatActivity
                         startActivity(intent);
                         finish();
                     }
-
-
             }
         }, 2000);
     }
@@ -225,6 +241,16 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /* public static boolean verifyStoragePermissions(Activity activity) {
+       // Check if we have write permission
+       int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+       if (permission != PackageManager.PERMISSION_GRANTED) {
+           // We don't have permission so prompt the user
+           ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
+       }
+       return true;
+   }*/
     @Override
     public void onStop()
     {

@@ -43,20 +43,21 @@
                 android:layout_gravity="center"
                 />
             <RelativeLayout
-                android:id="@+id/poit_rankSecond"
-                android:layout_width="71dp"
+                android:id="@+id/point_rankSecond"
+                android:layout_width="wrap_content"
                 android:layout_height="140dp"
                 android:layout_marginTop="25dp">
                 <ImageView
                     android:layout_marginTop="10dp"
                     android:id="@+id/imageHang2"
                     android:layout_width="71dp"
-                    android:layout_height="131dp"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="false"
                     android:background="#55EFC4"
                     />
 
                 <TextView
+                    android:id="@+id/rank2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"
@@ -68,10 +69,11 @@
                     />
 
                 <TextView
-                    android:id="@+id/poitHang2"
+                    android:id="@+id/pointHang2"
                     android:layout_width="57dp"
                     android:layout_height="22dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
                     android:background="@drawable/custom_point_rank_second"
                     android:fontFamily="@font/font_opensan_regular"
                     android:gravity="center"
@@ -99,7 +101,7 @@
                 android:layout_gravity="center"
                 />
             <RelativeLayout
-                android:id="@+id/poit_rankFirst"
+                android:id="@+id/point_rankFirst"
                 android:layout_width="81dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="25dp">
@@ -107,9 +109,10 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/imageHang1"
                     android:layout_width="81dp"
-                    android:layout_height="197dp"
+                    android:layout_height="match_parent"
                     android:background="#F9BAA8"/>
                 <TextView
+                    android:id="@+id/rank1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
@@ -120,10 +123,11 @@
                     android:fontFamily="@font/font_fs_just_awesome_regular"
                     />
                 <TextView
-                    android:id="@+id/poitHang1"
+                    android:id="@+id/pointHang1"
                     android:layout_width="57dp"
                     android:layout_height="22dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
                     android:background="@drawable/custom_point_rank_first"
                     android:fontFamily="@font/font_opensan_regular"
                     android:gravity="center"
@@ -152,7 +156,7 @@
                 android:layout_gravity="center"
                 />
             <RelativeLayout
-                android:id="@+id/poit_rankThird"
+                android:id="@+id/point_rankThird"
                 android:layout_width="69dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="25dp">
@@ -160,9 +164,10 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/imageHang3"
                     android:layout_width="69dp"
-                    android:layout_height="76dp"
+                    android:layout_height="match_parent"
                     android:background="#FFEAA7"/>
                 <TextView
+                    android:id="@+id/rank3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3"
@@ -173,10 +178,11 @@
                     android:fontFamily="@font/font_fs_just_awesome_regular"
                     />
                 <TextView
-                    android:id="@+id/poitHang3"
+                    android:id="@+id/pointHang3"
                     android:layout_width="57dp"
                     android:layout_height="22dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
                     android:background="@drawable/custom_point_rank_third"
                     android:fontFamily="@font/font_opensan_regular"
                     android:gravity="center"
