@@ -215,6 +215,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                         fragmentRound3.InfoToHandle("NEW", round+"",newAnswer,newQuestion,"","",null);
                         break;
                     case 4:
+                        //Doc data o tung node tren cay JSON, gui xuong cho th Fragment xu ly, phat am thanh, so sanh đáp án ,,v, v
                         newQuestion=MainActivity.mData.get(index).getSound();
                         newAnswer=MainActivity.mData.get(index).getWordE();
                         fragmentRound4.InfoToHandle("NEW", round+"",newAnswer,newQuestion,"","",null);
@@ -257,6 +258,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
+            //Phát âm thanh câu trả lời đúng
             MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.sound_correct);
             mediaPlayer.start();
         }
@@ -275,22 +277,23 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
+            //Phát âm thanh câu trả lời sai
             MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.sound_incorrect);
             mediaPlayer.start();
 
         }
+        //Dùng cho mode 4, trường hợp nhập câu trả lời rỗng, thì xuất thông báo
         if(action.equals("NOTIFICATION"))
         {
             LayoutInflater inflater = getLayoutInflater();
             View layout = inflater.inflate(R.layout.custom_toast,
                     (ViewGroup)findViewById(R.id.custom_toast_layout_id));
-
             TextView text = (TextView) layout.findViewById(R.id.text);
             text.setText("You must write down at least one character...");
 
             Toast toast = new Toast(getApplicationContext());
-          //  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setDuration(Toast.LENGTH_LONG);
+          //  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);//Vị trị toast
+            toast.setDuration(Toast.LENGTH_SHORT);
             toast.setView(layout);
             toast.show();
         }

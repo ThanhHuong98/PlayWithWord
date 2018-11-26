@@ -112,7 +112,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         }
     }
-//Nay là kiểm tra thông tin user với thông tin đã SignUp lần đầu tiên được save trên fireBase
+    //Nay là kiểm tra thông tin user với thông tin đã SignUp lần đầu tiên được save trên fireBase
     public boolean validate()
     {
         boolean valid = true;

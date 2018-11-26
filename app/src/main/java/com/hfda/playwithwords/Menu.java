@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,7 +71,7 @@ public class Menu extends AppCompatActivity
     RecyclerView.LayoutManager mLayoutManager;            // Declaring Layout Manager as a linear layout manager
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
-
+    MediaPlayer mediaPlayer;
     int out = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -83,7 +84,10 @@ public class Menu extends AppCompatActivity
         ft.commit();
 
         setContentView(R.layout.activity_menu);
-
+        //Chạy nhạc nền trên mwnd hình menu
+        mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
+            mediaPlayer.start();
+            mediaPlayer.setLooping(true);
     /* Assinging the toolbar object ot the view
     and setting the the Action bar to our toolbar
      */
@@ -176,7 +180,6 @@ public class Menu extends AppCompatActivity
                 out=0;
                 break;
             case 2:
-
                 Fragment fragment2=new FragmentRankings();
                 replaceFragment(fragment2,"RANKING");
                 out=0;
@@ -286,6 +289,14 @@ public class Menu extends AppCompatActivity
     public void onDestroy()
     {
         super.onDestroy();
+        finish();
+    }
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        //Dừng nhạc nền khi thoát khỏi menu
+        mediaPlayer.stop();
         finish();
     }
   /*  @Override
