@@ -215,6 +215,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                         fragmentRound3.InfoToHandle("NEW", round+"",newAnswer,newQuestion,"","",null);
                         break;
                     case 4:
+                        //Doc data o tung node tren cay JSON, gui xuong cho th Fragment xu ly, phat am thanh, so sanh đáp án ,,v, v
                         newQuestion=MainActivity.mData.get(index).getSound();
                         newAnswer=MainActivity.mData.get(index).getWordE();
                         fragmentRound4.InfoToHandle("NEW", round+"",newAnswer,newQuestion,"","",null);
@@ -257,6 +258,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
+            //Phát âm thanh câu trả lời đúng
             MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.sound_correct);
             mediaPlayer.start();
         }
@@ -275,6 +277,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     gifImageView.setVisibility(View.INVISIBLE);//VISIBLE, GONE
                 }
             }, 1000);
+            //Phát âm thanh câu trả lời sai
             MediaPlayer mediaPlayer=MediaPlayer.create(this,R.raw.sound_incorrect);
             mediaPlayer.start();
 

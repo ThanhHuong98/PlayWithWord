@@ -1,17 +1,13 @@
 package com.hfda.playwithwords;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFrag, View.OnClickListener{
     ImageButton btnVolume;
@@ -43,7 +28,6 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
     TextView textViewRound;
     ProgressBar myProgressBar;
     boolean run = true;
-    int resID;
     Context context;
     Round _container;
     int[] dd=new int[30];
@@ -54,15 +38,11 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
     int hint = 5;
     Round mainRoundMode4;
-    SoundManager soundManager=new SoundManager();
     String realAnswer;
     int point=0;
     Character[] res;
     int i=0;
-    String str;
-    List<DataMode1234> mData=new ArrayList<>();
     String mQuestion;
-    String mAnswer;
 
     public Fragment_Round_Mode4()
     {
@@ -131,43 +111,6 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
         };
         myHandler.post(runnable);
     }
-    private  void updateContent()
-    {
-        DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
-        myref.child("DB").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mData.clear();
-                for(DataSnapshot dts:dataSnapshot.getChildren())
-                {
-                    DataMode1234 data=dts.getValue(DataMode1234.class);
-                    mData.add(data);
-                }
-                Random rd=new Random();
-                int index=rd.nextInt(mData.size());
-                while(true)
-                {
-                    if(dd[index]==1)
-                    {
-                        index=rd.nextInt(mData.size());
-                    }
-                    else
-                    {
-                        dd[index]=1;
-                        break;
-                    }
-                }
-                mQuestion = mData.get(index).getSound();
-                mAnswer = mData.get(index).getWordE();
-                realAnswer=mAnswer;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
     @Override
     public void InfoToHandle(String mess, String roundOfMode,String answer, String question,String Trans,String deFine,String[]answerBtn) {
         if(mess.equals("NEW"))
@@ -193,7 +136,8 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
     {
         if(v.getId() == btnVolume.getId())
         {
-            MediaPlayer mediaPlayer=new MediaPlayer();
+            //Dung MediaPlayer doc file am thanh
+                MediaPlayer mediaPlayer=new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try {
                     mediaPlayer.setDataSource(mQuestion);
@@ -229,16 +173,10 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                     //Toast.makeText(context, "Right...", Toast.LENGTH_SHORT).show();
                     mainRoundMode4.Action("RIGHT");
                     textViewPoint.setText(point+"");
-                    resID = R.raw.sound_right;
-                   // soundManager.loadSound(context,resID);
-                   // soundManager.playClickSound();
                 }
                 else{
                     //Toast.makeText(context, "Wrong...", Toast.LENGTH_SHORT).show();
                     mainRoundMode4.Action("WRONG");
-                    resID = R.raw.sound_wrong;
-                   // soundManager.loadSound(context,resID);
-                   // soundManager.playClickSound();
                 }
                 btnHint.setEnabled(false);
                 btnDone.setEnabled(false);
@@ -252,7 +190,6 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
                         // Hide your View after 3 seconds
                         mainRoundMode4.Action("REFRESH");
                         //Trong khi thời gian chuyển màn hình(Round), cũng chính là thời gian show GifImage => không cho nhập
-                        //editTextAnswer.setEnabled(false);
                     }
                 }, 1000);
 
@@ -376,7 +313,6 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
 
 
             }
-           // Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
         }
     }
     //Cắt chuỗi realAnswer, lưu từng ký tự và mảng res[];
