@@ -91,5 +91,6 @@
     <string name="connectWith">Connect with</string>
     <string name="facebook_app_id">199136370967670</string>
     <string name="fb_login_protocol_scheme">fb199136370967670</string>
+    <string name="string">"You have already signed in.\nEnjoy our game!"</string>
 
 </resources>

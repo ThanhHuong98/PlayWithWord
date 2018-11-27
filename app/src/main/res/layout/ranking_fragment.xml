@@ -172,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:text="3"
                     android:gravity="center"
-                    android:textSize="50sp"
+                    android:textSize="37sp"
                     android:layout_marginTop="25dp"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/font_fs_just_awesome_regular"
