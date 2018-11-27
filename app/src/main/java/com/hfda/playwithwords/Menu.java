@@ -58,10 +58,7 @@ public class Menu extends AppCompatActivity
     int ICONS[] = {R.drawable.ic_home_icon, R.drawable.ic_buffoon, R.drawable.ic_about_us,R.drawable.ic_love ,R.drawable.ic_logout};
 
     //Similarly we Create a String Resource for the UserName, Point, Rank  in the header view
-    //Sau nany doc tu database vao
-    String userName = "Thanh Huong";
-    String point = "250";
-    String rank = "2nd";
+
     //And we also create a int resource for profile picture in the header view
     int profile = R.drawable.logo;//Hình user
 
@@ -99,7 +96,7 @@ public class Menu extends AppCompatActivity
 
        // mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
         long score = MainActivity.mUser.get(MainActivity.indexUser(MainActivity.userName)).getTotalScore();
-        int rank=FragmentRankings.userRanking(userName);
+        int rank=FragmentRankings.userRanking(MainActivity.userName);
         String sttRank;
         if(rank==1) sttRank=rank+"st";
         else if(rank==2) sttRank=rank+"nd";

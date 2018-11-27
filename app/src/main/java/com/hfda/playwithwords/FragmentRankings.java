@@ -22,6 +22,7 @@ public class FragmentRankings extends Fragment
 
     ListView lv;
     List<ListViewRankings>mListViewRankings;
+    static List<User> arrayUser = MainActivity.mUser;
     public FragmentRankings() {
         // Required empty public constructor
     }
@@ -29,6 +30,7 @@ public class FragmentRankings extends Fragment
     protected static int userRanking(String name) //thứ tự của user trong bảng xếp hạng
     {
         int rank=1;
+        SortUserList(arrayUser);
         for(int i=0; i < MainActivity.mUser.size(); i++)
         {
             if(MainActivity.mUser.get(i).getName().equals(name))
@@ -146,7 +148,6 @@ public class FragmentRankings extends Fragment
     {
         View view = inflater.inflate(R.layout.ranking_fragment, container, false);
         MainActivity.readUserInfo();
-        List<User> arrayUser = MainActivity.mUser;
         SortUserList(arrayUser);
         setRankChart(view, arrayUser);
 
