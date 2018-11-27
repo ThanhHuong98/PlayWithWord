@@ -159,7 +159,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                     String strHint=hint+"";
                     txts.speak(realAnswer,TextToSpeech.QUEUE_FLUSH, null);
                     textViewNumberHint.setText("Hint: "+strHint+""+"/5");
-                    notification="Decrease the number of Hint...";
+                    notification="Decrease the number of hint...";
                 }
                 else{
                     final TextView tvHey;
@@ -216,7 +216,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
                         }
                     });
                     tvHey.setText("Hey,");
-                    tvNofitication.setText("Just 7 points for 1 hint.\nDo you really want to buy more hint?");
+                    tvNofitication.setText("Just 7 points for 1 hint.\nnDo you really want to buy more hint?");
                     dialog.show();
                 }
                 //Toast.makeText(context, notification, Toast.LENGTH_SHORT).show();
