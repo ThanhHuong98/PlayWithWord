@@ -7,8 +7,8 @@
 * Đây là một ứng dụng hỗ trợ ôn từ vựng thông qua 6 mini games, đối tượng mà team nhắm đến là trẻ em, do đó ứng dụng có giao diện gần gũi và thân thiện. Ngoài ra người dùng còn có thể tranh hạng với người dùng khác dựa và tổng điểm của 6 mini games.
 * Nhóm gồm có 6 thành viên:
   * Trần Phan Phú Duy (1612143): Developer + Tester
+  * Nguyễn Thị Thanh Hương (1612243): Developer  + Designer
   * Nguyễn Quang Huân (1612222): Designer
-  * Nguyễn Thị Thanh Hương (1612243): Developer + Designer
   * Lê Đức Huy (1612254): Developer
   * Nguyễn Quang Huy (1612263): Tester + BA
   * Đào Minh Toàn (1512581): Developer
