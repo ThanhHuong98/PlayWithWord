@@ -21,7 +21,7 @@
         android:layout_toEndOf="@id/btn_back"
         android:layout_marginTop="15dp"
         android:text="Mode 6"
-        android:textSize="40sp"
+        android:textSize="48sp"
         android:textColor="#FBE748"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
@@ -33,7 +33,7 @@
         android:layout_alignStart="@id/textViewMode"
         android:layout_marginTop="15dp"
         android:text="How to play"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:textColor="@color/PinkLight"
         android:fontFamily="@font/font_opensan_regular"/>
 
@@ -47,7 +47,7 @@
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Intro_mode6_1"
         android:textColor="@color/Black"
-        android:textSize="30sp" />
+        android:textSize="33sp" />
     <LinearLayout
         android:id="@+id/layoutInfor"
         android:layout_width="wrap_content"
@@ -68,17 +68,17 @@
             android:text="@string/Intro_mode6_3"
             android:textColor="@color/Black"
             android:layout_marginLeft="10dp"
-            android:textSize="30sp"
+            android:textSize="32sp"
             android:fontFamily="@font/font_opensan_regular"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/layoutInfor"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="90dp"
         android:text=" Click here to play "
         android:textSize="40sp"

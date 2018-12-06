@@ -46,7 +46,7 @@
         android:layout_marginRight="10dp"
         android:layout_alignStart="@+id/howToPlay"
         android:text="@string/Intro_mode5"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button

@@ -31,9 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMode"
         android:layout_alignLeft="@id/textViewMode"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="How to play"
-        android:textSize="40sp"
+        android:textSize="42sp"
         android:textColor="#A3B9C7"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
@@ -63,7 +63,7 @@
     <Button
         android:id="@+id/btnNext3"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_below="@id/text"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"
