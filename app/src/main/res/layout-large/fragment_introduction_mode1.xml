@@ -23,7 +23,7 @@
         android:layout_toEndOf="@id/btn_back"
         android:layout_marginTop="20dp"
         android:text="Mode 1"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:textColor="#6C5CE7"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
@@ -35,20 +35,22 @@
         android:layout_alignStart="@id/textViewMode"
         android:layout_marginTop="10dp"
         android:text="How to play"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:textColor="@color/PinkLight"
         android:fontFamily="@font/font_opensan_regular"/>
+
     <TextView
         android:id="@+id/textViewIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/howToPlay"
-        android:layout_marginTop="20dp"
         android:layout_alignStart="@+id/howToPlay"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Intro_mode1"
-        android:textSize="40sp"
         android:textColor="@color/Black"
-        android:fontFamily="@font/font_opensan_regular"/>
+        android:textSize="32sp" />
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"

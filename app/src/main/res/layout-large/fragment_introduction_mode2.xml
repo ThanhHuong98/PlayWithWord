@@ -35,7 +35,7 @@
         android:layout_alignStart="@id/textViewMode"
         android:layout_marginTop="20dp"
         android:text="How to play"
-        android:textSize="35sp"
+        android:textSize="47sp"
         android:textColor="@color/PinkLight"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
@@ -45,7 +45,7 @@
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="20dp"
         android:layout_alignStart="@+id/howToPlay"
-        android:text="Choose one of\nthe four options that\ndescribes the giving\npicture in English"
+        android:text="@string/Intro_mode2"
         android:textSize="35sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
@@ -55,12 +55,13 @@
         android:layout_height="70dp"
         android:layout_below="@id/textViewIntro"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="45dp"
         android:layout_marginTop="40dp"
         android:text=" Click here to play "
         android:textSize="40sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
-        android:background="@drawable/my_button"/>
+        android:background="@drawable/my_button"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

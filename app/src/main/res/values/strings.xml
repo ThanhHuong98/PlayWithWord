@@ -20,6 +20,8 @@
     <string name="Score">0</string>
     <string name="Hint">Hint: 5/5</string>
     <string name="Intro_mode1">Choose one of\nthe four options that\ndescribes the giving word\nin VietNamese</string>
+    <string name="Intro_mode2">Choose one of\nthe four options that\ndescribes the giving\npicture in English</string>
+
     <string name="Intro_mode3">Fill in the blank\nwith a suitable word\nthat matches\nthe giving definition</string>
 
     <string name="Intro_mode3L">Fill in the blank with a suitable word that matches the giving definition</string>

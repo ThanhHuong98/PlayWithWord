@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMode"
         android:layout_alignStart="@id/textViewMode"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:text="How to play"
         android:textSize="80sp"
         android:textColor="@color/PinkLight"
@@ -43,10 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/howToPlay"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_alignStart="@+id/howToPlay"
         android:text="Choose one of\nthe four options that\ndescribes the giving\npicture in English"
-        android:textSize="60sp"
+        android:textSize="45sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button
@@ -55,12 +55,13 @@
         android:layout_height="80dp"
         android:layout_below="@id/textViewIntro"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="50dp"
         android:text=" Click here to play "
         android:textSize="60sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_reenie_beanie"
-        android:background="@drawable/my_button"/>
+        android:background="@drawable/my_button"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

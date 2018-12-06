@@ -45,8 +45,8 @@
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="20dp"
         android:layout_alignStart="@+id/howToPlay"
-        android:text="Choose one of\nthe four options that\ndescribes the giving\npicture in English"
-        android:textSize="20sp"
+        android:text="@string/Intro_mode2"
+        android:textSize="25sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <Button
