@@ -77,6 +77,7 @@
         android:text=" Click here to play "
         android:textColor="@color/Black"
         android:textSize="35sp"
+
         android:textAllCaps="false"
         />
 

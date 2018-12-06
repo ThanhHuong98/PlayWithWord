@@ -10,7 +10,7 @@
         android:id="@+id/myProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="48dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="35dp"
@@ -27,7 +27,7 @@
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Round0"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/entry"
@@ -39,7 +39,7 @@
         android:layout_marginTop="20dp"
         android:layout_alignLeft="@id/myProgressBar"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textViewQuestion"
@@ -48,7 +48,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/opensansregular"
         android:textColor="@color/Black"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_below="@+id/entry"
         android:layout_alignLeft="@id/myProgressBar"
         android:layout_alignRight="@id/myProgressBar"
@@ -57,7 +57,7 @@
         android:layout_below="@+id/textViewQuestion"
         android:id="@+id/addGridViewLayout"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp">
@@ -104,17 +104,19 @@
         android:background="@drawable/custom_button_mode5"
         android:fontFamily="@font/font_opensan_light"
         android:gravity="center"
-        android:padding="0dp"
+        android:padding="15dp"
         android:text="@string/Check"
         android:textAlignment="center"
         android:textColor="@color/White"
-        android:textSize="20sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         android:textAllCaps="false"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/textView"
@@ -145,8 +147,8 @@
             android:id="@+id/textViewNumberHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginRight="12dp"
             android:fontFamily="@font/font_opensan_regular"
             android:text="@string/Hint"
@@ -157,8 +159,8 @@
             android:id="@+id/btnHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textViewPoint"
             android:layout_alignTop="@+id/textViewPoint"
+            android:layout_alignBottom="@+id/textViewPoint"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/textViewNumberHint"
             android:background="@android:color/transparent"
