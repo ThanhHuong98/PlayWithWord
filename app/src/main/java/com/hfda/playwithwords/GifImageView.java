@@ -12,7 +12,7 @@ import android.view.View;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-
+//Thanh huong
 public class GifImageView extends View{
 
     private InputStream mInputStream;
