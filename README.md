@@ -12,5 +12,5 @@
   * Lê Đức Huy (1612254): Developer
   * Nguyễn Quang Huy (1612263): Tester + BA
   * Đào Minh Toàn (1512581): Developer
-# Link Video Demo
+#Link Video Demo
 * https://goo.gl/gsfRga
