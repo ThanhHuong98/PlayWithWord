@@ -18,7 +18,7 @@ Translation(Bản dịch):
 * Team Members :
   * Tran Phan Phu Duy (1612143): Developer + Tester. [Github of Duy](https://github.com/TPPDuy)
   * Nguyen Thi Thanh Huong (1612243): Developer  + Designer. [Github of Huong](https://github.com/ThanhHuong98)
-  * Nguyen Quang Huan (1612222): Designer. [Github of Huan)(https://github.com)
+  * Nguyen Quang Huan (1612222): Designer. [Github of Huan](https://github.com)
   * Le Duc Huy (1612254): Developer. [Github of D.Huy](https://github.com/HuyLeUS)
   * Nguyen Quang Huy (1612263): Tester + BA. [Github of Q.Huy](https://github.com/Huynguyen23)
   * Dao Minh Toan (1512581): Developer. [Github of Toan](https://github.com/toandaominh1997)
