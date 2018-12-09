@@ -1,7 +1,7 @@
 # Project Android Semester 5 - HCMUS
 
 Translation(Bản dịch):
-- [Tiếng Việt - Vietnamese](translations/README-vn.md)
+- [Tiếng Việt - Vietnamese](/README-vn.md)
 ## Table of Contents
 
 - [What is it?](#what-is-it)
