@@ -95,4 +95,9 @@
     <string name="fb_login_protocol_scheme">fb199136370967670</string>
     <string name="string">"You have already signed in.\nEnjoy our game!"</string>
 
+    <!--Used for Mode 5.....-->
+    <string name="check">Check</string>
+    <string name="mode5_title">Write this entry in English</string>
+    <string name="mode5_hintquestion">Toi doc mot to bao</string>
+
 </resources>

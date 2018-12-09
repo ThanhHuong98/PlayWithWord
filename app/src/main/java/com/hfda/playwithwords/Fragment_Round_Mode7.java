@@ -154,46 +154,7 @@ public class Fragment_Round_Mode7 extends Fragment implements fromContainerToFra
         textViewPoint=(layout).findViewById(R.id.textViewPoint);
         tvHint = (layout).findViewById(R.id.textViewNumberHint);
         imgBntHint = (layout).findViewById(R.id.btnHint);
-        for(int i=1;i<=30;i++){
-            randomIndex[i]=1;
-        }
-        for(int i=0;i<dd1.length;i++) dd1[i]=0;
-        Collections.shuffle(Arrays.asList(randomIndex));
-        updateContent();
 
-        initGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Object o = initGridView.getItemAtPosition(position);
-
-                String getStr = (String) o;
-                listadd.add(listadd.size(), getStr);
-                addarrayAdapter.notifyDataSetChanged();
-                listinit.remove(getStr);
-                initarrayAdapter.notifyDataSetChanged();
-            }
-        });
-
-        addGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Object o = addGridView.getItemAtPosition(position);
-
-                String getStr = (String) o;
-                listinit.add(listinit.size(), getStr);
-                initarrayAdapter.notifyDataSetChanged();
-                listadd.remove(getStr);
-                addarrayAdapter.notifyDataSetChanged();
-            }
-        });
-
-
-//        initGridView.setOnItemClickListener(this);
-//        addGridView.setOnItemClickListener(this);
-        bntCheck.setOnClickListener(this);
-        imgBntHint.setOnClickListener(this);
         _container.Action("REFRESH");
         return layout;
     }
@@ -201,37 +162,7 @@ public class Fragment_Round_Mode7 extends Fragment implements fromContainerToFra
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        if(v.getId()==initGridView.getId()) //người dùng bấm chọn hint
-        {
-            initGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                @Override
-                public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                    Object o = initGridView.getItemAtPosition(position);
-
-                    String getStr = (String) o;
-                    listadd.add(listadd.size(), getStr);
-                    addarrayAdapter.notifyDataSetChanged();
-                    listinit.remove(getStr);
-                    initarrayAdapter.notifyDataSetChanged();
-                }
-            });
-        }
-        else if(v.getId()==addGridView.getId()){
-            addGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                    Object o = addGridView.getItemAtPosition(position);
-
-                    String getStr = (String) o;
-                    listinit.add(listinit.size(), getStr);
-                    initarrayAdapter.notifyDataSetChanged();
-                    listadd.remove(getStr);
-                    addarrayAdapter.notifyDataSetChanged();
-                }
-            });
-        }
     }
     @Override
     public void onPause()
