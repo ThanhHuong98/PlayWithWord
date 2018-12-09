@@ -1,5 +1,8 @@
 # Đồ án Android học kỳ 5 - HCMUS
 
+Bản gốc:
+* [English](/README.md)
+
 ## Mục lục
 
 - [Giới Thiệu?](#gioi-thieu)
