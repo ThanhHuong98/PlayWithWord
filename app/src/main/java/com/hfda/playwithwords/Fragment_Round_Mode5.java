@@ -72,18 +72,6 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     int accum;
     int progressStep=1;
     int[] dd1=new int[30];
-    private void SufferStringArray(String[] arr)
-    {
-        for (int i = arr.length-1; i > 0; i--)
-        {
-            //tạo ra vị trí j ngẫu nhiên từ 0<=j<=i
-            int j = (int)(Math.random() * (i + 1));
-            //hoán vị arr[i] và arr[j]
-            String temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-    }
     private void updateContent()
     {
 
