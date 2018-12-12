@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background = "@drawable/signin"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/appTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="97dp"
+        android:fontFamily="@font/font_fs_just_awesome_regular"
+        android:text="@string/title"
+        android:textColor="@android:color/black"
+        android:textSize="75sp" />
+    <TextView
+        android:id="@+id/appTitleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/opensansregular"
+        android:text="@string/signin"
+        android:textColor="@android:color/black"
+        android:textSize="65sp" />
+
+    <TextView
+        android:id="@+id/usernameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="39dp"
+        android:fontFamily="@font/font_opensan_light"
+        android:text="@string/username"
+        android:textColor="#FF7675"
+        android:textSize="57sp" />
+    <EditText
+        android:id="@+id/txtUserName1"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/transparent"
+        android:text=""
+        android:textColor="#000"
+        android:inputType="text"
+        />
+    <View
+        android:layout_width="500dp"
+        android:layout_height="2dp"
+        android:background="#81ECEC"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        />
+    <TextView
+        android:id="@+id/passwordTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/font_opensan_light"
+        android:text="@string/password"
+        android:textColor="#FF7675"
+        android:textSize="47sp" />
+    <EditText
+        android:id="@+id/txtPassword1"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/transparent"
+        android:text=""
+        android:inputType="textPassword"
+        android:textColor="#000"
+        />
+    <View
+        android:layout_width="500dp"
+        android:layout_height="2dp"
+        android:background="#81ECEC"
+        android:layout_gravity="start"
+        android:layout_marginStart="56dp"
+        />
+
+    <Button
+        android:id="@+id/btnSignIn1"
+        android:layout_width="193dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:gravity="center"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/font_opensan_light"
+        android:text="@string/signin"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="76dp"
+        android:layout_marginStart="56dp"
+        >
+        <TextView
+            android:id="@+id/connectwith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_opensan_regular"
+            android:text="@string/connectWith"
+            android:textColor="#59515C"
+            android:textSize="40sp"
+            android:layout_marginTop="10dp"/>
+        <ImageButton
+            android:id="@+id/btnGoogle"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/ic_google"
+            android:layout_marginLeft="96dp"/>
+        <ImageButton
+            android:id="@+id/btnFB"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/ic_fb"
+            android:layout_marginLeft="35dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+

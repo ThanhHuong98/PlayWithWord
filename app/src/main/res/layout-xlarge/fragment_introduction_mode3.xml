@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_back"
         android:layout_toRightOf="@id/btn_back"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="Mode 3"
         android:textSize="70sp"
         android:textColor="#6C5CE7"
@@ -34,7 +34,7 @@
         android:layout_alignLeft="@id/textViewMode"
         android:layout_marginTop="10dp"
         android:text="How to play"
-        android:textSize="75sp"
+        android:textSize="67sp"
         android:textColor="#A3B9C7"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
@@ -44,37 +44,36 @@
         android:layout_below="@id/howToPlay"
         android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/howToPlay"
-
         android:layout_marginEnd="15dp"
-        android:text="@string/Intro_mode3L"
-        android:textSize="55sp"
+        android:text="@string/Intro_mode3"
+        android:textSize="45sp"
         android:textColor="@color/Black"
         android:fontFamily="@font/font_opensan_regular"/>
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewIntro"
         android:layout_marginTop="15dp"
         android:layout_alignLeft="@+id/textViewIntro"
         android:text="@string/textNote"
-        android:textSize="30sp"
+        android:textSize="27sp"
         android:textStyle="italic"
         android:textColor="#000000"
         />
     <Button
         android:id="@+id/btnNext3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewIntro"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="120dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/my_button3"
-        android:fontFamily="@font/font_reenie_beanie"
+        android:layout_height="85dp"
+        android:layout_below="@id/text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="45dp"
         android:text=" Click here to play "
+        android:textSize="50sp"
         android:textColor="@color/Black"
-        android:textSize="45sp"
-
-        />
+        android:fontFamily="@font/font_reenie_beanie"
+        android:background="@drawable/my_button3"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>

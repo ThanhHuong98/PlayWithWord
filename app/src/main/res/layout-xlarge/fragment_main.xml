@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background = "@drawable/signinsignup"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="350dp"
+        android:fontFamily="@font/font_fs_just_awesome_regular"
+        android:text="@string/title"
+        android:textColor="@android:color/black"
+        android:textSize="75sp" />
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/font_opensan_light"
+        android:text="@string/signin"
+        android:textColor="#FFFFFF"
+        android:textSize="53sp" />
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="51dp"
+        android:background="@drawable/mybutton2"
+        android:fontFamily="@font/font_opensan_light"
+        android:text="@string/signup"
+        android:textColor="#FF7675"
+        android:textSize="53sp" />
+</LinearLayout>
+
+
+

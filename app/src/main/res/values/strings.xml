@@ -20,6 +20,8 @@
     <string name="Score">0</string>
     <string name="Hint">Hint: 5/5</string>
     <string name="Intro_mode1">Choose one of\nthe four options that\ndescribes the giving word\nin VietNamese</string>
+    <string name="Intro_mode2">Choose one of\nthe four options that\ndescribes the giving\npicture in English</string>
+
     <string name="Intro_mode3">Fill in the blank\nwith a suitable word\nthat matches\nthe giving definition</string>
 
     <string name="Intro_mode3L">Fill in the blank with a suitable word that matches the giving definition</string>
@@ -92,5 +94,10 @@
     <string name="facebook_app_id">199136370967670</string>
     <string name="fb_login_protocol_scheme">fb199136370967670</string>
     <string name="string">"You have already signed in.\nEnjoy our game!"</string>
+
+    <!--Used for Mode 5.....-->
+    <string name="check">Check</string>
+    <string name="mode5_title">Write this entry in English</string>
+    <string name="mode5_hintquestion">Toi doc mot to bao</string>
 
 </resources>

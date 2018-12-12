@@ -22,7 +22,7 @@
         android:layout_toRightOf="@id/btn_back"
         android:layout_marginTop="10dp"
         android:text="Mode 3"
-        android:textSize="60sp"
+        android:textSize="55sp"
         android:textColor="#6C5CE7"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
@@ -32,9 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMode"
         android:layout_alignLeft="@id/textViewMode"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="How to play"
-        android:textSize="60sp"
+        android:textSize="55sp"
         android:textColor="#A3B9C7"
         android:fontFamily="@font/font_opensan_regular"/>
 
@@ -48,9 +48,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/font_opensan_regular"
-        android:text="@string/Intro_mode3L"
+        android:text="@string/Intro_mode3"
         android:textColor="@color/Black"
-        android:textSize="40sp" />
+        android:textSize="35sp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,9 +66,10 @@
     <Button
         android:id="@+id/btnNext3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_below="@id/textViewIntro"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="40dp"
         android:layout_marginTop="80dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/my_button3"
@@ -77,6 +78,7 @@
         android:textColor="@color/Black"
         android:textSize="35sp"
 
+        android:textAllCaps="false"
         />
 
 </RelativeLayout>

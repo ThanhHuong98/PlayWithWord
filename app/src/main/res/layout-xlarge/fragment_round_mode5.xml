@@ -10,7 +10,7 @@
         android:id="@+id/myProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="20dp"
         android:layout_marginEnd="48dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="35dp"
@@ -27,7 +27,7 @@
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Round0"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/entry"
@@ -39,7 +39,7 @@
         android:layout_marginTop="20dp"
         android:layout_alignLeft="@id/myProgressBar"
         android:textColor="@color/Black"
-        android:textSize="25sp" />
+        android:textSize="47sp" />
 
     <TextView
         android:id="@+id/textViewQuestion"
@@ -48,7 +48,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/opensansregular"
         android:textColor="@color/Black"
-        android:textSize="20sp"
+        android:textSize="38sp"
         android:layout_below="@+id/entry"
         android:layout_alignLeft="@id/myProgressBar"
         android:layout_alignRight="@id/myProgressBar"
@@ -57,7 +57,7 @@
         android:layout_below="@+id/textViewQuestion"
         android:id="@+id/addGridViewLayout"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp">
@@ -86,7 +86,7 @@
         android:layout_below="@id/addGridViewLayout"
         android:id="@+id/initGridView"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="10dp"
@@ -104,11 +104,11 @@
         android:background="@drawable/custom_button_mode5"
         android:fontFamily="@font/font_opensan_light"
         android:gravity="center"
-        android:padding="0dp"
+        android:padding="20dp"
         android:text="@string/Check"
         android:textAlignment="center"
         android:textColor="@color/White"
-        android:textSize="20sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:textAllCaps="false"/>
 
@@ -126,20 +126,22 @@
             android:paddingLeft="12dp"
             android:text="Point(s):"
             android:textColor="@color/White"
-            android:textSize="25sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/textViewPoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/textView"
             android:background="#0D8DF0"
             android:fontFamily="@font/font_opensan_regular"
             android:paddingLeft="25dp"
             android:text="@string/Score"
             android:textColor="@color/White"
-            android:textSize="25sp" />
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/textViewNumberHint"
@@ -151,7 +153,7 @@
             android:fontFamily="@font/font_opensan_regular"
             android:text="@string/Hint"
             android:textColor="@color/White"
-            android:textSize="25sp" />
+            android:textSize="40sp" />
 
         <ImageButton
             android:id="@+id/btnHint"

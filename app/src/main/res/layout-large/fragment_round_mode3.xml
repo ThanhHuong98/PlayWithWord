@@ -139,17 +139,17 @@
         <Button
             android:id="@+id/btnCheck"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginLeft="70dp"
+            android:layout_height="73dp"
             android:layout_marginTop="90dp"
             android:paddingRight="50dp"
             android:paddingLeft="50dp"
+            android:layout_alignStart="@+id/editText_Answer3"
             android:layout_below="@+id/editText_Answer3"
             android:fontFamily="@font/font_opensan_regular"
             android:text="@string/Check"
             android:background="@drawable/button_check3"
             android:textColor="#FFFFFF"
-            android:textSize="30dp"
+            android:textSize="31dp"
             android:textAllCaps="false"/>
 
         <ImageButton

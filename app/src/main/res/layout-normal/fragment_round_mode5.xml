@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/opensanslight"
-            android:text="@string/title_mode5"
+            android:text="@string/mode5_title"
             android:layout_marginTop="20dp"
             android:layout_alignLeft="@id/myProgressBar"
             android:textColor="@color/Black"
@@ -52,7 +52,7 @@
             android:layout_below="@+id/entry"
             android:layout_alignLeft="@id/myProgressBar"
             android:layout_alignRight="@id/myProgressBar"
-            android:text="Toi doc mot quyen sach"/>
+            android:text="@string/mode5_hintquestion"/>
     <RelativeLayout
         android:layout_below="@+id/textViewQuestion"
         android:id="@+id/addGridViewLayout"
@@ -103,7 +103,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/custom_button_mode5"
         android:fontFamily="@font/font_opensan_light"
-        android:text="@string/Check"
+        android:text="@string/check"
         android:textAlignment="center"
         android:textColor="@color/White"
         android:textSize="20sp"
