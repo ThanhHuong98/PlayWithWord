@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -376,7 +377,18 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
 
             String text= roundOfMode + "/20";
             numberRound.setText(text);
-            Picasso.get().load(question.toString()).into(imgRound);
+            Picasso.get().load(question.toString()).into(imgRound, new Callback() {
+                @Override
+                public void onSuccess() {
+                    StartProgressBar();
+                }
+
+                @Override
+                public void onError(Exception ex) {
+
+                }
+
+            });
             SufferStringArray(answerBtn);
             for(int i=0; i<4; i++)
             {
@@ -398,7 +410,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
             }
 
               //luư đáp án mà Activity ở trên gửi về
-            StartProgressBar();
+
         }
 
     }
