@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="346dp"
+    android:layout_height="130dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/custom_shape_dialog_logout"
+    tools:igore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/tvNotification"
+        android:layout_below="@+id/anhGif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Your device is not connected to the network!"
+        android:fontFamily="@font/font_roboto"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/Black"/>
+    <RelativeLayout
+        android:id="@+id/layoutButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tvNotification"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@id/tvNotification"
+        android:layout_alignRight="@id/tvNotification">
+
+
+        <Button
+            android:id="@+id/btnOKfinish"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:text="OK"
+            android:gravity="center"
+           android:layout_centerHorizontal="true"
+            android:paddingTop="3dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/font_roboto"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_button_dialog_logout"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
