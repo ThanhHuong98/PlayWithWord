@@ -44,7 +44,6 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity
 {
     private Handler myHandler;
-    private Handler myHandler1;
     public static List<DataMode1234> mData= new ArrayList<>();
     public static List<User> mUser= new ArrayList<>();
     public static DatabaseReference myref;

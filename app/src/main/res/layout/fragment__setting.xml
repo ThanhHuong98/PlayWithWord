@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment_Setting"
+    android:background="@drawable/feedback_background"
+    android:layout_centerHorizontal="true">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:fontFamily="@font/font_fs_just_awesome_regular"
+        android:textColor="#1320b1"
+        android:layout_marginTop="50dp"
+        android:text="SETTING"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:id="@+id/txt_sound"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Sound"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="40dp"
+           android:textSize="35sp"
+           android:textColor="@color/Black"
+           android:fontFamily="@font/font_opensan_regular"
+           />
+
+       <ImageButton
+           android:id="@+id/ic_sound"
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_alignParentRight="true"
+           android:layout_marginTop="65dp"
+           android:layout_marginRight="40dp"
+           android:background="@drawable/ic_speaker" />
+
+       <TextView
+           android:id="@+id/txt_profile"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Profile"
+           android:layout_below="@+id/txt_sound"
+           android:layout_marginTop="40dp"
+           android:layout_marginLeft="40dp"
+           android:textSize="35sp"
+           android:textColor="@color/Black"
+           android:fontFamily="@font/font_opensan_regular"
+           />
+       <ImageButton
+           android:id="@+id/ic_profile"
+           android:layout_below="@+id/ic_sound"
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_marginTop="50dp"
+           android:layout_marginRight="35dp"
+           android:layout_alignParentRight="true"
+           android:background="@drawable/ic_user"
+           />
+   </RelativeLayout>
+
+</LinearLayout>
