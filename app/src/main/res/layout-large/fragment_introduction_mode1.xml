@@ -27,17 +27,19 @@
         android:textColor="#6C5CE7"
         android:textStyle="bold"
         android:fontFamily="@font/font_fs_just_awesome_regular"/>
+
     <TextView
         android:id="@+id/howToPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewMode"
         android:layout_alignStart="@id/textViewMode"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/font_opensan_regular"
         android:text="How to play"
-        android:textSize="50sp"
         android:textColor="@color/PinkLight"
-        android:fontFamily="@font/font_opensan_regular"/>
+        android:textSize="53sp" />
 
     <TextView
         android:id="@+id/textViewIntro"
@@ -50,7 +52,7 @@
         android:fontFamily="@font/font_opensan_regular"
         android:text="@string/Intro_mode1"
         android:textColor="@color/Black"
-        android:textSize="32sp" />
+        android:textSize="35sp" />
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
@@ -61,7 +63,7 @@
         android:layout_marginTop="50dp"
         android:text=" Click here to play "
         android:textColor="@color/Black"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:fontFamily="@font/font_reenie_beanie"
         android:background="@drawable/my_button"
         android:textAllCaps="false"/>

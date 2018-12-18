@@ -86,6 +86,8 @@
     <string name="title">PLAY WITH WORDS</string>
     <string name="signin">Sign In</string>
     <string name="signup">Sign Up</string>
+    <string name="update">UPDATE</string>
+
     <string name="username">Username:</string>
     <string name="password">Password:</string>
     <string name="forgotPassword">Forgot password?</string>

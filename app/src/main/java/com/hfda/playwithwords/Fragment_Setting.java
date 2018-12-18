@@ -54,6 +54,13 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
                     }
                 }
             }
+        });btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v.getId()==btnUpdateProfile.getId()){
+                    getFragmentManager().beginTransaction().replace(R.id.frame,new Fragment_Profile()).addToBackStack(null).commit();
+                }
+            }
         });
         return v;
     }
