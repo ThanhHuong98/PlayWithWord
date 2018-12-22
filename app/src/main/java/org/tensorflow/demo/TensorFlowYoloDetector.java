@@ -1,7 +1,5 @@
 package org.tensorflow.demo;
 
-package org.tensorflow.demo;
-
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
