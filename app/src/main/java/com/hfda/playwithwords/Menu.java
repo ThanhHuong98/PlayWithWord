@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -146,6 +147,15 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
             public void onRequestDisallowInterceptTouchEvent(boolean b)
             {
 
+            }
+        });
+        FloatingActionButton fab;
+        fab = findViewById(R.id.myFAB);
+        final Intent intent = new Intent(this, org.tensorflow.demo.DetectorActivity.class);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
             }
         });
 
