@@ -97,6 +97,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogoutActivity"></activity>
+        <activity android:name="org.tensorflow.demo.DetectorActivity">
+            
+        </activity>
     </application>
 
 </manifest>
