@@ -187,7 +187,7 @@ public class ImageUtils {
 
     private static native void convertRGB565ToYUV420SP(
             byte[] input, byte[] output, int width, int height);
-    
+
     public static Matrix getTransformationMatrix(
             final int srcWidth,
             final int srcHeight,
