@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
-import com.example.bigkizd.myapplication.R;
+import com.hfda.playwithwords.R;
 /**
  * An activity that uses a TensorFlowMultiBoxDetector and ObjectTracker to detect and then track
  * objects.
