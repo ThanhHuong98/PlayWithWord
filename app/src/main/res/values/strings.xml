@@ -86,6 +86,8 @@
     <string name="title">PLAY WITH WORDS</string>
     <string name="signin">Sign In</string>
     <string name="signup">Sign Up</string>
+    <string name="update">UPDATE</string>
+
     <string name="username">Username:</string>
     <string name="password">Password:</string>
     <string name="forgotPassword">Forgot password?</string>
@@ -99,5 +101,11 @@
     <string name="check">Check</string>
     <string name="mode5_title">Write this entry in English</string>
     <string name="mode5_hintquestion">Toi doc mot to bao</string>
+    <!--Used for Mode 7.......-->
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="activity_name_classification">TF Classify</string>
+    <string name="activity_name_detection">TF Detect</string>
 
 </resources>

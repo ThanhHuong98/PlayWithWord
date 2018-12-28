@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/introdution_background_mode2">
+    android:background="@drawable/introduction_background_mode2">
 
     <ImageButton
         android:id="@+id/btn_back"

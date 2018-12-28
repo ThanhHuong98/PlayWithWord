@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -33,7 +34,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-public class Menu extends AppCompatActivity
+public class Menu extends AppCompatActivity implements fromFragToContainer
 {
 
    /* private boolean mIsBound = false;
@@ -53,9 +54,9 @@ public class Menu extends AppCompatActivity
     };*/
     /*---------------------------------------------------------------------------*/
     //First We Declare Titles And Icons For Our Navigation Drawer List View
-    String TITLES[] = {"HOME", "RANKING", "ABOUT US", "FEED BACK", "LOGOUT"};
+    String TITLES[] = {"HOME", "RANKING", "ABOUT US", "FEED BACK","SETTING", "LOGOUT"};
     //This Icons And Titles Are holded in an Array as you can see
-    int ICONS[] = {R.drawable.ic_home_icon, R.drawable.ic_buffoon, R.drawable.ic_about_us,R.drawable.ic_love ,R.drawable.ic_logout};
+    int ICONS[] = {R.drawable.ic_home_icon, R.drawable.ic_buffoon, R.drawable.ic_about_us,R.drawable.ic_love,R.drawable.ic_setting ,R.drawable.ic_logout};
 
     //Similarly we Create a String Resource for the UserName, Point, Rank  in the header view
 
@@ -148,6 +149,15 @@ public class Menu extends AppCompatActivity
 
             }
         });
+        FloatingActionButton fab;
+        fab = findViewById(R.id.myFAB);
+        final Intent intent = new Intent(this, org.tensorflow.demo.DetectorActivity.class);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
 
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
@@ -200,6 +210,12 @@ public class Menu extends AppCompatActivity
                 out=0;
                 break;
             case 5:
+
+                Fragment fragment5=new Fragment_Setting();
+                replaceFragment(fragment5,"SETTING");
+                out=0;
+                break;
+            case 6:
                 final Button btnYesLogOut;
                 final Button btnNoLogOut;
                 GifImageView gifImageView;
@@ -290,6 +306,18 @@ public class Menu extends AppCompatActivity
             super.onBackPressed();
     }
     @Override
+    public void Action(String action)
+    {
+        if(action.equals("SOUND")){
+            mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
+            mediaPlayer.start();
+            mediaPlayer.setLooping(true);
+        }
+        if(action.equals("MUTE_SOUND")){
+            mediaPlayer.stop();
+        }
+    }
+    @Override
     public void onDestroy()
     {
         super.onDestroy();
@@ -313,6 +341,7 @@ public class Menu extends AppCompatActivity
             this.bindService(intent, Scon, Context.BIND_ADJUST_WITH_ACTIVITY);
             startService(intent);
     }*/
+
 }
 
 

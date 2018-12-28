@@ -2,6 +2,7 @@ package com.hfda.playwithwords;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -77,25 +81,50 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RelativeLayout layout = findViewById(R.id.layout);
-        context = getApplicationContext();
-        myref=FirebaseDatabase.getInstance().getReference();
-        readData();
-        readUserInfo();
-        if(CheckLogedIn())
-        {
-            layout.setBackground(getResources().getDrawable(R.drawable.welcome));
+
+        if(isOnline()==false){
+
+            Button btnOKfinish;
+            final Dialog dialog=new Dialog(MainActivity.this);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.setContentView(R.layout.dialog_check_internet);
+
+            btnOKfinish=dialog.findViewById(R.id.btnOKfinish);
+            btnOKfinish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    MainActivity.this.finish();
+                }
+            });
+            dialog.show();
+
         }
-        else
-        {
-            layout.setBackground(getResources().getDrawable(R.drawable.poweron));
+        else {
+            context = getApplicationContext();
+            myref = FirebaseDatabase.getInstance().getReference();
+            readData();
+            readUserInfo();
+            if (CheckLogedIn()) {
+                layout.setBackground(getResources().getDrawable(R.drawable.welcome));
+            } else {
+                layout.setBackground(getResources().getDrawable(R.drawable.poweron));
+            }
+
+            //đòi quyển truy cập
+            if (Build.VERSION.SDK_INT >= 23) {
+                checkPermissions();
+            } else {
+                startNextActivity();
+            }
         }
 /*----------------------*/
-        //đòi quyển truy cập
-        if (Build.VERSION.SDK_INT >= 23) {
-            checkPermissions();
-        } else {
-            startNextActivity();
-        }
+
+
+
+
+
+
     }
     private  void readData()
     {
@@ -161,12 +190,14 @@ public class MainActivity extends AppCompatActivity
 
     private void startNextActivity(){
 
+
         myHandler = new Handler();
         myHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //kiểm tra xem trong bảng database bên dưới đã có ai đăng nhập chưa, nếu chưa thì chuyển intent qua màn hình đăng nhập, có rồi thì chuyển
                 //thẳng qua menu luôn
+
                     if(!CheckLogedIn())
                     {
                         Intent intent = new Intent(getApplicationContext(), SignInSignUpActivity.class);
@@ -201,6 +232,15 @@ public class MainActivity extends AppCompatActivity
             }
         }
         return permissions.toArray(new String[permissions.size()]);
+    }
+
+    private Boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if(ni != null && ni.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
     public String[] getRequiredPermissions() {
