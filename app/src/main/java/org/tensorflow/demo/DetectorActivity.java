@@ -1,6 +1,7 @@
 package org.tensorflow.demo;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+
+import com.hfda.playwithwords.Menu;
 import com.hfda.playwithwords.R;
 /**
  * An activity that uses a TensorFlowMultiBoxDetector and ObjectTracker to detect and then track
@@ -329,5 +332,11 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     @Override
     public void onSetDebug(final boolean debug) {
         detector.enableStatLogging(debug);
+    }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(this, Menu.class));
     }
 }

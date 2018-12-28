@@ -65,6 +65,8 @@ android:background="#ffff"
             android:background="@drawable/menumode6"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"/>
+
+
     </LinearLayout>
 
 
