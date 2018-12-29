@@ -111,8 +111,13 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
         myHandler = new Handler();
         accum=0;
         myProgressBar.setMax(1000);
-        myProgressBar.setProgress(1);
-
+        if(Round.isStart==true) {
+            myProgressBar.setProgress(1);
+        }
+        else
+        {
+            myProgressBar.setProgress(0);
+        }
         myHandler = new Handler();
         runnable = new Runnable() {
             @Override

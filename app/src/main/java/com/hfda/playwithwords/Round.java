@@ -130,15 +130,18 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
                 isStart=true;
+                dialog.dismiss();
+
+
             }
         });
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Round.flag=1;
                 isStart=true;
+                Round.flag=1;
+
             }
         });
         dialog.show();

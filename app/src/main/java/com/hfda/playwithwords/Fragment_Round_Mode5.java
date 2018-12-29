@@ -69,7 +69,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     Handler myHandler;
     Runnable runnable;
     boolean run;
-    int accum;
+    int accum=0;
     int progressStep=1;
     int[] dd1=new int[30];
     private void updateContent()
@@ -127,30 +127,36 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     }
     public void StartProgressBar()
     {
-        myHandler = new Handler();
-        accum=0;
-        myProgressBar.setMax(1000);
-        myProgressBar.setProgress(1);
+            accum=0;
+            myProgressBar.setMax(1000);
+            myProgressBar.setProgress(1);
+            myHandler = new Handler();
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    if (accum <= myProgressBar.getMax()) {
 
-        myHandler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run()
-            {
-                if(accum<=myProgressBar.getMax())
-                {
-                    if(run) {
-                        myProgressBar.incrementProgressBy(progressStep);
-                        accum++;
+                        {
+                            if (run) {
+                                if(Round.isStart==true) {
+                                    myProgressBar.incrementProgressBy(progressStep);
+                                    accum++;
+                                }
+                                else
+                                    myProgressBar.incrementProgressBy(0);
+                            }
+                            myHandler.postDelayed(runnable, 10);
+                        }
+                    } else {
+
+                        _container.Action("REFRESH");
                     }
-                    myHandler.postDelayed(runnable, 10);
+
                 }
-                else
-                    _container.Action("REFRESH");
-            }
-        };
-        myHandler.post(runnable);
-    }
+            };
+            myHandler.post(runnable);
+        }
+
 
     @Override
     public void onClick(View v) {
@@ -277,6 +283,8 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                        btnCancelBuy.setVisibility(View.VISIBLE);
                        btnOkeBuy.setVisibility(View.VISIBLE);
                        btnExitBuyHint.setVisibility(View.INVISIBLE);
+                       Round.isStart=false;
+
                        btnOkeBuy.setOnClickListener(new View.OnClickListener() {
                            @Override
                            public void onClick(View v) {
@@ -288,11 +296,13 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                                    String txtpoint = point + "";
                                    tvHint.setText(text);
                                    textViewPoint.setText(txtpoint);
+                                    Round.isStart=true;
 
                                    dialog.dismiss();
                                }
                                else
                                {
+
                                    tvHey.setText("Sorry!");
                                    tvNofitication.setText("You don't have enough point to buy hint.");
                                    btnExitBuyHint.setVisibility(View.VISIBLE);
@@ -301,6 +311,8 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                                    btnExitBuyHint.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
+                                           Round.isStart=true;
+
                                            dialog.dismiss();
                                            btnExitBuyHint.setVisibility(View.INVISIBLE);
                                        }
@@ -311,6 +323,8 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
                        btnCancelBuy.setOnClickListener(new View.OnClickListener() {
                            @Override
                            public void onClick(View v) {
+                               Round.isStart=true;
+
                                dialog.dismiss();
                            }
                        });

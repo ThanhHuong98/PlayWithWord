@@ -117,9 +117,16 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
             {
                 if(accum<=myProgressBar.getMax())
                 {
-                    if(run) {
-                        myProgressBar.incrementProgressBy(progressStep);
-                        accum++;
+                    if(run)
+                    {
+                        if(Round.isStart==true) {
+                            myProgressBar.incrementProgressBy(progressStep);
+                            accum++;
+                        }
+                        else
+                        {
+                            myProgressBar.incrementProgressBy(0);
+                        }
                     }
                     myHandler.postDelayed(runnable, 10);
                 }
@@ -129,6 +136,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
         };
         myHandler.post(runnable);
     }
+
 
 
     @Override
@@ -207,6 +215,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 btnCancelBuy.setVisibility(View.VISIBLE);
                 btnOkeBuy.setVisibility(View.VISIBLE);
                 btnExitBuyHint.setVisibility(View.INVISIBLE);
+                Round.isStart=false;
                 btnOkeBuy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -218,7 +227,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                             String txtpoint = point + "";
                             hint.setText(text);
                             textPoint.setText(txtpoint);
-
+                            Round.isStart=true;
                             dialog.dismiss();
                         }
                         else
@@ -231,6 +240,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                             btnExitBuyHint.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
+                                    Round.isStart=true;
                                     dialog.dismiss();
                                     btnExitBuyHint.setVisibility(View.INVISIBLE);
                                 }
@@ -241,6 +251,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
                 btnCancelBuy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Round.isStart=true;
                         dialog.dismiss();
                     }
                 });
