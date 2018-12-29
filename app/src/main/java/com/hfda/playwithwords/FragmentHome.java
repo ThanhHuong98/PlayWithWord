@@ -3,6 +3,7 @@ package com.hfda.playwithwords;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,8 @@ Menu _container;
          _container = (Menu)getActivity();
         //btnMode1.setOnClickListener(this);
         return v;
+
+
     }
 
     @Override

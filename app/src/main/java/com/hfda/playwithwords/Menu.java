@@ -27,6 +27,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Visibility;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,22 +38,7 @@ import android.widget.Toast;
 public class Menu extends AppCompatActivity implements fromFragToContainer
 {
 
-   /* private boolean mIsBound = false;
-    private MusicService mServ;
 
-    private ServiceConnection Scon =new ServiceConnection(){
-
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            MusicService.ServiceBinder binder = (MusicService.ServiceBinder)service;
-            mServ =binder.getService();
-            mIsBound=true;
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            mIsBound=false;
-        }
-    };*/
-    /*---------------------------------------------------------------------------*/
     //First We Declare Titles And Icons For Our Navigation Drawer List View
     String TITLES[] = {"HOME", "RANKING", "ABOUT US", "FEED BACK","SETTING", "LOGOUT"};
     //This Icons And Titles Are holded in an Array as you can see
@@ -70,17 +56,20 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
     MediaPlayer mediaPlayer;
+    FloatingActionButton fab;
     int out = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         Fragment fragmentHome = new FragmentHome();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frame, fragmentHome);
         ft.addToBackStack("HOME");
         ft.commit();
         MainActivity.readUserInfo();
+
         setContentView(R.layout.activity_menu);
         //Chạy nhạc nền trên mwnd hình menu
         mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
@@ -149,7 +138,8 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
 
             }
         });
-        FloatingActionButton fab;
+
+        //floating button point -------
         fab = findViewById(R.id.myFAB);
         final Intent intent = new Intent(this, org.tensorflow.demo.DetectorActivity.class);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -189,33 +179,38 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
         switch (childPosition)
         {
             case 1:
+                fab.show();
                 Fragment fragment3=new FragmentHome();
                 replaceFragment(fragment3,"HOME");
                 out=0;
                 break;
             case 2:
+                fab.hide();
                 Fragment fragment2=new FragmentRankings();
                 replaceFragment(fragment2,"RANKING");
                 out=0;
                 break;
 
             case 3:
+                fab.hide();
                 Fragment fragment1=new FragmentAboutUs();
                 replaceFragment(fragment1,"ABOUT");
                 out=0;
                 break;
             case 4:
+                fab.hide();
                 Fragment fragment4=new Fragment_FeedBack();
                 replaceFragment(fragment4,"FEED BACK");
                 out=0;
                 break;
             case 5:
-
+                fab.hide();
                 Fragment fragment5=new Fragment_Setting();
                 replaceFragment(fragment5,"SETTING");
                 out=0;
                 break;
             case 6:
+
                 final Button btnYesLogOut;
                 final Button btnNoLogOut;
                 GifImageView gifImageView;
@@ -285,6 +280,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
         { // If we have more than one fragment, pop back stack
             getSupportFragmentManager().popBackStack();
             fragmentsInStack--;
+            fab.show();
         }
         if (fragmentsInStack == 1)
         {
