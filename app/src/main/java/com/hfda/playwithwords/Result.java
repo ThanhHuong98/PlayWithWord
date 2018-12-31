@@ -45,6 +45,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     static final String FINAL_RESULT = "result";
     static final String TOTAL_SCORE = "score";
     static final String MODE = "mode";
+    public static final String CHECKMUSIC = "music";
 
     Fragment_Result_Mode14 fragmentResultMode14;
     Fragment_Result_Mode3 fragmentResultMode3;
@@ -55,7 +56,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     File imageFile;
     Context context;
     MediaPlayer mediaPlayer;
-
+    boolean sound =true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -95,6 +96,9 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     @Override
     public void Action(String action)
     {
+        if(action.equals("MUTE_SOUND")){
+            sound=false;
+        }
         if(action.equals("REFRESH"))
         {
             switch (mode)
@@ -125,16 +129,34 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         if(action.equals("FINISH"))
         {
             Intent intent = new Intent(this, Menu.class);
+            if(sound==false) {
+
+                intent.putExtra(CHECKMUSIC, "");
+            }
+            else
+            {
+                intent.putExtra(CHECKMUSIC, "SOUND");
+            }
             startActivity(intent);
             finish();
         }
+
     }
 
     @Override
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(this, Menu.class));
+        Intent intentback=new Intent(this, Menu.class);
+        if(sound==false) {
+
+            intentback.putExtra(CHECKMUSIC, "");
+        }
+        else
+        {
+            intentback.putExtra(CHECKMUSIC, "SOUND");
+        }
+        startActivity(intentback);
         finish();
     }
 

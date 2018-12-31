@@ -41,6 +41,7 @@ import java.util.Random;
 
 public class Round extends AppCompatActivity implements fromFragToContainer
 {
+    public static final String CHECKMUSIC = "music";
     static boolean isStart=true;
     static boolean isStop=true;
     static final String MODE = "mode"; //Extra của intent, để nhận thông tin mode thứ mấy từ intent của Menu gửi qua
@@ -57,6 +58,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     private int point = 0;
     private int numberRightAnswer=0; //s&#x1ed1; c&acirc;u tr&#x1ea3; l&#x1edd;i &#x111;&uacute;ng
     private GifImageView gifImageView;
+    boolean sound =true;
     private SoundManager notification = new SoundManager();
 
 
@@ -153,6 +155,9 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     //action là hành động mà Fragment gửi lên
     public void Action(String action)
     {
+        if(action.equals("MUTE_SOUND")){
+            sound=false;
+        }
         if(action.equals("REFRESH")) //người dùng đã click chọn/điền đáp án, ta sẽ set lại toàn bộ dữ liệu mới cho màn hình
         {
             Random rd=new Random();
@@ -323,7 +328,15 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         childUpdates.put(""+ key +"/totalScore", score);
         MainActivity.myref.child("UserInfo").updateChildren(childUpdates);
         //chuyển intent về menu
-        startActivity(new Intent(this, Menu.class));
+        Intent intentback=new Intent(this, Menu.class);
+        if(sound==false) {
+
+            intentback.putExtra(CHECKMUSIC, "");
+        }
+        else {
+            intentback.putExtra(CHECKMUSIC, "SOUND");
+        }
+        startActivity(intentback);
         finish();
     }
     @Override
