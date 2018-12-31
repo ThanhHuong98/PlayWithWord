@@ -63,7 +63,7 @@ public class Fragment_Round_Mode7 extends Fragment implements fromContainerToFra
     boolean run;
     int accum;
     int progressStep=1;
-    int[] dd1=new int[30];
+    int[] dd1=new int[50];
     private void updateContent()
     {
 

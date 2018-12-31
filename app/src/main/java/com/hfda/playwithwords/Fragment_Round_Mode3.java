@@ -49,7 +49,7 @@ public class Fragment_Round_Mode3 extends Fragment implements fromContainerToFra
     ProgressBar myProgressBar;
     LinearLayout layout;
     Round _container; //Activity chứa Fragment
-    int []dd=new int[30];
+    int []dd=new int[50];
     Context context;
     int numberHint=5; //số hint tối đa cho người dùng
     int point=0; //điểm người dùng có được

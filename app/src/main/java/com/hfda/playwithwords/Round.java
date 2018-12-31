@@ -67,7 +67,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     private String newAnswer;
     private String newTransciption;
     private String[] newAnswerInBtn = new String[4];
-    int[] dd=new int[30];
+    int[] dd=new int[50];
     private ArrayList<Integer> idArray = new ArrayList<>(); //mảng chứa các dòng đã được truy xuất từ database trước đó
     //khi random để lấy 1 dòng mới thì phải so với mảng xem dòng đó đã được random chưa
     int size;

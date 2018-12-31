@@ -54,7 +54,7 @@ public class Fragment_Round_Mode2 extends Fragment implements fromContainerToFra
     Round _container; //Activity chứa Fragment
     int numberHint=5; //số hint tối đa cho người dùng
     int point=0; //điểm người dùng có được
-    int[] dd=new int[30];
+    int[] dd=new int[50];
     int accum;
     int progressStep=1;
     Handler myHandler;

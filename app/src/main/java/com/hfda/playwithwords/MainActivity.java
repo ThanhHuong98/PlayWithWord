@@ -25,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity
 
     protected static Context context;
     protected static String userName;
+    ProgressBar mprogresBar;
     //protected static int userKey; //thứ tự node của user trên firebase
     protected static long totalScore;
     protected static int Userrank; //vị trí của user trong bảng xếp hạng
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mprogresBar=(ProgressBar)findViewById(R.id.progressBar);
         RelativeLayout layout = findViewById(R.id.layout);
 
         if(isOnline()==false){

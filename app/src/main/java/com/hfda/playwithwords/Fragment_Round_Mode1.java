@@ -50,7 +50,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
     ProgressBar myProgressBar;
     boolean runable = true;
     List<DataMode1234> mData=new ArrayList<>();
-    int[] dd=new int[30];
+    int[] dd=new int[50];
     String mQuestion;
     String mAnswer;
     String[] mAnswerButton=new String[4];

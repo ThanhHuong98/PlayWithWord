@@ -30,7 +30,7 @@ public class Fragment_Round_Mode4 extends Fragment implements fromContainerToFra
     boolean run = true;
     Context context;
     Round _container;
-    int[] dd=new int[30];
+    int[] dd=new int[50];
     int accum;
     int progressStep=1;
     Handler myHandler;

@@ -59,7 +59,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     TextView tvHint;
     int countQuestion=0;
     public int index=1;
-    int randomIndex[] = new int[31];
+    int randomIndex[] = new int[51];
     int point=0;
     int hint=5;
     private int number_rows;
@@ -71,7 +71,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
     boolean run;
     int accum=0;
     int progressStep=1;
-    int[] dd1=new int[30];
+    int[] dd1=new int[50];
     private void updateContent()
     {
 
@@ -367,7 +367,7 @@ public class Fragment_Round_Mode5 extends Fragment implements fromContainerToFra
         textViewPoint=(layout).findViewById(R.id.textViewPoint);
         tvHint = (layout).findViewById(R.id.textViewNumberHint);
         imgBntHint = (layout).findViewById(R.id.btnHint);
-        for(int i=1;i<=30;i++){
+        for(int i=1;i<=50;i++){
             randomIndex[i]=1;
         }
         for(int i=0;i<dd1.length;i++) dd1[i]=0;

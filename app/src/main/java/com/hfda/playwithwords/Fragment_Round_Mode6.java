@@ -94,7 +94,7 @@ public class Fragment_Round_Mode6 extends Fragment implements fromContainerToFra
     String strOfSpeech;
     TextView textViewRound;
     int index=1;
-    int[] dd=new int[30];
+    int[] dd=new int[50];
     AtomicBoolean ab=new AtomicBoolean(false);
     private ArrayList<Integer> idArray = new ArrayList<>();
     @Override

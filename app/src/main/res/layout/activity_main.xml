@@ -18,4 +18,17 @@
         android:fontFamily="@font/font_opensan_light"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"/>
+
+    <ProgressBar
+
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="165dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="50dp" />
 </RelativeLayout>
