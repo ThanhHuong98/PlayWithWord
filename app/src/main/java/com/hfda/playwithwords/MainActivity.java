@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     private Handler myHandler;
     public static List<DataMode1234> mData= new ArrayList<>();
     public static List<User> mUser= new ArrayList<>();
+    public static List<FeedBack> mFeedback= new ArrayList<>();
     public static DatabaseReference myref;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     public static final String CHECKMUSIC = "music";

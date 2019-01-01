@@ -12,6 +12,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +25,8 @@ public class Fragment_FeedBack extends Fragment implements View.OnClickListener,
     TextView tvRatingScale;
     EditText txtFeedBack;
     Button btnSendFeedBack;
+    static int stt=0;
+    int numberStar;
     public Fragment_FeedBack() {
         // Required empty public constructor
     }
@@ -43,6 +48,7 @@ public class Fragment_FeedBack extends Fragment implements View.OnClickListener,
     @Override
     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser)
     {
+        numberStar=(int)ratingBar.getRating();
         tvRatingScale.setText(String.valueOf(rating));
         switch ((int) ratingBar.getRating()) {
             case 1:
@@ -67,16 +73,27 @@ public class Fragment_FeedBack extends Fragment implements View.OnClickListener,
     @Override
     public void onClick(View v)
     {
+        MainActivity.mFeedback.add(new FeedBack(numberStar,txtFeedBack.getText().toString()));
+        writeFeedbacktoFirebase();
         if (txtFeedBack.getText().toString().isEmpty())
         {
             Toast.makeText(getContext(), "Please fill in the feedback text box!", Toast.LENGTH_SHORT).show();
         }
         else
         {
+            Toast.makeText(getContext(),numberStar+" "+txtFeedBack.getText().toString(),Toast.LENGTH_SHORT).show();
            txtFeedBack.setText("");
             mRatingBar.setRating(0);
             tvRatingScale.setText("Rating");
             Toast.makeText(getContext(), "Thanks for sharing your feedback!", Toast.LENGTH_SHORT).show();
         }
+
+
+    }
+    private void writeFeedbacktoFirebase()
+    {
+        DatabaseReference myref=FirebaseDatabase.getInstance().getReference();
+        myref.child("FeedBack").child(MainActivity.mFeedback.size()+"").child("NumberStar").setValue(numberStar);
+        myref.child("FeedBack").child(MainActivity.mFeedback.size()+"").child("Text").setValue(txtFeedBack.getText().toString());
     }
 }

@@ -23,5 +23,9 @@ public class FeedBack {
     {
 
     }
-
+    public FeedBack(int a,String b)
+    {
+        this.numberStar=a;
+        this.text=b;
+    }
 }
