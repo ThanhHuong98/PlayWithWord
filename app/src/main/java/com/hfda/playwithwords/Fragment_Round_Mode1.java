@@ -49,6 +49,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
     TextView hint;
     ProgressBar myProgressBar;
     boolean runable = true;
+    boolean run = true;
     List<DataMode1234> mData=new ArrayList<>();
     int[] dd=new int[50];
     String mQuestion;
@@ -111,13 +112,8 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
         myHandler = new Handler();
         accum=0;
         myProgressBar.setMax(1000);
-        if(Round.isStart==true) {
-            myProgressBar.setProgress(1);
-        }
-        else
-        {
-            myProgressBar.setProgress(0);
-        }
+        myProgressBar.setProgress(1);
+
         myHandler = new Handler();
         runnable = new Runnable() {
             @Override
@@ -125,10 +121,16 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
             {
                 if(accum<=myProgressBar.getMax())
                 {
-                    if(runable)
+                    if(run)
                     {
-                        myProgressBar.incrementProgressBy(progressStep);
-                        accum++;
+                        if(Round.isStart==true) {
+                            myProgressBar.incrementProgressBy(progressStep);
+                            accum++;
+                        }
+                        else
+                        {
+                            myProgressBar.incrementProgressBy(0);
+                        }
                     }
                     myHandler.postDelayed(runnable, 10);
                 }
@@ -138,6 +140,7 @@ public class Fragment_Round_Mode1 extends Fragment implements fromContainerToFra
         };
         myHandler.post(runnable);
     }
+
 
 
     @Override

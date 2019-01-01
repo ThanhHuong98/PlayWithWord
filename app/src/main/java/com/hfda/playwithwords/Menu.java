@@ -292,7 +292,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
             int duration = Toast.LENGTH_SHORT;
             if(out<2)
             {
-                Toast toast = Toast.makeText(context, text, duration);
+                Toast toast = Toast.makeText(context,text, duration);
                 toast.show();
             }
             if(out==2)

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="150dp"
+    android:background="@drawable/custom_shape_dialog_logout"
+    tools:igore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/tvNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/anhGif"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/font_roboto"
+        android:text="Are you sure you want to quit?"
+        android:textColor="@color/Black"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:id="@+id/layoutButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/tvNotification"
+        android:layout_alignLeft="@id/tvNotification"
+        android:layout_alignRight="@id/tvNotification"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnNoLogout"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_button_dialog_logout"
+            android:fontFamily="@font/font_roboto"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:text="No"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnYesLogout"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/custom_button_dialog_logout1"
+            android:fontFamily="@font/font_roboto"
+            android:gravity="center"
+            android:text="Yes"
+            android:textColor="#FF7576"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

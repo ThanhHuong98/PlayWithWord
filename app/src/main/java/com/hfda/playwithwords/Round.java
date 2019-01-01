@@ -1,14 +1,17 @@
 package com.hfda.playwithwords;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.IBinder;
@@ -19,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,6 +127,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         isStart=false;
         Button btnOK;
         CheckBox checkbox;
+
         final Dialog dialog=new Dialog(context);
         dialog.setContentView(R.layout.dialog_thongbaohethint);
         btnOK=(Button)dialog.findViewById(R.id.btnOK);
@@ -313,18 +318,57 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     }
 
     @Override
-    public void onBackPressed()
+    public boolean onKeyDown(int keyCode, KeyEvent event)
     {
-        super.onBackPressed();
         //cập nhật điểm nếu người dùng đang chơi giữa chừng mà out ra
         Map<String, Object> childUpdates = new HashMap<>();
         int key = MainActivity.indexUser(MainActivity.userName)+1;
         long score = MainActivity.totalScore;
         childUpdates.put(""+ key +"/totalScore", score);
         MainActivity.myref.child("UserInfo").updateChildren(childUpdates);
-        //chuyển intent về menu
-        startActivity(new Intent(this, Menu.class));
-        finish();
+
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            isStart=false;
+            final Button btnYesLogOut;
+            final Button btnNoLogOut;
+            final Dialog dialog=new Dialog(this);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.setContentView(R.layout.dialog_quit);
+
+            btnYesLogOut=dialog.findViewById(R.id.btnYesLogout);
+            btnNoLogOut=dialog.findViewById(R.id.btnNoLogout);
+            //Khong muon thoat
+            btnNoLogOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isStart=true;
+                    dialog.dismiss();
+                    Toast.makeText(Round.this,"Khong thoat",Toast.LENGTH_SHORT).show();
+                }
+            });
+            //Muon Thoat
+            btnYesLogOut.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v) {
+                    isStart=true;
+                    Toast.makeText(Round.this,"Pressing Yes",Toast.LENGTH_SHORT).show();
+                    //Chuyen qua man hinh LogOut, Chao tam biet!
+                    Intent intent = new Intent(Round.this,Menu.class);
+                    startActivity(intent);
+                    Toast.makeText(Round.this,"Thoat ve Menu",Toast.LENGTH_SHORT).show();
+
+
+                    //finish();
+                }
+            });
+
+            dialog.show();
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
     @Override
     public void onDestroy()
