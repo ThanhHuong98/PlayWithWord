@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:fontFamily="@font/font_roboto"
-        android:text="Are you sure you want to quit?"
+        android:text="Are you sure want to quit?"
         android:textColor="@color/Black"
         android:textSize="16sp" />
 
@@ -30,7 +30,7 @@
 
         <Button
             android:id="@+id/btnNoLogout"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="10dp"
@@ -44,7 +44,7 @@
 
         <Button
             android:id="@+id/btnYesLogout"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"

@@ -21,13 +21,16 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
     Fragment fragment;
     int currentMode;
     boolean sound =true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
+        Intent intent1=getIntent();
 
         Intent intent = getIntent();
+
         currentMode = Integer.parseInt(intent.getStringExtra(MODE));
         //Intent intent = getIntent();
         switch(currentMode)
@@ -64,7 +67,7 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
         super.onBackPressed();
 
         Intent intentback=new Intent(this, Menu.class);
-        if(sound==false) {
+        if(Menu.muteSound==true) {
 
             intentback.putExtra(CHECKMUSIC, "");
         }
@@ -81,9 +84,6 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
     {
         Intent intent=null;
 
-        if(action.equals("MUTE_SOUND")){
-            sound=false;
-        }
         if(action.equals("NEXT")) //nghĩa là người dùng nhấn "Click here to play"
         {
             intent = new Intent(Introduction.this, Round.class); //neu nhan nut Next thi chuyen intent qua Round
@@ -94,7 +94,7 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
 
 
             intent = new Intent(this, Menu.class); //neu nhan nut Back thi chuyen intent ve Menu
-            if(sound==false) {
+            if(Menu.muteSound==true) {
 
                 intent.putExtra(CHECKMUSIC, "");
             }

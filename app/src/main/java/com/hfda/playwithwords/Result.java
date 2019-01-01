@@ -71,6 +71,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         Intent intent = getIntent();
+
         mode = Integer.parseInt(intent.getStringExtra(MODE));
         finalResult = intent.getStringExtra(FINAL_RESULT);
         totalScore = intent.getStringExtra(TOTAL_SCORE);
@@ -96,9 +97,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     @Override
     public void Action(String action)
     {
-        if(action.equals("MUTE_SOUND")){
-            sound=false;
-        }
+
         if(action.equals("REFRESH"))
         {
             switch (mode)
@@ -129,7 +128,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
         if(action.equals("FINISH"))
         {
             Intent intent = new Intent(this, Menu.class);
-            if(sound==false) {
+            if(Menu.muteSound==true) {
 
                 intent.putExtra(CHECKMUSIC, "");
             }
@@ -148,7 +147,7 @@ public class Result extends AppCompatActivity implements fromFragToContainer
     {
         super.onBackPressed();
         Intent intentback=new Intent(this, Menu.class);
-        if(sound==false) {
+        if(Menu.muteSound==true) {
 
             intentback.putExtra(CHECKMUSIC, "");
         }

@@ -28,6 +28,7 @@ import java.io.IOException;
  */
 public class Fragment_Setting extends Fragment implements View.OnClickListener
 {
+    public static final String CHECKMUS = "music";
     private static final int RESULT_LOAD_IMG = 1;
     private static final int RESULT_OK = 2;
     private static final int GALLERY_REQUEST = 3;
@@ -38,7 +39,8 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
     ImageButton btnDownVolume;
     boolean isPlay=true;
     Menu _container;
-    Result _container1;
+
+
     public Fragment_Setting() {
         // Required empty public constructor
     }
@@ -49,8 +51,6 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment__setting, container, false);
         _container=(Menu) getActivity();
-        _container1=(Result) getActivity();
-
         context=getActivity();
         btnUpVolume=v.findViewById(R.id.ic_volume_up);
         btnDownVolume=v.findViewById(R.id.ic_volume_down);
@@ -70,7 +70,6 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
                     else{
                         _container.Action("MUTE_SOUND");
                         btnSpeaker.setBackgroundResource(R.drawable.ic_mute_sound);
-                        _container1.Action("MUTE_SOUND");
                     }
                 }
             }
