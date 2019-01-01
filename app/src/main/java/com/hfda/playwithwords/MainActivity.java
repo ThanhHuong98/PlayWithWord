@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     public static List<User> mUser= new ArrayList<>();
     public static DatabaseReference myref;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    public static final String CHECKMUSIC = "music";
     //mảng lưu các quyền cần truy cập
    // private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -210,6 +211,7 @@ public class MainActivity extends AppCompatActivity
                     else
                     {
                         Intent intent = new Intent(getApplicationContext(), Menu.class);
+                        intent.putExtra(CHECKMUSIC,"SOUND");
                         startActivity(intent);
                         finish();
                     }

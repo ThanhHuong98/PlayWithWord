@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
@@ -56,6 +57,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
     ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
     MediaPlayer mediaPlayer;
+    AudioManager audioManager;
     FloatingActionButton fab;
     int out = 0;
     @Override
@@ -72,7 +74,14 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
 
         setContentView(R.layout.activity_menu);
         //Chạy nhạc nền trên mwnd hình menu
+        audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+
         mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
+        Intent intent1 = getIntent();
+        if(intent1.getStringExtra(MainActivity.CHECKMUSIC).equals("SOUND")||
+                intent1.getStringExtra(Result.CHECKMUSIC).equals("SOUND")||
+                intent1.getStringExtra(Introduction.CHECKMUSIC).equals("SOUND")||
+                intent1.getStringExtra(Round.CHECKMUSIC).equals("SOUND"))
             mediaPlayer.start();
             mediaPlayer.setLooping(true);
     /* Assinging the toolbar object ot the view
@@ -311,6 +320,12 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
         }
         if(action.equals("MUTE_SOUND")){
             mediaPlayer.stop();
+        }
+        if(action.equals("UP")){
+            audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
+        }
+        if(action.equals("DOWN")){
+            audioManager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
         }
     }
     @Override

@@ -45,6 +45,7 @@ import java.util.Random;
 
 public class Round extends AppCompatActivity implements fromFragToContainer
 {
+    public static final String CHECKMUSIC = "music";
     static boolean isStart=true;
     static boolean isStop=true;
     static final String MODE = "mode"; //Extra của intent, để nhận thông tin mode thứ mấy từ intent của Menu gửi qua
@@ -61,6 +62,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     private int point = 0;
     private int numberRightAnswer=0; //s&#x1ed1; c&acirc;u tr&#x1ea3; l&#x1edd;i &#x111;&uacute;ng
     private GifImageView gifImageView;
+    boolean sound =true;
     private SoundManager notification = new SoundManager();
 
 
@@ -158,6 +160,9 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     //action là hành động mà Fragment gửi lên
     public void Action(String action)
     {
+        if(action.equals("MUTE_SOUND")){
+            sound=false;
+        }
         if(action.equals("REFRESH")) //người dùng đã click chọn/điền đáp án, ta sẽ set lại toàn bộ dữ liệu mới cho màn hình
         {
             Random rd=new Random();
@@ -327,6 +332,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         childUpdates.put(""+ key +"/totalScore", score);
         MainActivity.myref.child("UserInfo").updateChildren(childUpdates);
 
+
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
             isStart=false;
@@ -360,7 +366,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     Toast.makeText(Round.this,"Thoat ve Menu",Toast.LENGTH_SHORT).show();
 
 
-                    //finish();
+                    finish();
                 }
             });
 
@@ -369,6 +375,26 @@ public class Round extends AppCompatActivity implements fromFragToContainer
             return true;
         }
         return super.onKeyDown(keyCode, event);
+
+        //chuyển intent về menu
+//        Intent intentback=new Intent(this, Menu.class);
+//        if(sound==false) {
+//
+//            intentback.putExtra(CHECKMUSIC, "");
+//        }
+//        else {
+//            intentback.putExtra(CHECKMUSIC, "SOUND");
+//        }
+//        startActivity(intentback);
+//        finish();
+
+    }
+    public void exit()
+    {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
     @Override
     public void onDestroy()

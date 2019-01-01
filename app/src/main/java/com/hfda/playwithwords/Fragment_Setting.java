@@ -1,9 +1,15 @@
 package com.hfda.playwithwords;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,26 +20,40 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Fragment_Setting extends Fragment implements View.OnClickListener
 {
-   ImageButton btnSpeaker;
-   ImageButton btnUpdateProfile;
+    private static final int RESULT_LOAD_IMG = 1;
+    private static final int RESULT_OK = 2;
+    private static final int GALLERY_REQUEST = 3;
+    ImageButton btnSpeaker;
+    Context context;
+    ImageButton btnUpdateProfile;
+    ImageButton btnUpVolume;
+    ImageButton btnDownVolume;
     boolean isPlay=true;
     Menu _container;
+    Result _container1;
     public Fragment_Setting() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment__setting, container, false);
         _container=(Menu) getActivity();
+        _container1=(Result) getActivity();
+
+        context=getActivity();
+        btnUpVolume=v.findViewById(R.id.ic_volume_up);
+        btnDownVolume=v.findViewById(R.id.ic_volume_down);
         btnSpeaker=v.findViewById(R.id.ic_sound);
         btnUpdateProfile=v.findViewById(R.id.ic_profile);
         btnSpeaker.setOnClickListener(new View.OnClickListener() {
@@ -44,22 +64,38 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
 
                     if(isPlay==true){
 
-                       _container.Action("SOUND");
-                        btnSpeaker.setBackgroundResource(R.drawable.ic_speaker);
+                        _container.Action("SOUND");
+                        btnSpeaker.setBackgroundResource(R.drawable.ic_sound);
                     }
                     else{
                         _container.Action("MUTE_SOUND");
-                        btnSpeaker.setBackgroundResource(R.drawable.ic_mute_audio);
-
+                        btnSpeaker.setBackgroundResource(R.drawable.ic_mute_sound);
+                        _container1.Action("MUTE_SOUND");
                     }
                 }
             }
-        });btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
+        });
+        btnUpVolume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v.getId()==btnUpdateProfile.getId()){
-                    getFragmentManager().beginTransaction().replace(R.id.frame,new Fragment_Profile()).addToBackStack(null).commit();
-                }
+                _container.Action("UP");
+            }
+        });
+        btnDownVolume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _container.Action("DOWN");
+            }
+        });
+
+        btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if(v.getId()==btnUpdateProfile.getId()){
+                //getFragmentManager().beginTransaction().replace(R.id.frame,new Fragment_Profile()).addToBackStack(null).commit();
+                //}
+                //_container.Action("PROFILE");
+                Toast.makeText(context, "Van chua lam dc!!!!", Toast.LENGTH_SHORT).show();
             }
         });
         return v;
@@ -86,4 +122,5 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
 //            //Fragment fragment_profile=new Fr
 //        }
     }
+
 }

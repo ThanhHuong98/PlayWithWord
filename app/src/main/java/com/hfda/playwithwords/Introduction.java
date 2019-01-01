@@ -15,9 +15,12 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class Introduction extends AppCompatActivity implements fromFragToContainer
 {
+    public static final String CHECKMUSIC = "music";
+
     public static String MODE = "mode";
     Fragment fragment;
     int currentMode;
+    boolean sound =true;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -59,7 +62,17 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(this, Menu.class));
+
+        Intent intentback=new Intent(this, Menu.class);
+        if(sound==false) {
+
+            intentback.putExtra(CHECKMUSIC, "");
+        }
+        else
+        {
+            intentback.putExtra(CHECKMUSIC, "SOUND");
+        }
+        startActivity(intentback);
     }
 
     //cái interface để nhận thông tin của cái button được click dưới Fragment rồi gửi lên cho Activity
@@ -68,6 +81,9 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
     {
         Intent intent=null;
 
+        if(action.equals("MUTE_SOUND")){
+            sound=false;
+        }
         if(action.equals("NEXT")) //nghĩa là người dùng nhấn "Click here to play"
         {
             intent = new Intent(Introduction.this, Round.class); //neu nhan nut Next thi chuyen intent qua Round
@@ -76,7 +92,16 @@ public class Introduction extends AppCompatActivity implements fromFragToContain
         if(action.equals("BACK")) //nghĩa là người dùng nhấn icon back
         {
 
+
             intent = new Intent(this, Menu.class); //neu nhan nut Back thi chuyen intent ve Menu
+            if(sound==false) {
+
+                intent.putExtra(CHECKMUSIC, "");
+            }
+            else
+            {
+                intent.putExtra(CHECKMUSIC, "SOUND");
+            }
         }
         startActivity(intent);
         finish();
