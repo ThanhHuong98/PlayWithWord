@@ -83,6 +83,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
 
 
         Intent intent = getIntent(); //nhận intent từ Menu gửi qua
+
         String m = intent.getStringExtra(MODE); //lấy Extra
         mode = Integer.parseInt(m); //chuyển Extra từ String sang int
         for(int i=0;i<dd.length;i++) dd[i]=0;
@@ -155,9 +156,6 @@ public class Round extends AppCompatActivity implements fromFragToContainer
     //action là hành động mà Fragment gửi lên
     public void Action(String action)
     {
-        if(action.equals("MUTE_SOUND")){
-            sound=false;
-        }
         if(action.equals("REFRESH")) //người dùng đã click chọn/điền đáp án, ta sẽ set lại toàn bộ dữ liệu mới cho màn hình
         {
             Random rd=new Random();
@@ -329,7 +327,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         MainActivity.myref.child("UserInfo").updateChildren(childUpdates);
         //chuyển intent về menu
         Intent intentback=new Intent(this, Menu.class);
-        if(sound==false) {
+        if(Menu.muteSound==true) {
 
             intentback.putExtra(CHECKMUSIC, "");
         }

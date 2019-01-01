@@ -38,7 +38,7 @@ import android.widget.Toast;
 
 public class Menu extends AppCompatActivity implements fromFragToContainer
 {
-
+    public static  boolean muteSound=false;
 
     //First We Declare Titles And Icons For Our Navigation Drawer List View
     String TITLES[] = {"HOME", "RANKING", "ABOUT US", "FEED BACK","SETTING", "LOGOUT"};
@@ -185,6 +185,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
 
     public void onTouchDrawer(final int childPosition)
     {
+
         switch (childPosition)
         {
             case 1:
@@ -264,6 +265,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
     /*--------------------------------------------------------------------------------------------*/
     public void replaceFragment(Fragment fragment, String tag)
     {
+
         //Get current fragment placed in container
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame);
         //Prevent adding same fragment on top
@@ -280,6 +282,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
                 .addToBackStack(tag)
                 .replace(R.id.frame, fragment)
                 .commit();
+
     }
     @Override
     public void onBackPressed()
@@ -319,6 +322,8 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
             mediaPlayer.setLooping(true);
         }
         if(action.equals("MUTE_SOUND")){
+
+            Menu.muteSound=true;
             mediaPlayer.stop();
         }
         if(action.equals("UP")){
