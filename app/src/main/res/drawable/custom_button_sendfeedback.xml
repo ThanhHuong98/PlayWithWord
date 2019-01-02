@@ -4,11 +4,11 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <gradient
-        android:startColor="@color/White"
-        android:endColor="@color/White"
+        android:startColor="#759081"
+        android:endColor="#759081"
          />
-    <solid android:color="#fc7d7d"/>
-    <corners android:radius="0dp" />
+    <solid android:color="#759081"/>
+    <corners android:radius="5dp" />
 </shape>
     </item>
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragment_FeedBack"
-    android:background="@drawable/feedback_background"
+    android:background="@drawable/feedback"
     android:layout_centerHorizontal="true">
     <TextView
         android:id="@+id/tvTitle"

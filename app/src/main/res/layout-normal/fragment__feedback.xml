@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragment_FeedBack"
-    android:background="@drawable/feedback_background"
+    android:background="@drawable/feedback"
     android:layout_centerHorizontal="true">
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:fontFamily="@font/font_roboto"
+        android:fontFamily="@font/opensansregular"
         android:textColor="#000"
         android:layout_marginTop="30dp"
         android:text="We hope you enjoyed our Game"
@@ -58,18 +58,19 @@
         android:textSize="16sp"
 
         />
+
     <Button
         android:id="@+id/btnSendFeedBack"
         android:layout_width="70dp"
         android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/custom_button_sendfeedback"
         android:fontFamily="@font/font_opensan_regular"
-        android:text="@string/btnSubmit"
-        android:textSize="15sp"
-        android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:padding="3dp"
-        android:textColor="@android:color/white" />
+        android:text="@string/btnSubmit"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
 
 </LinearLayout>
