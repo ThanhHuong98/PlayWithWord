@@ -353,7 +353,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                 public void onClick(View v) {
                     isStart=true;
                     dialog.dismiss();
-                    Toast.makeText(Round.this,"Khong thoat",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Round.this,"Khong thoat",Toast.LENGTH_SHORT).show();
                 }
             });
             //Muon Thoat
@@ -362,7 +362,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                 @Override
                 public void onClick(View v) {
                     isStart=true;
-                    Toast.makeText(Round.this,"Pressing Yes",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Round.this,"Pressing Yes",Toast.LENGTH_SHORT).show();
                     //Chuyen qua man hinh LogOut, Chao tam biet!
                     Intent intent = new Intent(Round.this,Menu.class);
                     if(Menu.muteSound==true) {
@@ -373,7 +373,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
 
                     }
                     startActivity(intent);
-                    Toast.makeText(Round.this,"Thoat ve Menu",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(Round.this,"Thoat ve Menu",Toast.LENGTH_SHORT).show();
                     finish();
                 }
             });

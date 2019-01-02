@@ -53,7 +53,7 @@
         android:hint="Tell us what you think"
         android:inputType="textMultiLine"
         android:lines="7"
-        android:textColor="#000"
+        android:textColor="#759081"
         android:textColorHint="#d6020202"
         android:textSize="16sp"
 

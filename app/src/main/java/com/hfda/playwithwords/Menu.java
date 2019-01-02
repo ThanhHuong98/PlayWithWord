@@ -149,7 +149,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
             }
         });
 
-        //floating button point -------
+        /*//floating button point -------
         fab = findViewById(R.id.myFAB);
         final Intent intent = new Intent(this, org.tensorflow.demo.DetectorActivity.class);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +158,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
                 startActivity(intent);
             }
         });
-
+*/
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
 
@@ -190,32 +190,32 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
         switch (childPosition)
         {
             case 1:
-                fab.show();
+               // fab.show();
                 Fragment fragment3=new FragmentHome();
                 replaceFragment(fragment3,"HOME");
                 out=0;
                 break;
             case 2:
-                fab.hide();
+                //fab.hide();
                 Fragment fragment2=new FragmentRankings();
                 replaceFragment(fragment2,"RANKING");
                 out=0;
                 break;
 
             case 3:
-                fab.hide();
+               // fab.hide();
                 Fragment fragment1=new FragmentAboutUs();
                 replaceFragment(fragment1,"ABOUT");
                 out=0;
                 break;
             case 4:
-                fab.hide();
+               // fab.hide();
                 Fragment fragment4=new Fragment_FeedBack();
                 replaceFragment(fragment4,"FEED BACK");
                 out=0;
                 break;
             case 5:
-                fab.hide();
+                //fab.hide();
                 Fragment fragment5=new Fragment_Setting();
                 replaceFragment(fragment5,"SETTING");
                 out=0;

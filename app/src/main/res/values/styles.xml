@@ -18,7 +18,9 @@
 
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@android:color/darker_gray</item>
-        <item name="colorControlActivated">@color/PinkLight</item>
+        <item name="colorControlActivated">@color/Yellow</item>
+
+
     </style>
 
     </resources>

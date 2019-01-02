@@ -266,10 +266,10 @@
                     android:paddingLeft="4dp"
                     android:background="@drawable/custom_imageview">
                     <TextView
-                        android:id="@+id/mssvToan"
+                        android:id="@+id/mssvHuan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/mssvToan"
+                        android:text="@string/mssvHuan"
                         android:textColor="@color/Black"
                         android:textSize="15sp"
                         android:paddingTop="55dp"
@@ -277,7 +277,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nameToan"
+                        android:text="@string/nameHuan"
                         android:textSize="15sp"
                         android:paddingTop="7dp"
                         android:textColor="@color/Black"
@@ -285,7 +285,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nhiemvuToan"
+                        android:text="@string/nhiemvuHuan"
                         android:textColor="@color/Black"
                         android:textSize="15sp"
                         android:paddingTop="7dp"
