@@ -76,7 +76,7 @@ Github Changelog Generator is released under the [MIT License](http://www.openso
 [implementations]: https://github.com/kentcdodds/all-contributors/blob/master/other/IMPLEMENTATIONS.md
 [github-watch-badge]: https://img.shields.io/github/watchers/ThanhHuong98/PlayWithWord.svg?style=social
 [github-watch]: https://github.com/ThanhHuong98/PlayWithWord/watchers
-[github-star-badge]: https://github.com/ThanhHuong98/PlayWithWord.svg?style=social
+[github-star-badge]: https://img.shields.io/github/stars/ThanhHuong98/PlayWithWord.svg?style=social
 [github-star]: https://github.com/ThanhHuong98/PlayWithWord/stargazers
 [twitter]: https://twitter.com/intent/tweet?text=Check%20out%20all-contributors!%20%E2%9C%A8%20Recognize%20all%20contributors,%20not%20just%20the%20ones%20who%20commit%20code%20%E2%9C%A8%20https://github.com/toandaominh1997/Kaggle%20%F0%9F%A4%97
 [twitter-badge]: https://img.shields.io/twitter/url/https/github.com/kentcdodds/all-contributors.svg?style=social
