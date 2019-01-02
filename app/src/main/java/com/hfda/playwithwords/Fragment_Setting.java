@@ -55,7 +55,7 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
         btnUpVolume=v.findViewById(R.id.ic_volume_up);
         btnDownVolume=v.findViewById(R.id.ic_volume_down);
         btnSpeaker=v.findViewById(R.id.ic_sound);
-        btnUpdateProfile=v.findViewById(R.id.ic_profile);
+
         btnSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,16 +87,7 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
             }
         });
 
-        btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(v.getId()==btnUpdateProfile.getId()){
-                //getFragmentManager().beginTransaction().replace(R.id.frame,new Fragment_Profile()).addToBackStack(null).commit();
-                //}
-                //_container.Action("PROFILE");
-                Toast.makeText(context, "Van chua lam dc!!!!", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return v;
     }
 
