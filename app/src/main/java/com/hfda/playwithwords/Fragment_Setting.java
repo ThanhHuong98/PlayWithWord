@@ -87,10 +87,10 @@ public class Fragment_Setting extends Fragment implements View.OnClickListener
             }
         });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 274dbe1174e3bf2ecdfd82050bea1f9e5e569bc3
+//<<<<<<< HEAD
+//
+//=======
+//>>>>>>> 274dbe1174e3bf2ecdfd82050bea1f9e5e569bc3
         return v;
     }
 
