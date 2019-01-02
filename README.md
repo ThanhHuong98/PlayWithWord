@@ -57,7 +57,7 @@ If there's anything you'd like to chat about, please feel free to join our [Gitt
 
 ## Contributors
 
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification and is brought to you by these [awesome contributors](./CONTRIBUTORS.md).
+This project follows the [all-contributors](https://github.com/ThanhHuong98) specification and is brought to you by these [awesome contributors](./CONTRIBUTORS.md).
 
 ## License
 
