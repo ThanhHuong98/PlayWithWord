@@ -365,6 +365,13 @@ public class Round extends AppCompatActivity implements fromFragToContainer
                     Toast.makeText(Round.this,"Pressing Yes",Toast.LENGTH_SHORT).show();
                     //Chuyen qua man hinh LogOut, Chao tam biet!
                     Intent intent = new Intent(Round.this,Menu.class);
+                    if(Menu.muteSound==true) {
+                        intent.putExtra(CHECKMUSIC,"");
+                    }
+                    else{
+                        intent.putExtra(CHECKMUSIC,"SOUND");
+
+                    }
                     startActivity(intent);
                     Toast.makeText(Round.this,"Thoat ve Menu",Toast.LENGTH_SHORT).show();
                     finish();
