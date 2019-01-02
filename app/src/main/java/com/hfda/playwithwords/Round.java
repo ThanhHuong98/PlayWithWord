@@ -377,7 +377,7 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         }
 
         Intent intentback= new Intent(this, Menu.class);
-        if(sound==false) {
+        if(Menu.muteSound==true) {
 
             intentback.putExtra(CHECKMUSIC, "");
         }

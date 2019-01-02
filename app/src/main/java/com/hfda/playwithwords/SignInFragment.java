@@ -34,6 +34,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     ImageButton btnGoogle;
     ImageButton btnFB;
     SignInSignUpActivity _container;
+    public static final String CHECKMUSIC = "music";
 
     public SignInFragment() {
         // Required empty public constructor
@@ -83,6 +84,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(),Menu.class);
+                        intent.putExtra(CHECKMUSIC,"SOUND");
                         startActivity(intent);
                         _container.finish();
                     }

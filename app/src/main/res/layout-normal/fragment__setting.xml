@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="sound"
 
-            android:layout_marginLeft="215dp"
+            android:layout_marginLeft="235dp"
             android:textSize="30sp"
             android:textColor="@color/Black"
             android:fontFamily="@font/font_opensan_regular"
@@ -42,7 +42,7 @@
             android:layout_height="42dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="72dp"
-            android:layout_marginRight="67dp"
+            android:layout_marginRight="87dp"
             android:background="@drawable/ic_sound" />
         <ImageButton
             android:id="@+id/ic_volume_up"
@@ -58,7 +58,7 @@
             android:layout_height="42dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="72dp"
-            android:layout_marginRight="168dp"
+            android:layout_marginRight="178dp"
             android:background="@drawable/ic_sound_minus" />
 
 

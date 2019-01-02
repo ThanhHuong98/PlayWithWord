@@ -11,11 +11,11 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:textSize="73sp"
         android:fontFamily="@font/font_opensan_regular"
         android:textColor="#27AE60"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="50dp"
         android:text="SETTING"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
@@ -30,35 +30,35 @@
             android:layout_height="wrap_content"
             android:text="sound"
 
-            android:layout_marginLeft="215dp"
-            android:textSize="30sp"
+            android:layout_marginLeft="329dp"
+            android:textSize="55sp"
             android:textColor="@color/Black"
             android:fontFamily="@font/font_opensan_regular"
             />
 
         <ImageButton
             android:id="@+id/ic_sound"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="72dp"
-            android:layout_marginRight="67dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginRight="112dp"
             android:background="@drawable/ic_sound" />
         <ImageButton
             android:id="@+id/ic_volume_up"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="72dp"
-            android:layout_marginRight="273dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginRight="420dp"
             android:background="@drawable/ic_sound_plus" />
         <ImageButton
             android:id="@+id/ic_volume_down"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="72dp"
-            android:layout_marginRight="168dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginRight="265dp"
             android:background="@drawable/ic_sound_minus" />
 
 

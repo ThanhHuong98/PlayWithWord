@@ -76,12 +76,13 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
         //Chạy nhạc nền trên mwnd hình menu
         audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
 
-        mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
-/*        Intent intent1 = getIntent();
-        if(intent1.getStringExtra(MainActivity.CHECKMUSIC).equals("SOUND")||
+        mediaPlayer=MediaPlayer.create(this,R.raw.musbackground);
+        Intent intent1 = getIntent();
+        if(intent1.getStringExtra(SignInFragment.CHECKMUSIC).equals("SOUND")||
+                intent1.getStringExtra(MainActivity.CHECKMUSIC).equals("SOUND")||
                 intent1.getStringExtra(Result.CHECKMUSIC).equals("SOUND")||
                 intent1.getStringExtra(Introduction.CHECKMUSIC).equals("SOUND")||
-                intent1.getStringExtra(Round.CHECKMUSIC).equals("SOUND"))*/
+                intent1.getStringExtra(Round.CHECKMUSIC).equals("SOUND"))
             mediaPlayer.start();
             mediaPlayer.setLooping(true);
     /* Assinging the toolbar object ot the view
