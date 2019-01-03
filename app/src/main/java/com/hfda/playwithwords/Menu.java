@@ -318,7 +318,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
     public void Action(String action)
     {
         if(action.equals("SOUND")){
-            mediaPlayer=MediaPlayer.create(this,R.raw.music_menu);
+            mediaPlayer=MediaPlayer.create(this,R.raw.musbackground);
             mediaPlayer.start();
             mediaPlayer.setLooping(true);
         }
@@ -348,16 +348,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
         mediaPlayer.stop();
         finish();
     }
-  /*  @Override
-    protected void onStart()
-   {
-       super.onStart();
-        // Tạo đối tượng Intent cho MusicService.
-      Intent intent = new Intent(Menu.this,MusicService.class);
-        // Gọi method bindService(..) để giàng buộc dịch vụ với giao diện.
-            this.bindService(intent, Scon, Context.BIND_ADJUST_WITH_ACTIVITY);
-            startService(intent);
-    }*/
+
 
 }
 

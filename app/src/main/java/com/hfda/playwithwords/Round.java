@@ -395,9 +395,6 @@ public class Round extends AppCompatActivity implements fromFragToContainer
         finish();
         return super.onKeyDown(keyCode, event);
 
-        //chuyển intent về menu
-
-
 
     }
     public void exit()
