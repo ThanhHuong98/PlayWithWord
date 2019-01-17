@@ -149,7 +149,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
             }
         });
 
-        /*//floating button point -------
+        //floating button point -------
         fab = findViewById(R.id.myFAB);
         final Intent intent = new Intent(this, org.tensorflow.demo.DetectorActivity.class);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +158,7 @@ public class Menu extends AppCompatActivity implements fromFragToContainer
                 startActivity(intent);
             }
         });
-*/
+
         mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
         mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
 

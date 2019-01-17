@@ -37,7 +37,7 @@
     </android.support.v7.widget.RecyclerView>
 
 
-<!--<android.support.design.widget.FloatingActionButton
+<android.support.design.widget.FloatingActionButton
         android:id="@+id/myFAB"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -50,7 +50,7 @@
         android:layout_marginStart="295dp"
         android:layout_marginEnd="10dp"
         app:borderWidth="0dp"
-        app:rippleColor="#ff595a" />-->
+        app:rippleColor="#ff595a" />
 
 </android.support.v4.widget.DrawerLayout>
 

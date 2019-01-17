@@ -36,7 +36,7 @@ import com.hfda.playwithwords.R;
  */
 public class DetectorActivity extends CameraActivity implements OnImageAvailableListener {
     private static final Logger LOGGER = new Logger();
-
+    public static final String CHECKMUSIC = "music";
     // Configuration values for the prepackaged multibox model.
     private static final int MB_INPUT_SIZE = 224;
     private static final int MB_IMAGE_MEAN = 128;
@@ -338,6 +338,16 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(this, Menu.class));
+        Intent intent=new Intent(this, Menu.class);
+        if(Menu.muteSound==true) {
+
+            intent.putExtra(CHECKMUSIC, "");
+        }
+        else
+        {
+            intent.putExtra(CHECKMUSIC, "SOUND");
+        }
+        //intent.putExtra(CHECKMUSIC,"SOUND");
+        startActivity(intent);
     }
 }
