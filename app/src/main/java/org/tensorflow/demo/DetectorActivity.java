@@ -158,17 +158,14 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
         sensorOrientation = rotation - getScreenOrientation();
         LOGGER.i("Camera orientation relative to screen canvas: %d", sensorOrientation);
-
         LOGGER.i("Initializing at size %dx%d", previewWidth, previewHeight);
         rgbFrameBitmap = Bitmap.createBitmap(previewWidth, previewHeight, Config.ARGB_8888);
         croppedBitmap = Bitmap.createBitmap(cropSize, cropSize, Config.ARGB_8888);
-
         frameToCropTransform =
                 ImageUtils.getTransformationMatrix(
                         previewWidth, previewHeight,
                         cropSize, cropSize,
                         sensorOrientation, MAINTAIN_ASPECT);
-
         cropToFrameTransform = new Matrix();
         frameToCropTransform.invert(cropToFrameTransform);
 
@@ -183,7 +180,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                         }
                     }
                 });
-
         addCallback(
                 new DrawCallback() {
                     @Override
@@ -206,7 +202,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 canvas.getWidth() - copy.getWidth() * scaleFactor,
                                 canvas.getHeight() - copy.getHeight() * scaleFactor);
                         canvas.drawBitmap(copy, matrix, new Paint());
-
                         final Vector<String> lines = new Vector<String>();
                         if (detector != null) {
                             final String statString = detector.getStatString();
@@ -216,13 +211,11 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                             }
                         }
                         lines.add("");
-
                         lines.add("Frame: " + previewWidth + "x" + previewHeight);
                         lines.add("Crop: " + copy.getWidth() + "x" + copy.getHeight());
                         lines.add("View: " + canvas.getWidth() + "x" + canvas.getHeight());
                         lines.add("Rotation: " + sensorOrientation);
                         lines.add("Inference time: " + lastProcessingTimeMs + "ms");
-
                         borderedText.drawLines(canvas, 10, canvas.getHeight() - 10, lines);
                     }
                 });
